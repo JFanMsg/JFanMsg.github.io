@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>MSG</title>
   
-  <subtitle>一生很短</subtitle>
+  <subtitle>人生苦短</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.linux91.cn/"/>
-  <updated>2021-07-29T12:54:42.000Z</updated>
+  <updated>2021-08-25T08:46:18.684Z</updated>
   <id>https://www.linux91.cn/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>5W2H | 关于写博客的七点反思</title>
-    <link href="https://www.linux91.cn/2020/01/14/5w2h-godweiyang/"/>
-    <id>https://www.linux91.cn/2020/01/14/5w2h-godweiyang/</id>
-    <published>2020-01-14T07:27:31.000Z</published>
-    <updated>2021-07-29T12:54:42.000Z</updated>
+    <title>博客来源</title>
+    <link href="https://www.linux91.cn/2021/08/25/bo-ke-lai-yuan/"/>
+    <id>https://www.linux91.cn/2021/08/25/bo-ke-lai-yuan/</id>
+    <published>2021-08-25T02:37:32.000Z</published>
+    <updated>2021-08-25T08:46:18.684Z</updated>
     
     <summary type="html">
     
@@ -29,11 +29,7 @@
       
         
         
-          &lt;blockquote&gt;
-&lt;p&gt;关注公众号【算法码上来】，每日算法干货马上就来！&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&quot;/medias/contact.jpg&quot; alt&gt;&lt;/p&gt;
-&lt;h2 id=&quot;When？什么时候开始写的？&quot;&gt;&lt;a
+          &lt;h1 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot;
         
       
     
