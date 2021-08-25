@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.linux91.cn/2018/09/20/tomcat/centos7-tomcat8-jian-dan-an-zhuang/</loc>
+    <lastmod>2021-08-25</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/09/19/python/linux-centos7-python3.6-yuan-ma-an-zhuang/</loc>
+    <lastmod>2021-08-25</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/09/19/linux/linux-centos7-yum-wang-luo-yuan/</loc>
+    <lastmod>2021-08-25</lastmod>
+  </url>  <url>
     <loc>https://www.linux91.cn/2021/08/25/bo-ke-lai-yuan/</loc>
     <lastmod>2021-08-25</lastmod>
   </url>

@@ -1,1 +1,4 @@
 https://www.linux91.cn/2021/08/25/bo-ke-lai-yuan/
+https://www.linux91.cn/2018/09/20/tomcat/centos7-tomcat8-jian-dan-an-zhuang/
+https://www.linux91.cn/2018/09/19/python/linux-centos7-python3.6-yuan-ma-an-zhuang/
+https://www.linux91.cn/2018/09/19/linux/linux-centos7-yum-wang-luo-yuan/

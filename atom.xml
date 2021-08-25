@@ -42,4 +42,85 @@
     
   </entry>
   
+  <entry>
+    <title>centos7--tomcat8简单安装</title>
+    <link href="https://www.linux91.cn/2018/09/20/tomcat/centos7-tomcat8-jian-dan-an-zhuang/"/>
+    <id>https://www.linux91.cn/2018/09/20/tomcat/centos7-tomcat8-jian-dan-an-zhuang/</id>
+    <published>2018-09-20T02:37:32.000Z</published>
+    <updated>2021-08-25T12:01:00.550Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;tomcat8&quot;&gt;&lt;a href=&quot;#tomcat8&quot; class=&quot;headerlink&quot; title=&quot;tomcat8&quot;&gt;&lt;/a&gt;&lt;strong&gt;tomcat8&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;从官方网上下载tomcat8：&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="tomcat" scheme="https://www.linux91.cn/categories/tomcat/"/>
+    
+    
+      <category term="tomcat" scheme="https://www.linux91.cn/tags/tomcat/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux-centos7-Python3.6源码安装</title>
+    <link href="https://www.linux91.cn/2018/09/19/python/linux-centos7-python3.6-yuan-ma-an-zhuang/"/>
+    <id>https://www.linux91.cn/2018/09/19/python/linux-centos7-python3.6-yuan-ma-an-zhuang/</id>
+    <published>2018-09-19T02:37:32.000Z</published>
+    <updated>2021-08-25T11:58:56.542Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;环境：centos7.4&lt;/p&gt;
+&lt;h4 id=&quot;第一步&quot;&gt;&lt;a href=&quot;#第一步&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="python" scheme="https://www.linux91.cn/categories/python/"/>
+    
+    
+      <category term="python" scheme="https://www.linux91.cn/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux--centos7--yum网络源</title>
+    <link href="https://www.linux91.cn/2018/09/19/linux/linux-centos7-yum-wang-luo-yuan/"/>
+    <id>https://www.linux91.cn/2018/09/19/linux/linux-centos7-yum-wang-luo-yuan/</id>
+    <published>2018-09-19T02:37:32.000Z</published>
+    <updated>2021-08-25T11:58:43.064Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;今天我选择的yum源是网易的&lt;/p&gt;
+&lt;p&gt;网易（163）yum源是国内最好的yum源之一 ，无论是速度还是软件版本，都非常的不错，将yum源设置为163yum，可以提升软件包安装和更新的速度，同时避免一些常见软件版本无法找到&lt;/p&gt;
+&lt;h4 id=&quot;部署方法&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="linux基础" scheme="https://www.linux91.cn/categories/linux%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="linux基础" scheme="https://www.linux91.cn/tags/linux%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
 </feed>

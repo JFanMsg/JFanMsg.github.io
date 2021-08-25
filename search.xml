@@ -27,6 +27,81 @@
     </entry>
     
     
+    
+    <entry>
+      <title>centos7--tomcat8简单安装</title>
+      <link href="/2018/09/20/tomcat/centos7-tomcat8-jian-dan-an-zhuang/"/>
+      <url>/2018/09/20/tomcat/centos7-tomcat8-jian-dan-an-zhuang/</url>
+      
+        <content type="html"><![CDATA[<h3 id="tomcat8"><a href="#tomcat8" class="headerlink" title="tomcat8"></a><strong>tomcat8</strong></h3><p>从官方网上下载tomcat8：<a href="http://tomcat.apache.org/download-80.cgi" target="_blank" rel="noopener">http://tomcat.apache.org/download-80.cgi</a></p><p>下载之后上传到linux系统上</p><p>也可以在linux系统上直接下载，看系统网速</p><p>wget <a href="http://mirrors.hust.edu.cn/apache/tomcat/tomcat-8/v8.5.34/bin/apache-tomcat-8.5.34.tar.gz" target="_blank" rel="noopener">http://mirrors.hust.edu.cn/apache/tomcat/tomcat-8/v8.5.34/bin/apache-tomcat-8.5.34.tar.gz</a></p><h3 id="解压并放入指定的目录中"><a href="#解压并放入指定的目录中" class="headerlink" title="解压并放入指定的目录中"></a><strong>解压并放入指定的目录中</strong></h3><pre class="line-numbers language-shell"><code class="language-shell">tar -zxf apache-tomcat-8.0.53.tar.gzmv apache-tomcat-8.0.53 /usr/local/tomcat/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>如有.war包，可以直接放进tomcat目录中的webapps目录里，因为tomcat启动会自动解压webapps目录中的.war文件，并会进行加载</p><h3 id="启动跟停止"><a href="#启动跟停止" class="headerlink" title="启动跟停止"></a><strong>启动跟停止</strong></h3><p>在tomcat目录下的bin目录中</p><pre class="line-numbers language-shell"><code class="language-shell">   ./startup.sh     #启动   ./shutdown.sh   #停止<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h3 id="修改tomcat支持的JDK配置"><a href="#修改tomcat支持的JDK配置" class="headerlink" title="修改tomcat支持的JDK配置"></a><strong>修改tomcat支持的JDK配置</strong></h3><p>tomcat支持的JDK配置是系统默认的JDK，按各自情况决定是否要修改</p><p>修改tomcat中的bin目录下的catalina.sh跟setclasspath.sh</p><p>在两个文件的开头的空白地方添加以下的配置</p><pre class="line-numbers language-java"><code class="language-java">export JAVA_HOME<span class="token operator">=</span><span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>jdk<span class="token operator">/</span>export JRE_HOME<span class="token operator">=</span><span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>jdk<span class="token operator">/</span>jreexport CLASSPATH<span class="token operator">=</span>$JAVA_HOME<span class="token operator">/</span>lib<span class="token operator">/</span>export PATH<span class="token operator">=</span>$PATH<span class="token operator">:</span>$JAVA_HOME<span class="token operator">/</span>bin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a><strong>注意事项</strong></h3><p>在tomcat目录下的webapps目录中有一个ROOT目录，这个目录最好不要删除，因为有特殊的权限，如果你删除重新创建，那也是没用的</p><p>要是你想让tomcat默认到你的项目中，那你就把ROOT目录下的所有东西给清了，在把你的项目移动在ROOT目录中 </p><p>最好不要删除ROOT目录！！！</p><p>最好不要删除ROOT目录！！！</p><p>最好不要删除ROOT目录！！！</p><p>重要的话说三遍</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tomcat </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tomcat </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>linux-centos7-Python3.6源码安装</title>
+      <link href="/2018/09/19/python/linux-centos7-python3.6-yuan-ma-an-zhuang/"/>
+      <url>/2018/09/19/python/linux-centos7-python3.6-yuan-ma-an-zhuang/</url>
+      
+        <content type="html"><![CDATA[<p>环境：centos7.4</p><h4 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h4><p>设置网络YUN源</p><p>可以查看之前的笔记，有记录怎么更改网络yum源</p><p><a href="https://www.linux91.cn/2018/09/19/linux/linux-centos7-yum-wang-luo-yuan/">https://www.linux91.cn/2018/09/19/linux/linux-centos7-yum-wang-luo-yuan/</a></p><h4 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h4><p>安装python3.6所需要的依赖包</p><pre class="line-numbers language-shell"><code class="language-shell">yum -y install openssl-devel bzip2-devel expat-devel gdbm-devel readline-devel sqlite-devel<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h4 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h4><p>把准备好的源码包放入系统并解压进入</p><pre class="line-numbers language-shell"><code class="language-shell">tar -zxf Python-3.6.1.tgzcd Python-3.6.1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><h4 id="第四步"><a href="#第四步" class="headerlink" title="第四步"></a>第四步</h4><p>安装python6.3</p><pre class="line-numbers language-shell"><code class="language-shell">./configure --prefix=/usr/local/makemake altinstallcd/usr/binln -s /usr/local/bin/python3.6 /usr/bin/python3.6<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ol><li>python3.6程序的执行文件：/usr/local/bin/python3.6</li><li>python3.6应用程序目录：/usr/local/lib/python3.6</li><li>pip3的执行文件：/usr/local/bin/pip3.6</li><li>pyenv3的执行文件：/usr/local/bin/pyenv-3.6</li></ol><p>到这一步python3.6就大概算是安装完成了，</p><p>在linux 字符界面上输入python3.6，就可以进入python3.6的操作界面</p><p>因centos7.4系统自带的是python2.7，所以要想进入就要输入python3.6，不可以直接输入python就进入，因为直接输入python进入的就是进入python自带的2.7的操作界面</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Linux--centos7--yum网络源</title>
+      <link href="/2018/09/19/linux/linux-centos7-yum-wang-luo-yuan/"/>
+      <url>/2018/09/19/linux/linux-centos7-yum-wang-luo-yuan/</url>
+      
+        <content type="html"><![CDATA[<p>今天我选择的yum源是网易的</p><p>网易（163）yum源是国内最好的yum源之一 ，无论是速度还是软件版本，都非常的不错，将yum源设置为163yum，可以提升软件包安装和更新的速度，同时避免一些常见软件版本无法找到</p><h4 id="部署方法"><a href="#部署方法" class="headerlink" title="部署方法"></a>部署方法</h4><ul><li>进入系统中存储yum源的目录</li></ul><p>​       cd /etc/yum.repos.d/</p><ul><li>备份系统自带的yum源</li></ul><p>​       mv CentOS-Base.repo CentOS-Base.repo.J</p><ul><li>下载网易yum源</li></ul><p>​       wget <a href="http://mirrors.163.com/.help/CentOS7-Base-163.repo" target="_blank" rel="noopener">http://mirrors.163.com/.help/CentOS7-Base-163.repo</a></p><ul><li>将下载的yum源文件改成系统自带yum源文件的名字</li></ul><p>​        mv CentOS7-Base-163.repo CentOS-Base.repo</p><ul><li>创建元数据缓存</li></ul><p>​        yum makecache</p><ul><li>更新系统yum源  </li></ul><p>​        yum -y update</p><h4 id="温馨提醒："><a href="#温馨提醒：" class="headerlink" title="温馨提醒："></a>温馨提醒：</h4><p>​    除了网易yum源中国国内还有其它很不错的yum源</p><p>​    中科大的yum源：</p><p>​       wget <a href="http://centos.ustc.edu.cn/CentOS-Base.repo" target="_blank" rel="noopener">http://centos.ustc.edu.cn/CentOS-Base.repo</a></p><p>​    sohu的yum源</p><p>​       wget <a href="http://mirrors.sohu.com/help/CentOS-Base-sohu.repo" target="_blank" rel="noopener">http://mirrors.sohu.com/help/CentOS-Base-sohu.repo</a></p><p>​    阿里云的yum源</p><p>​        wget <a href="http://mirrors.aliyun.com/repo/Centos-7.repo" target="_blank" rel="noopener">http://mirrors.aliyun.com/repo/Centos-7.repo</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> linux基础 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linux基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
   
   
 </search>
