@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.linux91.cn/"/>
-  <updated>2021-08-26T03:43:10.512Z</updated>
+  <updated>2021-08-25T08:46:18.684Z</updated>
   <id>https://www.linux91.cn/</id>
   
   <author>
@@ -15,20 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title></title>
-    <link href="https://www.linux91.cn/2021/08/26/untitled/"/>
-    <id>https://www.linux91.cn/2021/08/26/untitled/</id>
-    <published>2021-08-26T03:43:10.512Z</published>
-    <updated>2021-08-26T03:43:10.512Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>博客来源</title>
@@ -57,11 +43,11 @@
   </entry>
   
   <entry>
-    <title>top系列</title>
-    <link href="https://www.linux91.cn/2019/02/22/linux-ming-ling/top-xi-lie/"/>
-    <id>https://www.linux91.cn/2019/02/22/linux-ming-ling/top-xi-lie/</id>
-    <published>2019-02-21T17:37:32.000Z</published>
-    <updated>2021-08-26T03:59:54.618Z</updated>
+    <title>Clickhouse的RBAC用户权限</title>
+    <link href="https://www.linux91.cn/2021/07/02/clickhouse/clickhouse-de-rbac-yong-hu-quan-xian/"/>
+    <id>https://www.linux91.cn/2021/07/02/clickhouse/clickhouse-de-rbac-yong-hu-quan-xian/</id>
+    <published>2021-07-01T17:37:32.000Z</published>
+    <updated>2021-08-26T08:08:05.296Z</updated>
     
     <summary type="html">
     
@@ -69,25 +55,25 @@
       
         
         
-          &lt;h2 id=&quot;htop&quot;&gt;&lt;a href=&quot;#htop&quot; class=&quot;headerlink&quot;
+          &lt;h1 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot;
         
       
     
     </summary>
     
-      <category term="linux命令" scheme="https://www.linux91.cn/categories/linux%E5%91%BD%E4%BB%A4/"/>
+      <category term="Clickhouse" scheme="https://www.linux91.cn/categories/Clickhouse/"/>
     
     
-      <category term="linux命令" scheme="https://www.linux91.cn/tags/linux%E5%91%BD%E4%BB%A4/"/>
+      <category term="Clickhouse" scheme="https://www.linux91.cn/tags/Clickhouse/"/>
     
   </entry>
   
   <entry>
-    <title>自动部署发布脚本</title>
-    <link href="https://www.linux91.cn/2019/01/30/shell-jiao-ben/zi-dong-bu-shu-fa-bu-jiao-ben/"/>
-    <id>https://www.linux91.cn/2019/01/30/shell-jiao-ben/zi-dong-bu-shu-fa-bu-jiao-ben/</id>
-    <published>2019-01-29T17:37:32.000Z</published>
-    <updated>2021-08-26T03:58:24.972Z</updated>
+    <title>恢复之.ibd文件恢复，没有教程步骤，只有心得</title>
+    <link href="https://www.linux91.cn/2021/06/02/mysql/hui-fu-zhi.ibd-wen-jian-hui-fu-mei-you-jiao-cheng-bu-zou-zhi-you-xin-de/"/>
+    <id>https://www.linux91.cn/2021/06/02/mysql/hui-fu-zhi.ibd-wen-jian-hui-fu-mei-you-jiao-cheng-bu-zou-zhi-you-xin-de/</id>
+    <published>2021-06-01T17:37:32.000Z</published>
+    <updated>2021-08-26T08:06:05.942Z</updated>
     
     <summary type="html">
     
@@ -95,61 +81,7 @@
       
         
         
-          &lt;p&gt;这脚本被我写到多少文件中，分成几个脚本文件，相互关联，目前该脚本在生产环境中以开始使用，可以用于多个项目，是基于多节点的基础编写的。&lt;/p&gt;
-&lt;p&gt;还有一个密码文件，我就不发出来了，这个密码文件是sshpass命令使用的，也可以用密钥，但是我这边选择用了密码文件&lt;/p&gt;
-&lt;
-        
-      
-    
-    </summary>
-    
-      <category term="shell脚本" scheme="https://www.linux91.cn/categories/shell%E8%84%9A%E6%9C%AC/"/>
-    
-    
-      <category term="shell脚本" scheme="https://www.linux91.cn/tags/shell%E8%84%9A%E6%9C%AC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Apollo配置中心-简单安装</title>
-    <link href="https://www.linux91.cn/2019/01/23/linux-fu-wu/apollo-pei-zhi-zhong-xin-jian-dan-an-zhuang/"/>
-    <id>https://www.linux91.cn/2019/01/23/linux-fu-wu/apollo-pei-zhi-zhong-xin-jian-dan-an-zhuang/</id>
-    <published>2019-01-22T19:37:32.000Z</published>
-    <updated>2021-08-26T03:56:23.088Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;Apollo配置中心介绍&quot;&gt;&lt;a href=&quot;#Apollo配置中心介绍&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="linux服务" scheme="https://www.linux91.cn/categories/linux%E6%9C%8D%E5%8A%A1/"/>
-    
-    
-      <category term="linux服务" scheme="https://www.linux91.cn/tags/linux%E6%9C%8D%E5%8A%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>centos6.5下安装 mysql5.7</title>
-    <link href="https://www.linux91.cn/2019/01/23/mysql/centos6.5-xia-an-zhuang-mysql5.7/"/>
-    <id>https://www.linux91.cn/2019/01/23/mysql/centos6.5-xia-an-zhuang-mysql5.7/</id>
-    <published>2019-01-22T18:37:32.000Z</published>
-    <updated>2021-08-26T03:55:02.137Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;第一步&quot;&gt;&lt;a href=&quot;#第一步&quot; class=&quot;headerlink&quot; title=&quot;第一步&quot;&gt;&lt;/a&gt;&lt;strong&gt;第一步&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;官方下载地址：&lt;/strong&gt;&lt;a
+          &lt;h1 id=&quot;Mysql恢复之-ibd文件恢复，没有教程步骤，只有心得&quot;&gt;&lt;a href=&quot;#Mysql恢复之-ibd文件恢复，没有教程步骤，只有心得&quot; class=&quot;headerlink&quot;
         
       
     
@@ -163,11 +95,11 @@
   </entry>
   
   <entry>
-    <title>nfs网络文件服务安装</title>
-    <link href="https://www.linux91.cn/2019/01/17/linux-fu-wu/nfs-wang-luo-wen-jian-fu-wu-an-zhuang/"/>
-    <id>https://www.linux91.cn/2019/01/17/linux-fu-wu/nfs-wang-luo-wen-jian-fu-wu-an-zhuang/</id>
-    <published>2019-01-16T19:37:32.000Z</published>
-    <updated>2021-08-26T03:53:39.292Z</updated>
+    <title>nginx最大文件打开数</title>
+    <link href="https://www.linux91.cn/2021/04/02/nginx/nginx-zui-da-wen-jian-da-kai-shu/"/>
+    <id>https://www.linux91.cn/2021/04/02/nginx/nginx-zui-da-wen-jian-da-kai-shu/</id>
+    <published>2021-04-01T17:37:32.000Z</published>
+    <updated>2021-08-26T08:07:22.963Z</updated>
     
     <summary type="html">
     
@@ -175,197 +107,7 @@
       
         
         
-          &lt;p&gt;nfs的工作流程&lt;/p&gt;
-&lt;p&gt;NFS是Network File System的缩写，即网络文件系统。客户端通过挂载的方式将NFS服务器端共享的数据目录挂载到本地目录下&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-bash&quot;&gt;&lt;code
-        
-      
-    
-    </summary>
-    
-      <category term="linux服务" scheme="https://www.linux91.cn/categories/linux%E6%9C%8D%E5%8A%A1/"/>
-    
-    
-      <category term="linux服务" scheme="https://www.linux91.cn/tags/linux%E6%9C%8D%E5%8A%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>kafka集群的搭建</title>
-    <link href="https://www.linux91.cn/2019/01/10/kafka/kafka-ji-qun-de-da-jian/"/>
-    <id>https://www.linux91.cn/2019/01/10/kafka/kafka-ji-qun-de-da-jian/</id>
-    <published>2019-01-09T18:37:32.000Z</published>
-    <updated>2021-08-26T03:51:34.661Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;kafka定义&quot;&gt;&lt;a href=&quot;#kafka定义&quot; class=&quot;headerlink&quot; title=&quot;kafka定义&quot;&gt;&lt;/a&gt;&lt;strong&gt;kafka定义&lt;/strong&gt;&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Java 和
-        
-      
-    
-    </summary>
-    
-      <category term="kafka" scheme="https://www.linux91.cn/categories/kafka/"/>
-    
-    
-      <category term="kafka" scheme="https://www.linux91.cn/tags/kafka/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>zookeepre集群的搭建</title>
-    <link href="https://www.linux91.cn/2019/01/09/zookeeper/zookeepre-ji-qun-de-da-jian/"/>
-    <id>https://www.linux91.cn/2019/01/09/zookeeper/zookeepre-ji-qun-de-da-jian/</id>
-    <published>2019-01-08T18:37:32.000Z</published>
-    <updated>2021-08-26T03:50:15.464Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;zookeepre的简单原理&quot;&gt;&lt;a href=&quot;#zookeepre的简单原理&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="zookeeper" scheme="https://www.linux91.cn/categories/zookeeper/"/>
-    
-    
-      <category term="zookeeper" scheme="https://www.linux91.cn/tags/zookeeper/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>nodejs//npm 安装</title>
-    <link href="https://www.linux91.cn/2019/01/07/linux-fu-wu/nodejsnpm-an-zhuang/"/>
-    <id>https://www.linux91.cn/2019/01/07/linux-fu-wu/nodejsnpm-an-zhuang/</id>
-    <published>2019-01-06T17:37:32.000Z</published>
-    <updated>2021-08-26T03:47:48.171Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;第一步&quot;&gt;&lt;a href=&quot;#第一步&quot; class=&quot;headerlink&quot; title=&quot;第一步&quot;&gt;&lt;/a&gt;&lt;strong&gt;第一步&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;下载&lt;/p&gt;
-&lt;p&gt;wget &lt;a
-        
-      
-    
-    </summary>
-    
-      <category term="linux服务" scheme="https://www.linux91.cn/categories/linux%E6%9C%8D%E5%8A%A1/"/>
-    
-    
-      <category term="linux服务" scheme="https://www.linux91.cn/tags/linux%E6%9C%8D%E5%8A%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>linux回收站脚本之二</title>
-    <link href="https://www.linux91.cn/2018/12/27/shell-jiao-ben/linux-hui-shou-zhan-jiao-ben-zhi-er/"/>
-    <id>https://www.linux91.cn/2018/12/27/shell-jiao-ben/linux-hui-shou-zhan-jiao-ben-zhi-er/</id>
-    <published>2018-12-26T17:37:32.000Z</published>
-    <updated>2021-08-26T03:45:42.466Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;第一步&quot;&gt;&lt;a href=&quot;#第一步&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="shell脚本" scheme="https://www.linux91.cn/categories/shell%E8%84%9A%E6%9C%AC/"/>
-    
-    
-      <category term="shell脚本" scheme="https://www.linux91.cn/tags/shell%E8%84%9A%E6%9C%AC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>linux回收站脚本之一</title>
-    <link href="https://www.linux91.cn/2018/12/26/shell-jiao-ben/linux-hui-shou-zhan-jiao-ben-zhi-yi/"/>
-    <id>https://www.linux91.cn/2018/12/26/shell-jiao-ben/linux-hui-shou-zhan-jiao-ben-zhi-yi/</id>
-    <published>2018-12-25T17:37:32.000Z</published>
-    <updated>2021-08-26T03:44:11.376Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;第一步&quot;&gt;&lt;a href=&quot;#第一步&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="shell脚本" scheme="https://www.linux91.cn/categories/shell%E8%84%9A%E6%9C%AC/"/>
-    
-    
-      <category term="shell脚本" scheme="https://www.linux91.cn/tags/shell%E8%84%9A%E6%9C%AC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>shell正则</title>
-    <link href="https://www.linux91.cn/2018/12/25/linux-ming-ling/shell-zheng-ze/"/>
-    <id>https://www.linux91.cn/2018/12/25/linux-ming-ling/shell-zheng-ze/</id>
-    <published>2018-12-24T17:37:32.000Z</published>
-    <updated>2021-08-26T03:42:46.199Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;strong&gt;以下文章内容，参考了良哥的shell从入门到精通的文章&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;正则表达式在每种语言中都会有，功能就是匹配符合你预期要求的字符串，是我们要写shell脚本中最常用的&lt;/p&gt;
-&lt;p&gt;Shell 正则表达式分为两种：&lt;/p&gt;
-&lt;p&gt;​ 
-        
-      
-    
-    </summary>
-    
-      <category term="linux命令" scheme="https://www.linux91.cn/categories/linux%E5%91%BD%E4%BB%A4/"/>
-    
-    
-      <category term="linux命令" scheme="https://www.linux91.cn/tags/linux%E5%91%BD%E4%BB%A4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>源码安装nginx1.15-stream模块安装（ssh映射）</title>
-    <link href="https://www.linux91.cn/2018/12/18/nginx/yuan-ma-an-zhuang-nginx1.15-stream-mo-kuai-an-zhuang-ssh-ying-she/"/>
-    <id>https://www.linux91.cn/2018/12/18/nginx/yuan-ma-an-zhuang-nginx1.15-stream-mo-kuai-an-zhuang-ssh-ying-she/</id>
-    <published>2018-12-17T17:37:32.000Z</published>
-    <updated>2021-08-26T03:40:07.546Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;第一步&quot;&gt;&lt;a href=&quot;#第一步&quot; class=&quot;headerlink&quot; title=&quot;第一步&quot;&gt;&lt;/a&gt;&lt;strong&gt;第一步&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;安装依赖包&lt;/p&gt;
-&lt;p&gt;yum -y install gcc gcc-c++ automake
+          &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot;
         
       
     
@@ -379,11 +121,11 @@
   </entry>
   
   <entry>
-    <title>Yum安装jenkins最新版本</title>
-    <link href="https://www.linux91.cn/2018/12/17/linux-fu-wu/yum-an-zhuang-jenkins-zui-xin-ban-ben/"/>
-    <id>https://www.linux91.cn/2018/12/17/linux-fu-wu/yum-an-zhuang-jenkins-zui-xin-ban-ben/</id>
-    <published>2018-12-16T18:37:32.000Z</published>
-    <updated>2021-08-26T03:36:51.192Z</updated>
+    <title>mysql主从架构或主主架构中的数据同步讨论</title>
+    <link href="https://www.linux91.cn/2021/03/02/mysql/guan-yu-zi-jian-yong-hu-bu-neng-gei-bie-yong-hu-shou-quan-wen-ti/"/>
+    <id>https://www.linux91.cn/2021/03/02/mysql/guan-yu-zi-jian-yong-hu-bu-neng-gei-bie-yong-hu-shou-quan-wen-ti/</id>
+    <published>2021-03-01T17:37:32.000Z</published>
+    <updated>2021-08-26T08:00:30.004Z</updated>
     
     <summary type="html">
     
@@ -391,26 +133,25 @@
       
         
         
-          &lt;h2 id=&quot;第一步&quot;&gt;&lt;a href=&quot;#第一步&quot; class=&quot;headerlink&quot; title=&quot;第一步&quot;&gt;&lt;/a&gt;&lt;strong&gt;第一步&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;自行安装JDK8&lt;/p&gt;
-&lt;h2 id=&quot;第二步&quot;&gt;&lt;a href=&quot;#第二步&quot;
+          &lt;h1 id=&quot;mysql-关于自建用户不能给别用户授权问题&quot;&gt;&lt;a href=&quot;#mysql-关于自建用户不能给别用户授权问题&quot; class=&quot;headerlink&quot; title=&quot;mysql - 关于自建用户不能给别用户授权问题&quot;&gt;&lt;/a&gt;mysql -
         
       
     
     </summary>
     
-      <category term="linux服务" scheme="https://www.linux91.cn/categories/linux%E6%9C%8D%E5%8A%A1/"/>
+      <category term="mysql" scheme="https://www.linux91.cn/categories/mysql/"/>
     
     
-      <category term="linux服务" scheme="https://www.linux91.cn/tags/linux%E6%9C%8D%E5%8A%A1/"/>
+      <category term="mysql" scheme="https://www.linux91.cn/tags/mysql/"/>
     
   </entry>
   
   <entry>
-    <title>yum安装GitLab最新版本</title>
-    <link href="https://www.linux91.cn/2018/12/17/linux-fu-wu/yum-an-zhuang-gitlab-zui-xin-ban-ben/"/>
-    <id>https://www.linux91.cn/2018/12/17/linux-fu-wu/yum-an-zhuang-gitlab-zui-xin-ban-ben/</id>
-    <published>2018-12-16T17:37:32.000Z</published>
-    <updated>2021-08-26T03:35:30.295Z</updated>
+    <title>redis的used_memory_dataset_perc过高</title>
+    <link href="https://www.linux91.cn/2021/02/19/redis/redis-de-used-memory-dataset-perc-guo-gao/"/>
+    <id>https://www.linux91.cn/2021/02/19/redis/redis-de-used-memory-dataset-perc-guo-gao/</id>
+    <published>2021-02-19T02:37:32.000Z</published>
+    <updated>2021-08-26T07:58:27.791Z</updated>
     
     <summary type="html">
     
@@ -418,26 +159,265 @@
       
         
         
-          &lt;h2 id=&quot;第一步&quot;&gt;&lt;a href=&quot;#第一步&quot; class=&quot;headerlink&quot; title=&quot;第一步&quot;&gt;&lt;/a&gt;&lt;strong&gt;第一步&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;安装依赖&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;安装policycoreutils-python
+          &lt;h1 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot;
         
       
     
     </summary>
     
-      <category term="linux服务" scheme="https://www.linux91.cn/categories/linux%E6%9C%8D%E5%8A%A1/"/>
+      <category term="redis" scheme="https://www.linux91.cn/categories/redis/"/>
     
     
-      <category term="linux服务" scheme="https://www.linux91.cn/tags/linux%E6%9C%8D%E5%8A%A1/"/>
+      <category term="redis" scheme="https://www.linux91.cn/tags/redis/"/>
     
   </entry>
   
   <entry>
-    <title>ssh免密登录</title>
-    <link href="https://www.linux91.cn/2018/12/05/linux/ssh-mian-mi-deng-lu/"/>
-    <id>https://www.linux91.cn/2018/12/05/linux/ssh-mian-mi-deng-lu/</id>
-    <published>2018-12-04T18:37:32.000Z</published>
-    <updated>2021-08-26T03:34:07.071Z</updated>
+    <title>磁盘显示过高，实际使用不高</title>
+    <link href="https://www.linux91.cn/2021/01/19/linux/ci-pan-xian-shi-guo-gao-shi-ji-shi-yong-bu-gao/"/>
+    <id>https://www.linux91.cn/2021/01/19/linux/ci-pan-xian-shi-guo-gao-shi-ji-shi-yong-bu-gao/</id>
+    <published>2021-01-19T02:37:32.000Z</published>
+    <updated>2021-08-26T07:57:31.563Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;在我公司的日志服务器，发现了一个问题，某个磁盘使用过高，但是实际使用并不高&lt;/p&gt;
+&lt;p&gt;&lt;img
+        
+      
+    
+    </summary>
+    
+      <category term="linux" scheme="https://www.linux91.cn/categories/linux/"/>
+    
+    
+      <category term="linux" scheme="https://www.linux91.cn/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>django2.0使用问题记录-持续更新</title>
+    <link href="https://www.linux91.cn/2020/09/19/python/django2.0-shi-yong-wen-ti-ji-lu-chi-xu-geng-xin/"/>
+    <id>https://www.linux91.cn/2020/09/19/python/django2.0-shi-yong-wen-ti-ji-lu-chi-xu-geng-xin/</id>
+    <published>2020-09-19T02:37:32.000Z</published>
+    <updated>2021-08-26T07:57:00.186Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;br&gt;
+
+&lt;h2 id=&quot;问题1&quot;&gt;&lt;a href=&quot;#问题1&quot; class=&quot;headerlink&quot; title=&quot;问题1&quot;&gt;&lt;/a&gt;问题1&lt;/h2&gt;&lt;pre class=&quot;line-numbers language-python&quot;&gt;&lt;code
+        
+      
+    
+    </summary>
+    
+      <category term="python" scheme="https://www.linux91.cn/categories/python/"/>
+    
+    
+      <category term="django" scheme="https://www.linux91.cn/tags/django/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>awk的基本用法</title>
+    <link href="https://www.linux91.cn/2020/07/01/linux/guan-yu-a-li-yun-dan-xing-wang-qia-bang-ding-hou-gai-wang-duan-wu-fa-fang-wen-yuan-ip/"/>
+    <id>https://www.linux91.cn/2020/07/01/linux/guan-yu-a-li-yun-dan-xing-wang-qia-bang-ding-hou-gai-wang-duan-wu-fa-fang-wen-yuan-ip/</id>
+    <published>2020-06-30T18:37:32.000Z</published>
+    <updated>2021-08-26T07:22:40.237Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;需要关于系统中的源地址校验&lt;br&gt;vim /etc/sysctl.conf&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-shell&quot;&gt;&lt;code
+        
+      
+    
+    </summary>
+    
+      <category term="linux" scheme="https://www.linux91.cn/categories/linux/"/>
+    
+    
+      <category term="linux" scheme="https://www.linux91.cn/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>awk的基本用法</title>
+    <link href="https://www.linux91.cn/2020/05/01/linux-ming-ling/awk-de-ji-ben-yong-fa/"/>
+    <id>https://www.linux91.cn/2020/05/01/linux-ming-ling/awk-de-ji-ben-yong-fa/</id>
+    <published>2020-04-30T18:37:32.000Z</published>
+    <updated>2021-08-26T07:20:44.026Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;awk是一种可以处理数据，产生格式化报表的语言，功能相当强大。&lt;br&gt;awk的工作方式是读取数据文件，将每一行数据视为一条记录（record），每笔记录以字段分隔符，分成若干字段，然后输出各个字段的值&lt;br&gt;awk擅长文本格式化。并将格式化以后的文本输出，而对于文本的处理&lt;
+        
+      
+    
+    </summary>
+    
+      <category term="linux命令" scheme="https://www.linux91.cn/categories/linux%E5%91%BD%E4%BB%A4/"/>
+    
+    
+      <category term="linux命令" scheme="https://www.linux91.cn/tags/linux%E5%91%BD%E4%BB%A4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于使用Bootstrap，页面上有二个模态框，其中一个只出现背景不显示框问题</title>
+    <link href="https://www.linux91.cn/2020/04/02/qian-duan/guan-yu-shi-yong-bootstrap-ye-mian-shang-you-er-ge-mo-tai-kuang-qi-zhong-yi-ge-zhi-chu-xian-bei-jing-bu-xian-shi-kuang-wen-ti/"/>
+    <id>https://www.linux91.cn/2020/04/02/qian-duan/guan-yu-shi-yong-bootstrap-ye-mian-shang-you-er-ge-mo-tai-kuang-qi-zhong-yi-ge-zhi-chu-xian-bei-jing-bu-xian-shi-kuang-wen-ti/</id>
+    <published>2020-04-01T17:37:32.000Z</published>
+    <updated>2021-08-26T07:18:19.847Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;在显示不出框的主体代码中，可以看到有 fade 这个类，这个类有个css样式，用于设置框的透明度， 只要把这个类给删了，或强制写&lt;br&gt;：opacity: 1 !important; ，把透明给重设成默认的，就可以显示出来&lt;br&gt;本人都是直接把 fade
+        
+      
+    
+    </summary>
+    
+      <category term="前端" scheme="https://www.linux91.cn/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="前端" scheme="https://www.linux91.cn/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mysql主从架构或主主架构中的数据同步讨论</title>
+    <link href="https://www.linux91.cn/2020/03/02/mysql/mysql-zhu-cong-jia-gou-huo-zhu-zhu-jia-gou-zhong-de-shu-ju-tong-bu-tao-lun/"/>
+    <id>https://www.linux91.cn/2020/03/02/mysql/mysql-zhu-cong-jia-gou-huo-zhu-zhu-jia-gou-zhong-de-shu-ju-tong-bu-tao-lun/</id>
+    <published>2020-03-01T17:37:32.000Z</published>
+    <updated>2021-08-26T07:16:32.456Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;br&gt;
+
+&lt;h1 id=&quot;异步模式&quot;&gt;&lt;a href=&quot;#异步模式&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="mysql" scheme="https://www.linux91.cn/categories/mysql/"/>
+    
+    
+      <category term="mysql" scheme="https://www.linux91.cn/tags/mysql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>kibana服务</title>
+    <link href="https://www.linux91.cn/2019/04/13/elk/kibana-fu-wu/"/>
+    <id>https://www.linux91.cn/2019/04/13/elk/kibana-fu-wu/</id>
+    <published>2019-04-12T18:37:32.000Z</published>
+    <updated>2021-08-26T06:43:01.536Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;kibana&quot;&gt;&lt;a href=&quot;#kibana&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="ELK" scheme="https://www.linux91.cn/categories/ELK/"/>
+    
+    
+      <category term="ELK" scheme="https://www.linux91.cn/tags/ELK/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Logstash服务</title>
+    <link href="https://www.linux91.cn/2019/04/12/elk/logstash-fu-wu/"/>
+    <id>https://www.linux91.cn/2019/04/12/elk/logstash-fu-wu/</id>
+    <published>2019-04-11T18:37:32.000Z</published>
+    <updated>2021-08-26T06:41:03.455Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Logstash的工作&quot;&gt;&lt;a href=&quot;#Logstash的工作&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="ELK" scheme="https://www.linux91.cn/categories/ELK/"/>
+    
+    
+      <category term="ELK" scheme="https://www.linux91.cn/tags/ELK/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Filebeat轻量级收集日志服务</title>
+    <link href="https://www.linux91.cn/2019/04/11/elk/filebeat-qing-liang-ji-shou-ji-ri-zhi-fu-wu/"/>
+    <id>https://www.linux91.cn/2019/04/11/elk/filebeat-qing-liang-ji-shou-ji-ri-zhi-fu-wu/</id>
+    <published>2019-04-10T18:37:32.000Z</published>
+    <updated>2021-08-26T06:39:34.392Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Filebeat简单原理&quot;&gt;&lt;a href=&quot;#Filebeat简单原理&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="ELK" scheme="https://www.linux91.cn/categories/ELK/"/>
+    
+    
+      <category term="ELK" scheme="https://www.linux91.cn/tags/ELK/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>配置jenkins跟sonarqube实现部署前先分析代码</title>
+    <link href="https://www.linux91.cn/2019/04/04/sonarqube/pei-zhi-jenkins-gen-sonarqube-shi-xian-bu-shu-qian-xian-fen-xi-dai-ma/"/>
+    <id>https://www.linux91.cn/2019/04/04/sonarqube/pei-zhi-jenkins-gen-sonarqube-shi-xian-bu-shu-qian-xian-fen-xi-dai-ma/</id>
+    <published>2019-04-03T18:37:32.000Z</published>
+    <updated>2021-08-26T06:37:19.310Z</updated>
     
     <summary type="html">
     
@@ -451,19 +431,19 @@
     
     </summary>
     
-      <category term="linux" scheme="https://www.linux91.cn/categories/linux/"/>
+      <category term="sonarQube" scheme="https://www.linux91.cn/categories/sonarQube/"/>
     
     
-      <category term="linux" scheme="https://www.linux91.cn/tags/linux/"/>
+      <category term="sonarQube" scheme="https://www.linux91.cn/tags/sonarQube/"/>
     
   </entry>
   
   <entry>
-    <title>pip 获取最新版本安装，以python方式安装</title>
-    <link href="https://www.linux91.cn/2018/12/05/python/pip-huo-qu-zui-xin-ban-ben-an-zhuang-yi-python-fang-shi-an-zhuang/"/>
-    <id>https://www.linux91.cn/2018/12/05/python/pip-huo-qu-zui-xin-ban-ben-an-zhuang-yi-python-fang-shi-an-zhuang/</id>
-    <published>2018-12-04T17:37:32.000Z</published>
-    <updated>2021-08-26T03:32:41.463Z</updated>
+    <title>安装sonarqube-scanner</title>
+    <link href="https://www.linux91.cn/2019/04/03/sonarqube/an-zhuang-sonarqube-scanner/"/>
+    <id>https://www.linux91.cn/2019/04/03/sonarqube/an-zhuang-sonarqube-scanner/</id>
+    <published>2019-04-02T18:37:32.000Z</published>
+    <updated>2021-08-26T06:35:11.357Z</updated>
     
     <summary type="html">
     
@@ -471,26 +451,25 @@
       
         
         
-          &lt;h3 id=&quot;第一步&quot;&gt;&lt;a href=&quot;#第一步&quot; class=&quot;headerlink&quot; title=&quot;第一步&quot;&gt;&lt;/a&gt;&lt;strong&gt;第一步&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;获取最新的版本安装脚本&lt;/p&gt;
-&lt;p&gt;wget &lt;a
+          &lt;h2 id=&quot;第一步&quot;&gt;&lt;a href=&quot;#第一步&quot; class=&quot;headerlink&quot;
         
       
     
     </summary>
     
-      <category term="python" scheme="https://www.linux91.cn/categories/python/"/>
+      <category term="sonarQube" scheme="https://www.linux91.cn/categories/sonarQube/"/>
     
     
-      <category term="python" scheme="https://www.linux91.cn/tags/python/"/>
+      <category term="sonarQube" scheme="https://www.linux91.cn/tags/sonarQube/"/>
     
   </entry>
   
   <entry>
-    <title>源码安装svn(Subversion-1.10.3)</title>
-    <link href="https://www.linux91.cn/2018/11/22/linux-fu-wu/yuan-ma-an-zhuang-svn-subversion-1.10.3/"/>
-    <id>https://www.linux91.cn/2018/11/22/linux-fu-wu/yuan-ma-an-zhuang-svn-subversion-1.10.3/</id>
-    <published>2018-11-21T17:37:32.000Z</published>
-    <updated>2021-08-26T03:31:53.897Z</updated>
+    <title>sonarQube代码质量平台 配置</title>
+    <link href="https://www.linux91.cn/2019/04/02/sonarqube/sonarqube-dai-ma-zhi-liang-ping-tai-pei-zhi/"/>
+    <id>https://www.linux91.cn/2019/04/02/sonarqube/sonarqube-dai-ma-zhi-liang-ping-tai-pei-zhi/</id>
+    <published>2019-04-01T18:37:32.000Z</published>
+    <updated>2021-08-26T06:33:59.036Z</updated>
     
     <summary type="html">
     
@@ -498,26 +477,25 @@
       
         
         
-          &lt;h1 id=&quot;第一步&quot;&gt;&lt;a href=&quot;#第一步&quot; class=&quot;headerlink&quot; title=&quot;第一步&quot;&gt;&lt;/a&gt;&lt;strong&gt;第一步&lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;安装各种依赖&lt;/p&gt;
-&lt;h4 id=&quot;yum安装&quot;&gt;&lt;a href=&quot;#yum安装&quot;
+          &lt;h1 id=&quot;连接配置MySQL&quot;&gt;&lt;a href=&quot;#连接配置MySQL&quot; class=&quot;headerlink&quot;
         
       
     
     </summary>
     
-      <category term="linux服务" scheme="https://www.linux91.cn/categories/linux%E6%9C%8D%E5%8A%A1/"/>
+      <category term="sonarQube" scheme="https://www.linux91.cn/categories/sonarQube/"/>
     
     
-      <category term="linux服务" scheme="https://www.linux91.cn/tags/linux%E6%9C%8D%E5%8A%A1/"/>
+      <category term="sonarQube" scheme="https://www.linux91.cn/tags/sonarQube/"/>
     
   </entry>
   
   <entry>
-    <title>安装字体</title>
-    <link href="https://www.linux91.cn/2018/11/19/linux/an-zhuang-zi-ti/"/>
-    <id>https://www.linux91.cn/2018/11/19/linux/an-zhuang-zi-ti/</id>
-    <published>2018-11-18T17:37:32.000Z</published>
-    <updated>2021-08-26T03:30:44.016Z</updated>
+    <title>安装sonarQube代码质量平台6.7.5</title>
+    <link href="https://www.linux91.cn/2019/04/01/sonarqube/an-zhuang-sonarqube-dai-ma-zhi-liang-ping-tai-6.7.5/"/>
+    <id>https://www.linux91.cn/2019/04/01/sonarqube/an-zhuang-sonarqube-dai-ma-zhi-liang-ping-tai-6.7.5/</id>
+    <published>2019-03-31T18:37:32.000Z</published>
+    <updated>2021-08-26T06:31:35.319Z</updated>
     
     <summary type="html">
     
@@ -525,17 +503,42 @@
       
         
         
-          &lt;h2 id=&quot;第一步&quot;&gt;&lt;a href=&quot;#第一步&quot; class=&quot;headerlink&quot; title=&quot;第一步&quot;&gt;&lt;/a&gt;&lt;strong&gt;第一步&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;明确linux字体跟windows的位置&lt;/p&gt;
-&lt;p&gt;linux:
+          &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;Sonar 是一个用于代码质量管理的开放平台。通过插件机制，Sonar
         
       
     
     </summary>
     
-      <category term="linux" scheme="https://www.linux91.cn/categories/linux/"/>
+      <category term="sonarQube" scheme="https://www.linux91.cn/categories/sonarQube/"/>
     
     
-      <category term="linux" scheme="https://www.linux91.cn/tags/linux/"/>
+      <category term="sonarQube" scheme="https://www.linux91.cn/tags/sonarQube/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【find】文件搜索神器的那些事</title>
+    <link href="https://www.linux91.cn/2019/03/28/linux-ming-ling/find-wen-jian-sou-suo-shen-qi-de-na-xie-shi/"/>
+    <id>https://www.linux91.cn/2019/03/28/linux-ming-ling/find-wen-jian-sou-suo-shen-qi-de-na-xie-shi/</id>
+    <published>2019-03-27T18:37:32.000Z</published>
+    <updated>2021-08-26T06:07:48.147Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;find的事&quot;&gt;&lt;a href=&quot;#find的事&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="linux命令" scheme="https://www.linux91.cn/categories/linux%E5%91%BD%E4%BB%A4/"/>
+    
+    
+      <category term="linux命令" scheme="https://www.linux91.cn/tags/linux%E5%91%BD%E4%BB%A4/"/>
     
   </entry>
   

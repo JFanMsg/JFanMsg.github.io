@@ -472,14 +472,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2k
+                    3.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    11 分
+                    17 分
                 </div>
                 
                 
@@ -498,191 +498,242 @@
 <li>启动脚本</li>
 <li>项目配置文件</li>
 <li>远端启动脚本</li>
+<li>远端监控启动脚本</li>
 </ol>
+<p>新版本新加了：多项目部署功能，zabbix监控的检测，一个项目中有多个独立项目发布功能。 </p>
 <h2 id="主脚本-deploy-sh"><a href="#主脚本-deploy-sh" class="headerlink" title="主脚本(deploy.sh)"></a><strong>主脚本(deploy.sh)</strong></h2><pre class="line-numbers language-shell"><code class="language-shell">#!/bin/bash
 
 if [ ! -n "$1" ];then
-        echo -e "\033[34m ./deploy.sh 项目(user|coupon) 分支(master|dev) mvn(compile|install) \033[0m"
-        exit
+    echo -e "\033[34m ./deploy.sh 项目(user|coupon) 分支(master|dev) mvn(compile|install) \033[0m"
+    echo -e "\033[34m 多项目部署方式：\"user coupon\" \033[0m"
+    exit
 fi
 
-source /deploy/conf/deploy.conf
-echo ' ' > /deploy/.oa
-source /deploy/oa.sh
-sleep 1
-newq=$(cat /deploy/.oa)
-if [ $newq == y ];then
+user=$(whoami)
+if [ $user != "root" ];then
+    echo -e "\033[34m 请以“root”身份运行 \033[0m"
+    exit
+fi
+
+for pro in $1
+do
+    source /deploy/conf/deploy.conf
+    su qqkj -c "cat /dev/null > /deploy/.oa"
+    source /deploy/oa.sh
+    sleep 1
+    newq=$(cat /deploy/.oa)
+    if [[ $newq == y ]];then
         echo -e "\033[32m 已获取到项目名称：$project_item \033[0m"
-elif [ $newq == n ];then
+    elif [[ $newq == n ]];then
         echo -e "\033[31m 项目名不对 \033[0m"
         exit
-else
+    else
         echo -e "\033[31m 脚本出错 \033[0m"
-        exit
-fi
+            exit
+    fi
 
-echo "当前的分支名：$2"
-cd /deploy/git/
-echo "跳转到"$PWD"目录"
-#if [ ! -d $project_item/ ];then
-rm -rf $project_src
-git clone -b $2 $project_git
-#else
-#       cd $project_src
-#       git fetch $project_git $2
-#fi
-if [ $? == 0 ];then
-        echo -e "\033[32m $project_item项目拉取成功 \033[0m"
-        cd $project_src
-        echo "跳转到"$PWD"目录"
-        mvn clean $3 -Dmaven.test.skip=true
-        if [ $? == 0 ];then
-                echo -e "\033[32m $project_item项目mvn成功 \033[0m"
-        else
-                echo -e "\033[31m $project_item项目mvn失败 \033[0m"
-                exit
-        fi
-else
-        echo -e "\033[31m $project_item项目拉取失败 \033[0m"
-        exit
-fi
-if [ $project_compile == n ];then
-        exit
-fi
-if [ $3 == install ];then
-        for i in $project_ip
-        do
-                sshpass -f $password scp -r $project_jar $i:$path
-        done
-        if [ $? == 0 ];then
-                echo -e "\033[32m jar架包传输成功 \033[0m"
-        else
-                echo -e "\033[31m jar架包传输失败 \033[0m"
-                exit
-        fi
-fi
-if [ $3 == install ];then
-        if [ $project_change_nginx == n ];then
-                s=0
-                for y in $project_ip
+    echo "当前的分支名：$2"
+    cd /deploy/git/
+    echo "跳转到"$PWD"目录"
+    backups=$(cat /deploy/git/.$pro)
+    if [[ "$backups" == "yes" ]];then
+            if [[ $project_compile == "y" ]];then
+                    for i in $project_ip
+                    do
+                for o in $project_jar
                 do
-                        array1=(${project_ipd//,/ })
-                        for u in ${array[s]}
-                        do
-                                echo -e "\033[34m 当前节点IP：$u \033[0m"
-                                break
-                        done
-                        s=$(($s+1))
-                        echo ' ' > /deploy/.news
-                        echo ' ' > /deploy/.newe
-                        sshpass -f $password ssh $y "echo '$project_item' > $pate"
-                        sshpass -f $password ssh $y "echo '$project_port' > $pats"
-                        sshpass -f $password ssh $y "echo '$project_change_nginx' > $patw"
-                        sshpass -f $password ssh $y "/sh/.startue.sh"
-                        source /deploy/start.sh
-                        sleep 3
-                        newe=$(cat /deploy/.start)
-                        if [ "$newe" == "yes" ];then
-                                echo -e "\033[32m 启动成功 \033[0m"
-                                if [ $s == $project_node ];then
+                                sshpass -f $password scp -r $o $i:"$patp"/"$project_item"."$tama".jar
+                                if [ $? == 0 ];then
+                                        echo -e "\033[32m $project_item项目备份成功 \033[0m"
+                                else
+                                        echo -e "\033[31m $project_item项目备份失败 \033[0m"
                                         exit
                                 fi
-                        elif [ "$newe" == "no" ];then
-                                echo -e "\033[31m 启动失败 \033[0m"
-                                exit
-                        else
-                                echo -e "\033[31m start.sh脚本文件出错，检测不到正确的返回值 \033[0m"
-                                exit
-                        fi
                 done
-        elif [ $project_change_nginx == y ];then
+                    done
+            fi
+    fi
+    cat /dev/null > /deploy/git/.$pro
+    #if [ ! -d $project_item/ ];then
+    rm -rf $project_src
+    su qqkj -c "git clone -b $2 $project_git"
+    #else
+    #    cd $project_src
+    #    git fetch $project_git $2
+    #fi
+    if [ $? == 0 ];then
+            echo -e "\033[32m $project_item项目拉取成功 \033[0m"
+            cd $project_src
+            echo "跳转到"$PWD"目录"
+            su qqkj -c "mvn clean $3 -Dmaven.test.skip=true"
+            if [ $? == 0 ];then
+                    echo -e "\033[32m $project_item项目mvn成功 \033[0m"
+            else
+                    echo -e "\033[31m $project_item项目mvn失败 \033[0m"
+            exit
+            fi
+    else
+            echo -e "\033[31m $project_item项目拉取失败 \033[0m"
+            exit
+    fi
+    if [ $project_compile == y ];then
+        for i in $project_ip
+        do
+            for o in $project_jar
+            do
+                sshpass -f $password scp -r $o $i:$path
+                    if [ $? == 0 ];then
+                    echo -e "\033[32m jar架包传输成功 \033[0m"
+                    echo "yes" > /deploy/git/.$pro
+                    else
+                            echo -e "\033[31m jar架包传输失败 \033[0m"
+                    exit
+                    fi
+            done
+        done
+    fi
+
+    if [ $project_compile == y ];then
+        s=0
+        we=1
+        for y in $project_ip
+        do
+            en=${y#*@}
+            echo -e "\033[35m ============================================================================================================ \033[0m"
+            echo -e "\033[35m ======================================= 当前节点IP：$en ========================================== \033[0m"
+            echo -e "\033[35m ============================================================================================================ \033[0m"
+                    f=0
+                    t=0
+            avatar_nginx_ipd=($pro"_nginx_ipd"$we)
+            project_nginx_ipd=$(eval echo '$'"${avatar_nginx_ipd}")
+            if [[ $project_nginx_node == "y" ]];then
                 s=0
-                for y in $project_ip
-                do
+            fi
+            we=$(($we+1))
+            for n in $project_nodelist
+            do
+                array2=(${project_item//,/ })
+                                for e in ${array2[$f]}
+                                do
+                    echo -e "\033[35m ======================================= 当前项目名：$e ======================================== \033[0m"
+                                done
+                if [ $n == 1 ];then
+                    nginxd=0
+                    if [[ $project_nginx_node == y ]];then
+                        array1=(${project_nginx_ipd//,/ })
+                    else
                         array1=(${project_ipd//,/ })
-                        echo $array1
-                        for u in ${array1[s]}
-                        do
-                                echo -e "\033[34m 当前节点IP：$u \033[0m"
-                        done
-                        s=$(($s+1))
-                        sshpass -f $password ssh $project_nginx_ip "sed -i 's/server $u\;/\#server $u\;/' $project_nginx_path"
+                    fi
+                    for u in ${array1[$s]}
+                    do
+                        echo -e "\033[34m 当前节点IP：$u \033[0m"
+                        echo -e "\033[34m 修改nginx配置...... \033[0m"
+                        sshpass -f $password ssh -t $project_nginx_ip "sed -i 's/server $u\;/\#server $u\;/' $project_nginx_path"
                         if [ $? == 0 ];then
-                                echo -e "\033[32m 注释nginx配置成功 \033[0m"
-                                sshpass -f $password ssh -t $project_nginx_ip "sudo nginx -t"
-                                sleep 1
-                                sshpass -f $password ssh -t $project_nginx_ip "sudo nginx -s reload"
-                                if [ $? == 0 ];then
-                                        echo -e "\033[32m 重启nginx配置成功 \033[0m"
-                                        sshpass -f $password ssh $y "echo '$project_item' > $pate"
-                                        sshpass -f $password ssh $y "echo '$project_port' > $pats"
-                                        sshpass -f $password ssh $y "echo '$project_change_nginx' > $patw"
-                                        echo ' ' > /deploy/.news
-                                        echo ' ' > /deploy/.newe
-                                        sshpass -f $password ssh $y "/sh/.startue.sh"
-                                        source /deploy/start.sh
-                                        sleep 3
-                                        newe=$(cat /deploy/.start)
-                                        if [ "$newe" == "yes" ];then
-                                                echo -e "\033[32m 启动以成功，恢复nginx配置 \033[0m"
-                                                sshpass -f $password ssh $project_nginx_ip "sed -i 's/\#server $u\;/server $u\;/' $project_nginx_path"
+                                                echo -e "\033[32m 注释nginx配置成功 \033[0m"
+                            sshpass -f $password ssh -t $project_nginx_ip "sudo nginx -t"
+                                                sleep 1
+                                                sshpass -f $password ssh -t $project_nginx_ip "sudo nginx -s reload"
                                                 if [ $? == 0 ];then
-                                                        echo -e "\033[32m 注释nginx配置成功 \033[0m"
+                                                        echo -e "\033[32m 重启nginx配置成功 \033[0m"
+                                nginxd=nginx
+                            else
+                                echo -e "\033[31m 重启nginx配置失败 \033[0m"
+                                exit
+                            fi
+                        else
+                            echo -e "\033[31m 注释nginx配置失败 \033[0m"
+                            exit
+                        fi
+                    done
+                fi
+                cat /dev/null > /deploy/.news
+                cat /dev/null > /deploy/.newe
+                 cat /dev/null > /deploy/.zabbix
+                cat /dev/null > /deploy/.zabbix_ip
+                sshpass -f $password ssh $y "echo '$e' > $pate"
+                f=$(($f+1))
+                 array3=(${project_change_nginx//,/ })
+                                for o in ${array3[$t]}
+                                do
+                                        sshpass -f $password ssh $y "echo '$o' > $patw"
+                                done
+                                t=$(($t+1))
+                sshpass -f $password ssh $y "/sh/.startue.sh"
+                sleep 1
+                source /deploy/start.sh
+                sleep 3
+                newe=$(cat /deploy/.start)
+                if [ "$newe" == "yes" ];then
+                    echo -e "\033[32m 部署启动成功 \033[0m"
+                    if [ $n == 1 ];then
+                        echo -e "\033[34m 恢复nginx配置...... \033[0m"
+                        echo -e "\033[32m nginx取消注释中..... \033[0m"
+                                                sshpass -f $password ssh -t $project_nginx_ip "sed -i 's/\#server $u\;/server $u\;/' $project_nginx_path"
+                                                if [ $? == 0 ];then
+                                                        echo -e "\033[32m nginx取消注释成功\033[0m"
+                            echo -e "\033[32m nginx重启中..... \033[0m"
                                                         sshpass -f $password ssh -t $project_nginx_ip "sudo nginx -t"
                                                         sleep 1
                                                         sshpass -f $password ssh -t $project_nginx_ip "sudo nginx -s reload"
-                                                        #exit
+                                                        if [ $? == 0 ];then
+                                                                echo -e "\033[32m 重启nginx配置成功 \033[0m"
+                                                        else
+                                                                echo -e "\033[31m 重启nginx配置失败 \033[0m"
+                                                                exit
+                                                        fi
                                                 else
-                                                        echo -e "\033[31m 注释nginx配置出错 \033[0m"
+                                                        echo -e "\033[31m 注释nginx配置失败 \033[0m"
                                                         exit
                                                 fi
-                                        elif [ "$newe" == "no" ];then
-                                                echo -e "\033[31m 启动失败 \033[0m"
-                                                exit
-                                        else
-                                                echo -e "\033[31m start.sh脚本文件出错，检测不到正确的返回值 \033[0m"
-                                                exit
-                                        fi
-                                else
-                                        echo -e "\033[31m 重启nginx配置出错 \033[0m"
-                                        exit
-                                fi
-                        else
-                                echo -e "\033[31m 注释nginx配置出错 \033[0m"
-                                exit
-                        fi
-                done
-        fi
-fi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                    fi
+                elif [ "$newe" == "no" ];then
+                    echo -e "\033[31m 部署启动失败 \033[0m"
+                    exit
+                else
+                    echo -e "\033[31m start.sh脚本文件出错，检测不到正确的返回值 \033[0m"
+                    exit
+                fi
+            done
+            s=$(($s+1))
+        done
+    fi
+done
+chown qqkj:qqkj -R /deploy/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="变量赋值脚本-oa-sh"><a href="#变量赋值脚本-oa-sh" class="headerlink" title="变量赋值脚本(oa.sh)"></a><strong>变量赋值脚本(oa.sh)</strong></h2><pre class="line-numbers language-shell"><code class="language-shell">#!/bin/bash
 
-source /deploy/conf/"$1".conf
+#source /deploy/conf/"$pro".conf
 
 project=$(ls /deploy/conf/ | grep .conf | sed -n "$pa"p | cut -d '.' -f 1,1)
 for i in $project
 do
-        if [ $i == $1 ];then
-                echo "y" > /deploy/.oa
-                break
-        else
-                echo "n" > /deploy/.oa
+        if [ $i == $pro ];then
+        source /deploy/conf/"$pro".conf
+        echo "y" > /deploy/.oa
+        break
+    else
+        echo "n" > /deploy/.oa
         fi
 done
-avatar_ip=($1"_ip")
-avatar_git=($1"_git")
-avatar_port=($1"_port")
-avatar_jar=($1"_jar")
-avatar_src=($1"_src")
-avatar_node=($1"_node")
-avatar_item=($1"_item")
-avatar_nginx=($1"_nginx")
-avatar_nginx_path=($1"_nginx_path")
-avatar_nginx_conf=($1"_nginx_conf")
-avatar_nginx_ip=($1"_nginx_ip")
-avatar_compile=($1"_compile")
-avatar_change_nginx=($1"_change_nginx")
-avatar_ipd=($1"_ipd")
-avatar_node=($1"_node")
+avatar_ip=($pro"_ip")
+avatar_git=($pro"_git")
+avatar_port=($pro"_port")
+avatar_jar=($pro"_jar")
+avatar_src=($pro"_src")
+avatar_node=($pro"_node")
+avatar_item=($pro"_item")
+avatar_nginx=($pro"_nginx")
+avatar_nginx_path=($pro"_nginx_path")
+avatar_nginx_conf=($pro"_nginx_conf")
+avatar_nginx_ip=($pro"_nginx_ip")
+avatar_compile=($pro"_compile")
+avatar_change_nginx=($pro"_change_nginx")
+avatar_ipd=($pro"_ipd")
+avatar_node=($pro"_node")
+avatar_nodelist=($pro"_nodelist")
+avatar_nginx_ipd1=($pro"_nginx_ipd1")
+avatar_nginx_ipd2=($pro"_nginx_ipd2")
+avatar_nginx_node=($pro"_nginx_node")
 project_ip=$(eval echo '$'"${avatar_ip}")
 project_git=$(eval echo '$'"${avatar_git}")
 project_port=$(eval echo '$'"${avatar_port}")
@@ -697,24 +748,30 @@ project_nginx_ip=$(eval echo '$'"${avatar_nginx_ip}")
 project_compile=$(eval echo '$'"${avatar_compile}")
 project_change_nginx=$(eval echo '$'"${avatar_change_nginx}")
 project_ipd=$(eval echo '$'"${avatar_ipd}")
-project_node=$(eval echo '$'"${avatar_node}")<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+project_node=$(eval echo '$'"${avatar_node}")
+project_nodelist=$(eval echo '$'"${avatar_nodelist}")
+project_nginx_ipd1=$(eval echo '$'"${avatar_nginx_ipd1}")
+project_nginx_ipd2=$(eval echo '$'"${avatar_nginx_ipd2}")
+project_nginx_node=$(eval echo '$'"${avatar_nginx_node}")<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="启动脚本-start-sh"><a href="#启动脚本-start-sh" class="headerlink" title="启动脚本(start.sh)"></a><strong>启动脚本(start.sh)</strong></h2><pre class="line-numbers language-shell"><code class="language-shell">#!/bin/bash
 
 state=$(cat /deploy/.news)
 w=0
 while [ $w -le 230 ]
 do
-        state=$(cat /deploy/.news)
-        if [ $state == $teme ]
+    state=$(cat /deploy/.news)
+    zabbix=$(cat /deploy/.zabbix)
+    ip=$(cat /deploy/.zabbix_ip)
+    if [ $state == $teme ]
         then
-                echo -e "\033[32m 项目启动成功 \033[0m"
-                echo "yes" > /deploy/.start
+            echo -e "\033[32m 项目启动成功 \033[0m"
+                su qqkj -c "echo 'yes' > /deploy/.start"
                 break
         elif [ $state == $teme-1 ]
         then
                 echo -e "\033[31m 运行脚本，没有发现项目存活,尝试启动项目 \033[0m"
                 echo -e "\033[31m 项目启动失败 \033[0m"
-                echo "no" > /deploy/.start
+        su qqkj -c "echo 'no' > /deploy/.start"
                 exit
         elif [ $state == $teme-2 ]
         then
@@ -731,27 +788,33 @@ do
         elif [ $state == $teme-4 ]
         then
                 echo -e "\033[31m 项目启动出错，没有检测到日志端口 \033[0m"
-                echo "no" > /deploy/.start
+        su qqkj -c "echo 'no' > /deploy/.start"
                 exit
         elif [ $state == $teme-5 ]
         then
                 echo -e "\033[31m 在规定的时间内,项目强制关闭失败 \033[0m"
-                echo "no" > /deploy/.start
-                exit
-        elif [ $state == $teme-6 ]
+        su qqkj -c "echo 'no' > /deploy/.start"
+            exit
+    elif [ $state == $teme-6 ]
         then
                 echo -e "\033[31m 项目PID多个，请检查 \033[0m"
-                echo "no" > /deploy/.start
+                su qqkj -c "echo 'no' > /deploy/.start"
                 exit
-        elif [ $w == 229 ]
+    elif [ $zabbix == 1 ]
+    then
+        ssh root@192.168.1.66 "ansible $ip -m shell -a 'bash /sh/.zabbix.sh'"
+        sleep 5
+        su qqkj -c "echo ' ' > /deploy/.zabbix"
+        continue
+    elif [ $w == 229 ]
         then
                 echo -e "\033[31m 超过四分钟，接收不到返回值，脚本出错 \033[0m"
-                echo "no" > /deploy/.start
+        su qqkj -c "echo 'no' > /deploy/.start"
                 exit
         fi
         sleep 1
         w=$(($w+1))
-done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="项目配置文件"><a href="#项目配置文件" class="headerlink" title="项目配置文件"></a><strong>项目配置文件</strong></h2><p>项目配置文件分为全局配置文件跟项目配置文件二种</p>
 <p>全局配置文件只有一个文件</p>
 <p>项目配置文件按不同项目拥有不同的项目配置文件</p>
@@ -762,124 +825,206 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 path=/qinqukeji/microservice/stg_app/
 PWD=$(pwd)
 password=/deploy/.password
+patp=/qinqukeji/microservice/stg_app/backups
 teme=$(date +%Y%m%d)
-tama=$(date "+%Y/%m/%d(%H:%M:%S)")
+tama=$(date "+%Y-%m-%d.%H:%M:%S")
 pate=/sh/.news
 pats=/sh/.port
 patw=/sh/.porw
-step=10<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="项目配置文件-gateway-conf"><a href="#项目配置文件-gateway-conf" class="headerlink" title="项目配置文件(gateway.conf)"></a><strong>项目配置文件(gateway.conf)</strong></h3><pre class="line-numbers language-shell"><code class="language-shell">#!/bin/bash
+step=10<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="项目配置文件-xxljob-conf"><a href="#项目配置文件-xxljob-conf" class="headerlink" title="项目配置文件(xxljob.conf)"></a><strong>项目配置文件(xxljob.conf)</strong></h3><pre class="line-numbers language-shell"><code class="language-shell">#!/bin/bash
 
-gateway_git="git@192.168.1.64:qinqu/qinqu-gateway.git"
-gateway_ip="qqkj@192.168.0.102 qqkj@192.168.0.103"
-gateway_port="2088"
-gateway_compile=y
-gateway_node=2
-gateway_src="/deploy/git/qinqu-gateway/"
-gateway_jar="/deploy/git/qinqu-gateway/qinqu-gateway-service/target/*.jar"
-gateway_item=qinqu-gateway
-gateway_change_nginx=y
-gateway_nginx_ip=qqkj@192.168.0.8
-gateway_ipd="192.168.0.102:2088,192.168.0.103:2088"
-gateway_nginx_path=/usr/local/nginx/conf.d/microservice.qinqukeji.com.conf
-gateway_nginx_conf=microservice.qinqukeji.com.conf<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+xxljob_git="https://gitee.com/piano_interest_91/xxl-job.git"
+xxljob_ip="qqkj@172.30.30.3 qqkj@172.30.30.5"
+xxljob_port="8080"
+xxljob_compile=y
+xxljob_node=2
+xxljob_src="/deploy/git/xxl-job/"
+xxljob_jar="/deploy/git/xxl-job/xxl-job-admin/target/*.jar /deploy/git/xxl-job/xxl-job-executor-samples/xxl-job-executor-sample-springboot/target/*.jar"
+xxljob_item="xxl-job-admin,xxl-job-executor-sample-springboot"
+xxljob_change_nginx="y,n"
+xxljob_nginx_ip=qqkj@172.30.30.1
+xxljob_ipd="172.30.30.3:8080,172.30.30.5:8080"
+xxljob_nginx_path=/etc/nginx/conf.d/stg-erp.91qinqu.com.conf
+xxljob_nginx_conf=stg-erp.91qinqu.com.conf
+xxljob_nodelist="1 0"
+xxljob_nginx_ipd1="172.30.30.3:8080"
+xxljob_nginx_ipd2="172.30.30.5:8080"
+xxljob_nginx_node=y<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="远端启动脚本-startue-sh"><a href="#远端启动脚本-startue-sh" class="headerlink" title="远端启动脚本(.startue.sh)"></a><strong>远端启动脚本(.startue.sh)</strong></h2><pre class="line-numbers language-shell"><code class="language-shell">#!/bin/bash
 
 item=$(cat /sh/.news)
 itwm="JVM running for"
 itam=$(cat /sh/.port)
-project=$(ps -ef | grep "$item" | grep -v grep | awk '{print $2}')
-projectss=$(ps -ef | grep "$item" | grep -v grep | awk '{print $2}')
+project=$(ps -ef | grep "$item".jar | grep -v grep | awk '{print $2}')
+projectss=$(ps -ef | grep "$item".jar | grep -v grep | awk '{print $2}')
+gain_ip=$( ip addr | grep inet | grep -v 127.0.0.1 | grep -v inet6 | awk '{print $2}' | tr -d "addr:" )
+ipd=$(echo ${gain_ip: 10})
+ip=$(echo ${ipd%/*})
 ssh=qqkj@192.168.0.2
 password=/sh/.password
 teme=$(date +%Y%m%d)
 pate=/deploy/.news
+zabbix=/deploy/.zabbix
+zabbix_ip=/deploy/.zabbix_ip
 nginx_ip=192.168.0.8
+path=backups/
 project_nginx=$(cat /sh/.porw)
+echo '' > /sh/.zabbix
+
+cd /qinqukeji/microservice/stg_app/
+quantity=$(ls "$path" | wc -l)
+while [ $quantity -gt 10 ]
+do
+        que=$(ls "$path" | sed -n 1p)
+        rm -rf "$path""$que"
+        quantity=$(ls "$path" | wc -l)
+done
+
 if [ -n "$project" ];then
-        echo "重启"
-        if [ $project_nginx == y ];then
-                i=0
-                while [ $i -le 30 ]
-                do
-                        netstat -anlp | grep $project | grep "$nginx_ip"
-                        if [ ! $? = 0 ]
-                        then
-                                break
-                        elif [ $i == 29 ]
-                        then
-                                break
-                                sshpass -f $password ssh $ssh "echo '$teme-2' > $pate"
-                        fi
-                        sleep 1
-                        i=$(($i+1))
-                done
-        fi
-        project=$(ps -ef | grep "$item" | grep -v grep | awk '{print $2}')
-        echo $project
-        kill $project
-        o=0
-        while [ $o -le 30 ]
+    echo -e "\033[32m 重启 \033[0m"
+    if [ $project_nginx == y ];then
+        i=0
+        while [ $i -le 30 ]
         do
-                project1=$(ps -ef | grep "$item" | grep -v grep | awk '{print $2}')
-                if [ -z $project1 ]
-                then
-                        cd /qinqukeji/microservice/stg_app/
-                        /qinqukeji/microservice/stg_app/springBoot.sh start $item*
-                        sleep 10
-                        w=0
-                        while [ $w -le 6 ]
-                        do
-                                tail /qinqukeji/microservice/stg_app/log/$item*.log | grep "$itwm"
-                                if [ $? == 0 ]
-                                then
-                                        echo "项目以启动成功"
-                                        sshpass -f $password ssh $ssh "echo '$teme' > $pate"
-                                        exit
-                                elif [ $w == 5 ]
-                                then
-                                        sshpass -f $password ssh $ssh "echo '$teme-4' > $pate"
-                                        tail -40 /qinqukeji/microservice/stg_app/log/$item*.log
-                                        echo "启动超时"
-                                        exit
-                                fi
-                        sleep 10
-                        w=$(($w+1))
-                        done
-                elif [ $o == 29 ]
-                then
-                        break
-                        sshpass -f $password ssh $ssh "echo '$teme-3' > $pate"
-                fi
-                sleep 1
-                o=$(($o+1))
+            netstat -anlp | grep $project | grep "$nginx_ip"
+            if [ ! $? = 0 ]
+            then
+                break
+            elif [ $i == 29 ]
+            then
+                break
+                sshpass -f $password ssh $ssh "echo '$teme-2' > $pate"
+            fi
+            sleep 1
+            i=$(($i+1))
         done
-        project=$(ps -ef | grep "$item" | grep -v grep | awk '{print $2}')
-        echo $project
-        kill -9 $project
-        p=0
-        while [ $p -le 30 ]
+    fi
+    project=$(ps -ef | grep "$item".jar | grep -v grep | awk '{print $2}')
+    echo -e "\033[32m PID:$project \033[0m"
+    kill $project
+    o=0
+    while [ $o -le 30 ]
+    do
+        project1=$(ps -ef | grep "$item".jar | grep -v grep | awk '{print $2}')
+        if [ -z $project1 ]
+        then
+            cd /qinqukeji/microservice/stg_app/
+            /qinqukeji/microservice/stg_app/springBoot.sh start $item*
+            sleep 10
+            w=0
+            while [ $w -le 6 ]
+            do
+                tail -100 /qinqukeji/microservice/stg_app/log/$item*.log | grep "$itwm"
+                if [ $? == 0 ]
+                then
+                    netstat -anlp | grep 10050 > /dev/null
+                    if [ $? == 0 ];then
+                        echo -e "\033[32m 监控正在运行中 \033[0m"
+                    else
+                        echo -e "\033[32m 正在启动监控服务，请等待... \033[0m"
+                        sshpass -f $password ssh $ssh "echo '1' > $zabbix"
+                        sshpass -f $password ssh $ssh "echo $ip > $zabbix_ip"
+                        sleep 3
+                        g=0
+                        while [ $g -le 31 ]
+                        do
+                            netstat -anlp | grep 10050 > /dev/null
+                            zb=$(cat /sh/.zabbix)
+                            if [ $? == 0 ];then
+                                echo -e "\033[32m 监控服务启动成功 \033[0m"
+                                break
+                            elif [ $zb == yes ];then
+                                echo -e "\033[32m 监控服务启动成功，监测不到端口。 \033[0m"
+                                break
+                            elif [ $zb == no ];then
+                                echo -e "\033[31m 监控服务启动失败 \033[0m"
+                                break
+                            elif [ $g == 30 ];then
+                                echo -e "\033[31m 监控服务启动失败 \033[0m"
+                                break
+                            fi
+                            sleep 1
+                            g=$(($g+1))
+                        done
+                    fi
+                    echo -e "\033[32m 项目以启动成功 \033[0m"
+                    sshpass -f $password ssh $ssh "echo '$teme' > $pate"
+                    exit
+                elif [ $w == 5 ]
+                then
+                    sshpass -f $password ssh $ssh "echo '$teme-4' > $pate"
+                    tail -40 /qinqukeji/microservice/stg_app/log/$item*.log
+                    echo -e "\033[31m 启动超时 \033[0m"
+                    exit
+                fi
+            sleep 10
+            w=$(($w+1))
+            done
+        elif [ $o == 29 ]
+        then
+            break
+            sshpass -f $password ssh $ssh "echo '$teme-3' > $pate"
+        fi
+        sleep 1
+        o=$(($o+1))
+    done
+    project=$(ps -ef | grep "$item" | grep -v grep | awk '{print $2}')
+        echo -e "\033[32m PID:$project \033[0m "
+    kill -9 $project
+    p=0
+    while [ $p -le 30 ]
         do
-                project1=$(ps -ef | grep "$item" | grep -v grep | awk '{print $2}')
+                project1=$(ps -ef | grep "$item".jar | grep -v grep | awk '{print $2}')
                 if [ -z $project1 ]
                 then
-                        cd /qinqukeji/microservice/stg_app/
+            cd /qinqukeji/microservice/stg_app/
                         /qinqukeji/microservice/stg_app/springBoot.sh start $item*
                         sleep 10
                         k=0
                         while [ $k -le 6 ]
                         do
-                                tail /qinqukeji/microservice/stg_app/log/$item*.log | grep "$itwm"
+                                tail -100 /qinqukeji/microservice/stg_app/log/$item*.log | grep "$itwm"
                                 if [ $? == 0 ]
                                 then
-                                        echo "项目以启动成功"
+                    netstat -anlp | grep 10050 > /dev/null
+                                        if [ $? == 0 ];then
+                                                echo -e "\033[32m 监控正在运行中 \033[0m"
+                                        else
+                                                echo -e "\033[32m 正在启动监控服务，请等待... \033[0m"
+                                                sshpass -f $password ssh $ssh "echo '1' > $zabbix"
+                                                sshpass -f $password ssh $ssh "echo $ip > $zabbix_ip"
+                                                sleep 3
+                                                g=0
+                                                while [ $g -le 31 ]
+                                                do
+                                                        netstat -anlp | grep 10050 > /dev/null
+                                                        zb=$(cat /sh/.zabbix)
+                                                        if [ $? == 0 ];then
+                                                                echo -e "\033[32m 监控服务启动成功 \033[0m"
+                                                                break
+                                                        elif [ $zb == yes ];then
+                                                                echo -e "\033[32m 监控服务启动成功，监测不到端口。 \033[0m"
+                                                                break
+                                                        elif [ $zb == no ];then
+                                                                echo -e "\033[31m 监控服务启动失败 \033[0m"
+                                                                break
+                                                        elif [ $g == 30 ];then
+                                                                echo -e "\033[31m 监控服务启动失败 \033[0m"
+                                                                break
+                                                        fi
+                                                        sleep 1
+                                                        g=$(($g+1))
+                                                done
+                                        fi
+                                        echo -e "\033[32m 项目以启动成功 \033[0m"
                                         sshpass -f $password ssh $ssh "echo '$teme' > $pate"
-                                        exit
+                    exit
                                 elif [ $k == 5 ]
                                 then
                                         sshpass -f $password ssh $ssh "echo '$teme-4' > $pate"
-                                        tail -40 /qinqukeji/microservice/stg_app/log/$item*.log
-                                        echo "启动超时"
+                    tail -40 /qinqukeji/microservice/stg_app/log/$item*.log
+                                        echo -e "\033[31m 启动超时 \033[0m"
                                         exit
                                 fi
                         sleep 10
@@ -894,30 +1039,84 @@ if [ -n "$project" ];then
                 p=$(($p+1))
         done
 else
-        echo "启动"
-        cd /qinqukeji/microservice/stg_app/
-        /qinqukeji/microservice/stg_app/springBoot.sh start $item*.jar
+    echo -e "\033[32m 启动 \033[0m"
+    cd /qinqukeji/microservice/stg_app/
+    /qinqukeji/microservice/stg_app/springBoot.sh start $item*.jar
         sleep 10
         q=0
         while [ $q -le 6 ]
         do
-                tail /qinqukeji/microservice/stg_app/log/$item*.log | grep "$itwm"
+            tail -100 /qinqukeji/microservice/stg_app/log/$item*.log | grep "$itwm"
                 if [ $? == 0 ]
                 then
-                        echo "项目以启动成功"
-                        sshpass -f $password ssh $ssh "echo '$teme' > $pate"
-                        exit
+            netstat -anlp | grep 10050 > /dev/null
+                        if [ $? == 0 ];then
+                            echo -e "\033[32m 监控正在运行中 \033[0m"
+                        else
+                                sshpass -f $password ssh $ssh "echo '1' > $zabbix"
+                                sshpass -f $password ssh $ssh "echo $ip > $zabbix_ip"
+                echo -e "\033[32m 正在启动监控服务，请等待... \033[0m"
+                                sleep 3
+                                g=0
+                                while [ $g -le 31 ]
+                                do
+                                    netstat -anlp | grep 10050 > /dev/null
+                                        zb=$(cat /sh/.zabbix)
+                                        if [ $? == 0 ];then
+                                            echo -e "\033[32m 监控服务启动成功 \033[0m"
+                                               break
+                                        elif [ $zb == yes ];then
+                                               echo -e "\033[32m 监控服务启动成功，监测不到端口。 \033[0m"
+                                               break
+                                        elif [ $zb == no ];then
+                                               echo -e "\033[31m 监控服务启动失败 \033[0m"
+                                               break
+                                        elif [ $g == 30 ];then
+                                               echo -e "\033[31m 监控服务启动失败 \033[0m"
+                                               break
+                                        fi
+                                        sleep 1
+                                        g=$(($g+1))
+                                done
+                        fi
+                        echo -e "\033[32m 项目以启动成功 \033[0m"
+                    sshpass -f $password ssh $ssh "echo '$teme' > $pate"
+                          exit
                 elif [ $q == 5 ]
                 then
-                        sshpass -f $password ssh $ssh "echo '$teme-1' > $pate"
-                        tail -40 /qinqukeji/microservice/stg_app/log/$item*.log
-                        echo "启动超时"
-                        exit
+                    sshpass -f $password ssh $ssh "echo '$teme-1' > $pate"
+            tail -40 /qinqukeji/microservice/stg_app/log/$item*.log
+                          echo -e "\033[31m 启动超时 \033[0m"
+                          exit
                 fi
                 sleep 10
                 q=$(($q+1))
         done
-fi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+fi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="远端监控启动脚本-startue-sh"><a href="#远端监控启动脚本-startue-sh" class="headerlink" title="远端监控启动脚本(.startue.sh)"></a><strong>远端监控启动脚本(.startue.sh)</strong></h2><pre class="line-numbers language-shell"><code class="language-shell">#!/bin/bash
+
+netstat -anlp | grep 10050 > /dev/null
+if [ $? == 0 ];then
+    echo "监控以启动"
+    echo 'yes' > /sh/.zabbix
+else
+        if [ ! -d "/var/run/zabbix" ];then
+            mkdir /var/run/zabbix > /dev/null
+        fi
+        chmod zabbix:zabbix -R /var/run/zabbix/ > /dev/null
+        sleep 1
+        /usr/sbin/zabbix_agentd -c /etc/zabbix/zabbix_agentd.conf > /dev/null
+        sleep 1
+        netstat -anlp | grep 10050 > /dev/null
+        if [ $? == 0 ];then
+            echo "监控以启动"
+        echo 'yes' > /sh/.zabbix
+        else
+                echo "监控未启动"
+        echo 'no' > /sh/.zabbix
+        fi
+fi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>为什么新版本要这么转圈子，因为我们的项目都是有一个专门的用户控制的，zabbix是root控制的，也因为现在机器多，也懒得改监控服务，就把脚本写了多点</p>
 
             </div>
             <hr />
@@ -1008,268 +1207,6 @@ fi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><
     
 
     
-
-    
-    <style>
-    .valine-card {
-        margin: 1.5rem auto;
-    }
-
-    .valine-card .card-content {
-        padding: 20px 20px 5px 20px;
-    }
-
-    #vcomments input[type=text],
-    #vcomments input[type=email],
-    #vcomments input[type=url],
-    #vcomments textarea {
-        box-sizing: border-box;
-    }
-
-    #vcomments p {
-        margin: 2px 2px 10px;
-        font-size: 1.05rem;
-        line-height: 1.78rem;
-    }
-
-    #vcomments blockquote p {
-        text-indent: 0.2rem;
-    }
-
-    #vcomments a {
-        padding: 0 2px;
-        color: #42b983;
-        font-weight: 500;
-        text-decoration: underline;
-    }
-
-    #vcomments img {
-        max-width: 100%;
-        height: auto;
-        cursor: pointer;
-    }
-
-    #vcomments ol li {
-        list-style-type: decimal;
-    }
-
-    #vcomments ol,
-    ul {
-        display: block;
-        padding-left: 2em;
-        word-spacing: 0.05rem;
-    }
-
-    #vcomments ul li,
-    ol li {
-        display: list-item;
-        line-height: 1.8rem;
-        font-size: 1rem;
-    }
-
-    #vcomments ul li {
-        list-style-type: disc;
-    }
-
-    #vcomments ul ul li {
-        list-style-type: circle;
-    }
-
-    #vcomments table, th, td {
-        padding: 12px 13px;
-        border: 1px solid #dfe2e5;
-    }
-
-    #vcomments table, th, td {
-        border: 0;
-    }
-
-    table tr:nth-child(2n), thead {
-        background-color: #fafafa;
-    }
-
-    #vcomments table th {
-        background-color: #f2f2f2;
-        min-width: 80px;
-    }
-
-    #vcomments table td {
-        min-width: 80px;
-    }
-
-    #vcomments h1 {
-        font-size: 1.85rem;
-        font-weight: bold;
-        line-height: 2.2rem;
-    }
-
-    #vcomments h2 {
-        font-size: 1.65rem;
-        font-weight: bold;
-        line-height: 1.9rem;
-    }
-
-    #vcomments h3 {
-        font-size: 1.45rem;
-        font-weight: bold;
-        line-height: 1.7rem;
-    }
-
-    #vcomments h4 {
-        font-size: 1.25rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
-
-    #vcomments h5 {
-        font-size: 1.1rem;
-        font-weight: bold;
-        line-height: 1.4rem;
-    }
-
-    #vcomments h6 {
-        font-size: 1rem;
-        line-height: 1.3rem;
-    }
-
-    #vcomments p {
-        font-size: 1rem;
-        line-height: 1.5rem;
-    }
-
-    #vcomments hr {
-        margin: 12px 0;
-        border: 0;
-        border-top: 1px solid #ccc;
-    }
-
-    #vcomments blockquote {
-        margin: 15px 0;
-        border-left: 5px solid #42b983;
-        padding: 1rem 0.8rem 0.3rem 0.8rem;
-        color: #666;
-        background-color: rgba(66, 185, 131, .1);
-    }
-
-    #vcomments pre {
-        font-family: monospace, monospace;
-        padding: 1.2em;
-        margin: .5em 0;
-        background: #272822;
-        overflow: auto;
-        border-radius: 0.3em;
-        tab-size: 4;
-    }
-
-    #vcomments code {
-        font-family: monospace, monospace;
-        padding: 1px 3px;
-        font-size: 0.92rem;
-        color: #e96900;
-        background-color: #f8f8f8;
-        border-radius: 2px;
-    }
-
-    #vcomments pre code {
-        font-family: monospace, monospace;
-        padding: 0;
-        color: #e8eaf6;
-        background-color: #272822;
-    }
-
-    #vcomments pre[class*="language-"] {
-        padding: 1.2em;
-        margin: .5em 0;
-    }
-
-    #vcomments code[class*="language-"],
-    pre[class*="language-"] {
-        color: #e8eaf6;
-    }
-
-    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-        position: inherit;
-        margin-left: -1.3rem;
-        margin-right: 0.4rem;
-        margin-top: -1px;
-        vertical-align: middle;
-        left: unset;
-        visibility: visible;
-    }
-
-    #vcomments b,
-    strong {
-        font-weight: bold;
-    }
-
-    #vcomments dfn {
-        font-style: italic;
-    }
-
-    #vcomments small {
-        font-size: 85%;
-    }
-
-    #vcomments cite {
-        font-style: normal;
-    }
-
-    #vcomments mark {
-        background-color: #fcf8e3;
-        padding: .2em;
-    }
-
-    #vcomments table, th, td {
-        padding: 12px 13px;
-        border: 1px solid #dfe2e5;
-    }
-
-    table tr:nth-child(2n), thead {
-        background-color: #fafafa;
-    }
-
-    #vcomments table th {
-        background-color: #f2f2f2;
-        min-width: 80px;
-    }
-
-    #vcomments table td {
-        min-width: 80px;
-    }
-
-    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-        position: inherit;
-        margin-left: -1.3rem;
-        margin-right: 0.4rem;
-        margin-top: -1px;
-        vertical-align: middle;
-        left: unset;
-        visibility: visible;
-    }
-</style>
-
-<div class="card valine-card" data-aos="fade-up">
-    <div id="vcomments" class="card-content"></div>
-</div>
-
-<script src="/libs/valine/av-min.js"></script>
-<script src="/libs/valine/Valine.min.js"></script>
-<!-- <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script> -->
-
-<script>
-    new Valine({
-        el: '#vcomments',
-        appId: 'lHpyNQ1MynpGUH54ru0c4U4G-gzGzoHsz',
-        appKey: 'w4fYdtixsw1Ri8tNmLKObBWp',
-        notify: 'false' === 'true',
-        verify: 'false' === 'true',
-        visitor: 'false' === 'true',
-        avatar: 'wavatar',
-        pageSize: '10',
-        lang: 'zh-cn',
-        placeholder: '如果你没有GitHub账号，还可以在这里评论啦！'
-    });
-</script>
 
     
 
@@ -1544,7 +1481,7 @@ htop的使用打开htop的界面，htop的界面一共分
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">25.7k</span>
+            <span class="white-color">50.9k</span>
             
 
             <br>
