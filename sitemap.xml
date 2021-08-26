@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.linux91.cn/contact/index.html</loc>
+    
+    <lastmod>2021-08-26T08:39:51.219Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.linux91.cn/2021/07/02/clickhouse/clickhouse-de-rbac-yong-hu-quan-xian/</loc>
     
     <lastmod>2021-08-26T08:08:05.296Z</lastmod>
@@ -89,13 +96,6 @@
     <loc>https://www.linux91.cn/2018/11/02/mysql/mysql-xiu-gai-lian-jie-shu/</loc>
     
     <lastmod>2021-08-26T07:14:49.388Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.linux91.cn/contact/index.html</loc>
-    
-    <lastmod>2021-08-26T06:59:59.978Z</lastmod>
     
   </url>
   
