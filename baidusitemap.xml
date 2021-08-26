@@ -1,13 +1,169 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.linux91.cn/2018/09/20/tomcat/centos7-tomcat8-jian-dan-an-zhuang/</loc>
-    <lastmod>2021-08-25</lastmod>
+    <loc>https://www.linux91.cn/2019/02/22/linux-ming-ling/top-xi-lie/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2019/01/30/shell-jiao-ben/zi-dong-bu-shu-fa-bu-jiao-ben/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2019/01/23/linux-fu-wu/apollo-pei-zhi-zhong-xin-jian-dan-an-zhuang/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2019/01/23/mysql/centos6.5-xia-an-zhuang-mysql5.7/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/09/21/mysql/mysql-shu-ju-ku-bei-fen-ji-zhi-de-miao-shu/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2019/01/17/linux-fu-wu/nfs-wang-luo-wen-jian-fu-wu-an-zhuang/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2019/01/10/kafka/kafka-ji-qun-de-da-jian/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2019/01/09/zookeeper/zookeepre-ji-qun-de-da-jian/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/10/25/zookeeper/centos7-an-zhuang-zookeeper/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2019/01/07/linux-fu-wu/nodejsnpm-an-zhuang/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/12/27/shell-jiao-ben/linux-hui-shou-zhan-jiao-ben-zhi-er/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/12/26/shell-jiao-ben/linux-hui-shou-zhan-jiao-ben-zhi-yi/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2021/08/26/untitled/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/12/25/linux-ming-ling/shell-zheng-ze/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/12/18/nginx/yuan-ma-an-zhuang-nginx1.15-stream-mo-kuai-an-zhuang-ssh-ying-she/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/12/17/linux-fu-wu/yum-an-zhuang-jenkins-zui-xin-ban-ben/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/12/17/linux-fu-wu/yum-an-zhuang-gitlab-zui-xin-ban-ben/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/12/05/linux/ssh-mian-mi-deng-lu/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/12/05/python/pip-huo-qu-zui-xin-ban-ben-an-zhuang-yi-python-fang-shi-an-zhuang/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/11/22/linux-fu-wu/yuan-ma-an-zhuang-svn-subversion-1.10.3/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/11/19/linux/an-zhuang-zi-ti/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/11/15/linux-fu-wu/an-zhuang-jenkins2.3-war-bao-an-zhuang/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/11/15/redis/an-zhuang-redis4.0/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/11/13/linux-fu-wu/docker-an-zhuang-gitlab/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/10/26/linux-fu-wu/ji-yu-log.io-xiang-mu-shi-xian-shi-shi-ri-zhi-web-shi-xian-cha-kan/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/11/09/sql-shen-he/an-zhuang-yearning-sql-shen-he-ping-tai/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/11/09/nginx/yum-an-zhuang-nginx/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/11/09/sql-shen-he/yearning-sql-shen-he-ping-tai-1.3.0-ban-ben-docker-an-zhuang/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/11/09/sql-shen-he/inceptionsql-zi-dong-shen-he-wu-web-jie-mian-di-er-chong-fang-shi-an-zhuang/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/11/08/sql-shen-he/inceptionsql-zi-dong-shen-he-wu-web-jie-mian-di-yi-chong-fang-shi-an-zhuang/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/11/06/linux-fu-wu/bison-2.5.1-an-zhuang/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/11/06/python/centos7-pip-9.0.3-an-zhuang/</loc>
+    <lastmod>2021-08-26</lastmod>
   </url>  <url>
     <loc>https://www.linux91.cn/2018/09/19/python/linux-centos7-python3.6-yuan-ma-an-zhuang/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/11/05/mysql/centos7-xia-yuan-ma-an-zhuang-mysql5.7/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/11/02/mysql/mysql-xiu-gai-lian-jie-shu/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/10/25/linux-fu-wu/centos7-an-zhuang-rocketmq/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/10/25/linux-fu-wu/centos7-an-zhuang-activemq/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/10/23/linux-fu-wu/shell-jiao-ben-er-jin-zhi-jia-mi-shc-de-an-zhuang-he-jian-dan-shi-yong/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/10/12/linux/bao-cun-yum-xia-zai-ruan-jian-bao/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/09/28/linux/bie-ming-yong-jiu-she-zhi-alias-yong-jiu-she-zhi/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/09/26/linux/wei-shou-hu-jin-cheng-jiao-ben-wu-xian-xun-huan-jian-ce-kai-ji-zi-qi/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/09/25/linux/she-zhi-jiao-ben-huo-ming-ling-kai-ji-zi-qi-dong/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/09/25/zabbix/zabbix-agent-an-zhuang-zabbix-ke-hu-duan-yum-an-zhuang/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/09/25/linux-fu-wu/java-zhen-duan-gong-ju-zhi-arthas-jian-dan-an-zhuang-a-li-kai-yuan-xiang-mu/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/09/25/linux/chuang-jian-swap-fen-qu-wen-jian-shi-xian-xu-ni-nei-cun-a-li-yun/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/09/21/linux-fu-wu/samba-fu-wu-de-jian-dan-ying-yong-linux-dui-linux-wen-jian-gong-xiang/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/09/20/linux-ming-ling/linux-vim-ming-ling/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/09/20/dubbo/dubbo-monitor-bu-shu-dubbo-jian-kong-ping-tai-monitor/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/09/20/dubbo/dubbo-admin-bu-shu-dubbo-hou-tai-guan-li/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/09/20/linux/centos7-mavem3.5-an-zhuang/</loc>
+    <lastmod>2021-08-26</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/09/20/linux/liunx-centos7-jdk8-an-zhuang/</loc>
     <lastmod>2021-08-25</lastmod>
   </url>  <url>
     <loc>https://www.linux91.cn/2018/09/19/linux/linux-centos7-yum-wang-luo-yuan/</loc>
+    <lastmod>2021-08-25</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/09/20/nginx/nginx-wen-ti-he-ji/</loc>
+    <lastmod>2021-08-25</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/09/20/tomcat/linux-xia-de-tomcat8-qi-dong-hen-man-xian-xiang-chu-li/</loc>
+    <lastmod>2021-08-25</lastmod>
+  </url>  <url>
+    <loc>https://www.linux91.cn/2018/09/20/tomcat/centos7-tomcat8-jian-dan-an-zhuang/</loc>
     <lastmod>2021-08-25</lastmod>
   </url>  <url>
     <loc>https://www.linux91.cn/2021/08/25/bo-ke-lai-yuan/</loc>
