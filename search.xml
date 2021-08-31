@@ -1879,31 +1879,6 @@
     
     
     <entry>
-      <title>Dubbo-admin，部署Dubbo后台管理</title>
-      <link href="/2018/09/20/dubbo/dubbo-admin-bu-shu-dubbo-hou-tai-guan-li/"/>
-      <url>/2018/09/20/dubbo/dubbo-admin-bu-shu-dubbo-hou-tai-guan-li/</url>
-      
-        <content type="html"><![CDATA[<p>部署Dubbo后台管理需要三个软件，JDK,mavem,tomcat，安装这三个软件，可以参考我之前写的笔记</p><p>三个软件部署好后，我们就需要下载Dubbo-admin项目：<a href="https://github.com/apache/incubator-dubbo/tree/2.5.x" target="_blank" rel="noopener">https://github.com/apache/incubator-dubbo/tree/2.5.x</a></p><p><a href="http://92.linux91.cn/attachment/20180920/85623ebb2f4449b388aaad2f795649bc.png" target="_blank" rel="noopener"><img src="https://gitee.com/linux91/document-img/raw/master/img/85623ebb2f4449b388aaad2f795649bc.png" alt="img"></a></p><p>注意：Dubbo-admin有一个坑，要注意，下载项目的时候要全部下载，不要单独下载一个项目。因为在用mvn编译的时候，不能在单个项目中编译，只能在所有项目中一起编译才会成功</p><p> 为了方便我提供了下载链接，可以直接在linux中下载：wget <a href="https://codeload.github.com/apache/incubator-dubbo/zip/2.5.x" target="_blank" rel="noopener">https://codeload.github.com/apache/incubator-dubbo/zip/2.5.x</a></p><h4 id="解压并编译"><a href="#解压并编译" class="headerlink" title="解压并编译"></a>解压并编译</h4><p>unzip incubator-dubbo-2.5.x.zip</p><p>cd incubator-dubbo-2.5.x</p><p>mvn install -Dmaven.test.skip=true</p><p>请稍等，估计要十多分钟</p><h4 id="找到-war文件并复制到tomcat中的webapps目录中"><a href="#找到-war文件并复制到tomcat中的webapps目录中" class="headerlink" title="找到.war文件并复制到tomcat中的webapps目录中"></a>找到.war文件并复制到tomcat中的webapps目录中</h4><p>.war文件：dubbo-admin-2.8.4.war（有可能不同版本的名称不一样）</p><p>cp -a dubbo-admin/target/dubbo-admin-2.8.4.war /usr/local/tomcat/webapps/</p><p>进入tomcat中重启服务，让我们复制过去的.war文件解压运行</p><h4 id="修改dubbo-properties配置文件"><a href="#修改dubbo-properties配置文件" class="headerlink" title="修改dubbo.properties配置文件"></a>修改dubbo.properties配置文件</h4><p>进入tomcat中的webapps目录中，找到解压好的dubbo-admin目录，进去，找到dubbo.properties文件</p><p>vim dubbo.properties</p><p>修改第一行的IP地址，dubbo.registry.address=127.0.0.1:2181,127.0.0.1:2182,127.0.0.1:2183</p><p>如果有安装过zookeeper，那就在dubbo.registry.address=中填写zookeeper的IP地址以及端口号</p><p>第二行跟第三行是用户配置信息</p><p>打开浏览器输入地址: <a href="http://localhost:8080/" target="_blank" rel="noopener">http://IP地址/域名:8080/dubbo-admin</a></p><p>用户就在dubbo.properties文件中的第二第三行中。</p><h4 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h4><p>这是我在我公司真实环境中遇到的一个坑</p><p>我想修改一下dubbo-admin的root登录密码跟禁用guest用户</p><p>发现，如果没有guest用户，无论你怎么重启tomcat，访问管理后台会发现找不到网页</p><p>还有一个想法，就是把dubbo-admin中的guest用户改一下名字，测试一下可不可以访问，发现还是不可以。</p><p>总结出现，dubbo-admin中的这二个用户可能都是必须存在的，要是不存在，系统就报错</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Dubbo </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Dubbo </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Dubbo-monitor，部署Dubbo监控平台monitor</title>
       <link href="/2018/09/20/dubbo/dubbo-monitor-bu-shu-dubbo-jian-kong-ping-tai-monitor/"/>
       <url>/2018/09/20/dubbo/dubbo-monitor-bu-shu-dubbo-jian-kong-ping-tai-monitor/</url>
@@ -1929,11 +1904,36 @@
     
     
     <entry>
-      <title>Liunx--centos7--JDK8安装</title>
-      <link href="/2018/09/20/linux/liunx-centos7-jdk8-an-zhuang/"/>
-      <url>/2018/09/20/linux/liunx-centos7-jdk8-an-zhuang/</url>
+      <title>Dubbo-admin，部署Dubbo后台管理</title>
+      <link href="/2018/09/20/dubbo/dubbo-admin-bu-shu-dubbo-hou-tai-guan-li/"/>
+      <url>/2018/09/20/dubbo/dubbo-admin-bu-shu-dubbo-hou-tai-guan-li/</url>
       
-        <content type="html"><![CDATA[<p>从官方网上下载JDK8：<a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">https://www.oracle.com/technetwork/java/javase/downloads/index.html</a></p><p>下载之后上传到linux系统上</p><p>也可以在linux系统上直接下载，看系统网速</p><p>wget <a href="http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.tar.gz" target="_blank" rel="noopener">http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.tar.gz</a></p><ul><li>解压并存放到指定目录中</li></ul><p>​     tar -zxf jdk-8u181-linux-x64.tar.gz</p><p>​     mv jdk1.8.0_181/ /usr/local/jdk</p><ul><li>配置JDK的系统环境</li></ul><p>​     vim /etc/profile</p><hr><p>​     #JDK<br>​     JAVA_HOME=/usr/local/jdk<br>​     CLASSPATH=$JAVA_HOME/lib/<br>​     PATH=$PATH:$JAVA_HOME/bin<br>​     export PATH JAVA_HOME CLASSPATH</p><hr><p>​     source /etc/profile</p><ul><li>测试JDK8是否配置成功</li></ul><p>​     java -version</p><p>​     成功信息：</p><p>​      java version “1.8.0_181”<br>​      Java(TM) SE Runtime Environment (build 1.8.0_181-b13)<br>​      Java HotSpot(TM) 64-Bit Server VM (build 25.181-b13, mixed mode)</p><h3 id="修改linux-中的JDK版本"><a href="#修改linux-中的JDK版本" class="headerlink" title="修改linux 中的JDK版本"></a>修改linux 中的JDK版本</h3><p>删除jdk文件</p><p>rm -f /usr/bin/java </p><p>rm -f /usr/bin/javac</p><p>rm -f /etc/alternatives/java</p><p>rm -f /etc/alternatives/javac</p><p>在添加/etc/profile中的JDK信息，就可以更改Linux系统自带的老版本JDK</p>]]></content>
+        <content type="html"><![CDATA[<p>部署Dubbo后台管理需要三个软件，JDK,mavem,tomcat，安装这三个软件，可以参考我之前写的笔记</p><p>三个软件部署好后，我们就需要下载Dubbo-admin项目：<a href="https://github.com/apache/incubator-dubbo/tree/2.5.x" target="_blank" rel="noopener">https://github.com/apache/incubator-dubbo/tree/2.5.x</a></p><p><a href="http://92.linux91.cn/attachment/20180920/85623ebb2f4449b388aaad2f795649bc.png" target="_blank" rel="noopener"><img src="https://gitee.com/linux91/document-img/raw/master/img/85623ebb2f4449b388aaad2f795649bc.png" alt="img"></a></p><p>注意：Dubbo-admin有一个坑，要注意，下载项目的时候要全部下载，不要单独下载一个项目。因为在用mvn编译的时候，不能在单个项目中编译，只能在所有项目中一起编译才会成功</p><p> 为了方便我提供了下载链接，可以直接在linux中下载：wget <a href="https://codeload.github.com/apache/incubator-dubbo/zip/2.5.x" target="_blank" rel="noopener">https://codeload.github.com/apache/incubator-dubbo/zip/2.5.x</a></p><h4 id="解压并编译"><a href="#解压并编译" class="headerlink" title="解压并编译"></a>解压并编译</h4><p>unzip incubator-dubbo-2.5.x.zip</p><p>cd incubator-dubbo-2.5.x</p><p>mvn install -Dmaven.test.skip=true</p><p>请稍等，估计要十多分钟</p><h4 id="找到-war文件并复制到tomcat中的webapps目录中"><a href="#找到-war文件并复制到tomcat中的webapps目录中" class="headerlink" title="找到.war文件并复制到tomcat中的webapps目录中"></a>找到.war文件并复制到tomcat中的webapps目录中</h4><p>.war文件：dubbo-admin-2.8.4.war（有可能不同版本的名称不一样）</p><p>cp -a dubbo-admin/target/dubbo-admin-2.8.4.war /usr/local/tomcat/webapps/</p><p>进入tomcat中重启服务，让我们复制过去的.war文件解压运行</p><h4 id="修改dubbo-properties配置文件"><a href="#修改dubbo-properties配置文件" class="headerlink" title="修改dubbo.properties配置文件"></a>修改dubbo.properties配置文件</h4><p>进入tomcat中的webapps目录中，找到解压好的dubbo-admin目录，进去，找到dubbo.properties文件</p><p>vim dubbo.properties</p><p>修改第一行的IP地址，dubbo.registry.address=127.0.0.1:2181,127.0.0.1:2182,127.0.0.1:2183</p><p>如果有安装过zookeeper，那就在dubbo.registry.address=中填写zookeeper的IP地址以及端口号</p><p>第二行跟第三行是用户配置信息</p><p>打开浏览器输入地址: <a href="http://localhost:8080/" target="_blank" rel="noopener">http://IP地址/域名:8080/dubbo-admin</a></p><p>用户就在dubbo.properties文件中的第二第三行中。</p><h4 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h4><p>这是我在我公司真实环境中遇到的一个坑</p><p>我想修改一下dubbo-admin的root登录密码跟禁用guest用户</p><p>发现，如果没有guest用户，无论你怎么重启tomcat，访问管理后台会发现找不到网页</p><p>还有一个想法，就是把dubbo-admin中的guest用户改一下名字，测试一下可不可以访问，发现还是不可以。</p><p>总结出现，dubbo-admin中的这二个用户可能都是必须存在的，要是不存在，系统就报错</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Dubbo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Dubbo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>centos7--mavem3.5安装</title>
+      <link href="/2018/09/20/linux/centos7-mavem3.5-an-zhuang/"/>
+      <url>/2018/09/20/linux/centos7-mavem3.5-an-zhuang/</url>
+      
+        <content type="html"><![CDATA[<p>从官方网上下载mavem3.5：<a href="http://maven.apache.org/download.cgi" target="_blank" rel="noopener">http://maven.apache.org/download.cgi</a></p><p>下载之后上传到linux系统上</p><p>也可以在linux系统上直接下载，看系统网速</p><p>wget <a href="http://mirrors.shu.edu.cn/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz" target="_blank" rel="noopener">http://mirrors.shu.edu.cn/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz</a></p><p>解压并存放在指定目录中</p><p>   tar -zxf apache-maven-3.5.3-bin.tar.gz</p><p>   mv apache-maven-3.5.3 /usr/local/maven</p><p>配置mavem的系统环境</p><p>   vim /etc/profile</p><hr><p>   ##MAVEN<br>   export M2_HOME=/usr/local/maven<br>   export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$M2_HOME/bin:$PATH</p><hr><p>   source /etc/profile</p><p>测试mavem是否配置成功</p><p>   mvn -v</p><p>   成功信息如下</p><p>​      Apache Maven 3.5.3 (3383c37e1f9e9b3bc3df5050c29c8aff9f295297; 2018-02-25T03:49:05+08:00)<br>​      Maven home: /usr/local/maven</p><p>如果有安装JDK跟mavem的</p><p>   使用mvn -v 就会跟JDK的系统配置信息一起出现。如下</p><p>​      Apache Maven 3.5.3 (3383c37e1f9e9b3bc3df5050c29c8aff9f295297; 2018-02-25T03:49:05+08:00)<br>​      Maven home: /usr/local/maven<br>​      Java version: 1.8.0_181, vendor: Oracle Corporation<br>​      Java home: /usr/local/jdk/jre<br>​      Default locale: en_US, platform encoding: UTF-8<br>​      OS name: “linux”, version: “3.10.0-693.el7.x86_64”, arch: “amd64”, family: “unix”</p>]]></content>
       
       
       <categories>
@@ -1954,11 +1954,11 @@
     
     
     <entry>
-      <title>centos7--mavem3.5安装</title>
-      <link href="/2018/09/20/linux/centos7-mavem3.5-an-zhuang/"/>
-      <url>/2018/09/20/linux/centos7-mavem3.5-an-zhuang/</url>
+      <title>Liunx--centos7--JDK8安装</title>
+      <link href="/2018/09/20/linux/liunx-centos7-jdk8-an-zhuang/"/>
+      <url>/2018/09/20/linux/liunx-centos7-jdk8-an-zhuang/</url>
       
-        <content type="html"><![CDATA[<p>从官方网上下载mavem3.5：<a href="http://maven.apache.org/download.cgi" target="_blank" rel="noopener">http://maven.apache.org/download.cgi</a></p><p>下载之后上传到linux系统上</p><p>也可以在linux系统上直接下载，看系统网速</p><p>wget <a href="http://mirrors.shu.edu.cn/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz" target="_blank" rel="noopener">http://mirrors.shu.edu.cn/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz</a></p><p>解压并存放在指定目录中</p><p>   tar -zxf apache-maven-3.5.3-bin.tar.gz</p><p>   mv apache-maven-3.5.3 /usr/local/maven</p><p>配置mavem的系统环境</p><p>   vim /etc/profile</p><hr><p>   ##MAVEN<br>   export M2_HOME=/usr/local/maven<br>   export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$M2_HOME/bin:$PATH</p><hr><p>   source /etc/profile</p><p>测试mavem是否配置成功</p><p>   mvn -v</p><p>   成功信息如下</p><p>​      Apache Maven 3.5.3 (3383c37e1f9e9b3bc3df5050c29c8aff9f295297; 2018-02-25T03:49:05+08:00)<br>​      Maven home: /usr/local/maven</p><p>如果有安装JDK跟mavem的</p><p>   使用mvn -v 就会跟JDK的系统配置信息一起出现。如下</p><p>​      Apache Maven 3.5.3 (3383c37e1f9e9b3bc3df5050c29c8aff9f295297; 2018-02-25T03:49:05+08:00)<br>​      Maven home: /usr/local/maven<br>​      Java version: 1.8.0_181, vendor: Oracle Corporation<br>​      Java home: /usr/local/jdk/jre<br>​      Default locale: en_US, platform encoding: UTF-8<br>​      OS name: “linux”, version: “3.10.0-693.el7.x86_64”, arch: “amd64”, family: “unix”</p>]]></content>
+        <content type="html"><![CDATA[<p>从官方网上下载JDK8：<a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">https://www.oracle.com/technetwork/java/javase/downloads/index.html</a></p><p>下载之后上传到linux系统上</p><p>也可以在linux系统上直接下载，看系统网速</p><p>wget <a href="http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.tar.gz" target="_blank" rel="noopener">http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.tar.gz</a></p><ul><li>解压并存放到指定目录中</li></ul><p>​     tar -zxf jdk-8u181-linux-x64.tar.gz</p><p>​     mv jdk1.8.0_181/ /usr/local/jdk</p><ul><li>配置JDK的系统环境</li></ul><p>​     vim /etc/profile</p><hr><p>​     #JDK<br>​     JAVA_HOME=/usr/local/jdk<br>​     CLASSPATH=$JAVA_HOME/lib/<br>​     PATH=$PATH:$JAVA_HOME/bin<br>​     export PATH JAVA_HOME CLASSPATH</p><hr><p>​     source /etc/profile</p><ul><li>测试JDK8是否配置成功</li></ul><p>​     java -version</p><p>​     成功信息：</p><p>​      java version “1.8.0_181”<br>​      Java(TM) SE Runtime Environment (build 1.8.0_181-b13)<br>​      Java HotSpot(TM) 64-Bit Server VM (build 25.181-b13, mixed mode)</p><h3 id="修改linux-中的JDK版本"><a href="#修改linux-中的JDK版本" class="headerlink" title="修改linux 中的JDK版本"></a>修改linux 中的JDK版本</h3><p>删除jdk文件</p><p>rm -f /usr/bin/java </p><p>rm -f /usr/bin/javac</p><p>rm -f /etc/alternatives/java</p><p>rm -f /etc/alternatives/javac</p><p>在添加/etc/profile中的JDK信息，就可以更改Linux系统自带的老版本JDK</p>]]></content>
       
       
       <categories>
