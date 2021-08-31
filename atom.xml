@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.linux91.cn/"/>
-  <updated>2021-08-25T08:46:18.684Z</updated>
+  <updated>2021-08-31T08:21:44.456Z</updated>
   <id>https://www.linux91.cn/</id>
   
   <author>
@@ -17,11 +17,64 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>文档正式上线</title>
+    <link href="https://www.linux91.cn/2021/08/31/sui-bi/wen-dang-zheng-shi-shang-xian/"/>
+    <id>https://www.linux91.cn/2021/08/31/sui-bi/wen-dang-zheng-shi-shang-xian/</id>
+    <published>2021-08-31T07:37:32.000Z</published>
+    <updated>2021-08-31T08:21:44.456Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;strong&gt;直连入口：&lt;/strong&gt;&lt;a href=&quot;https://92.linux91.cn/&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="随笔" scheme="https://www.linux91.cn/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="随笔" scheme="https://www.linux91.cn/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>用于vuepress自动生成配置脚本</title>
+    <link href="https://www.linux91.cn/2021/08/30/python/yong-yu-vuepress-zi-dong-sheng-cheng-pei-zhi-jiao-ben/"/>
+    <id>https://www.linux91.cn/2021/08/30/python/yong-yu-vuepress-zi-dong-sheng-cheng-pei-zhi-jiao-ben/</id>
+    <published>2021-08-30T07:37:32.000Z</published>
+    <updated>2021-08-31T08:15:35.289Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h1&gt;&lt;p&gt;最近采用vuepress来存放文档，配置起来太麻烦了，所以写了个脚本，自动生成配置&lt;/p&gt;
+&lt;h1 id=&quot;脚本&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="python" scheme="https://www.linux91.cn/categories/python/"/>
+    
+    
+      <category term="python" scheme="https://www.linux91.cn/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
     <title>博客来源</title>
-    <link href="https://www.linux91.cn/2021/08/25/bo-ke-lai-yuan/"/>
-    <id>https://www.linux91.cn/2021/08/25/bo-ke-lai-yuan/</id>
+    <link href="https://www.linux91.cn/2021/08/25/sui-bi/bo-ke-lai-yuan/"/>
+    <id>https://www.linux91.cn/2021/08/25/sui-bi/bo-ke-lai-yuan/</id>
     <published>2021-08-25T02:37:32.000Z</published>
-    <updated>2021-08-25T08:46:18.684Z</updated>
+    <updated>2021-08-31T08:16:04.850Z</updated>
     
     <summary type="html">
     
@@ -38,7 +91,7 @@
       <category term="随笔" scheme="https://www.linux91.cn/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
-      <category term="博客" scheme="https://www.linux91.cn/tags/%E5%8D%9A%E5%AE%A2/"/>
+      <category term="随笔" scheme="https://www.linux91.cn/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
@@ -487,58 +540,6 @@
     
     
       <category term="sonarQube" scheme="https://www.linux91.cn/tags/sonarQube/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>安装sonarQube代码质量平台6.7.5</title>
-    <link href="https://www.linux91.cn/2019/04/01/sonarqube/an-zhuang-sonarqube-dai-ma-zhi-liang-ping-tai-6.7.5/"/>
-    <id>https://www.linux91.cn/2019/04/01/sonarqube/an-zhuang-sonarqube-dai-ma-zhi-liang-ping-tai-6.7.5/</id>
-    <published>2019-03-31T18:37:32.000Z</published>
-    <updated>2021-08-26T06:31:35.319Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;Sonar 是一个用于代码质量管理的开放平台。通过插件机制，Sonar
-        
-      
-    
-    </summary>
-    
-      <category term="sonarQube" scheme="https://www.linux91.cn/categories/sonarQube/"/>
-    
-    
-      <category term="sonarQube" scheme="https://www.linux91.cn/tags/sonarQube/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【find】文件搜索神器的那些事</title>
-    <link href="https://www.linux91.cn/2019/03/28/linux-ming-ling/find-wen-jian-sou-suo-shen-qi-de-na-xie-shi/"/>
-    <id>https://www.linux91.cn/2019/03/28/linux-ming-ling/find-wen-jian-sou-suo-shen-qi-de-na-xie-shi/</id>
-    <published>2019-03-27T18:37:32.000Z</published>
-    <updated>2021-08-26T06:07:48.147Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h4 id=&quot;find的事&quot;&gt;&lt;a href=&quot;#find的事&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="linux命令" scheme="https://www.linux91.cn/categories/linux%E5%91%BD%E4%BB%A4/"/>
-    
-    
-      <category term="linux命令" scheme="https://www.linux91.cn/tags/linux%E5%91%BD%E4%BB%A4/"/>
     
   </entry>
   

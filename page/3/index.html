@@ -241,7 +241,7 @@
         
         <li><div class="divider"></div></li>
         <li>
-            <a href="https://www.linux91.cn" class="waves-effect waves-light" target="_blank">
+            <a href="https://92.linux91.cn" class="waves-effect waves-light" target="_blank">
                 <i class="fa fa-github-square fa-fw"></i>文档
             </a>
         </li>
@@ -297,7 +297,7 @@
     }
 </style>
 
-<a href="https://www.linux91.cn" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+<a href="https://92.linux91.cn" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
    data-tooltip="文档" data-position="left" data-delay="50">
     <!-- <svg viewBox="0 0 250 250" aria-hidden="true">
         <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
@@ -354,6 +354,108 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
     <!-- 所有文章卡片 -->
     <article id="articles" class="container articles">
         <div class="row article-row">
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2019/03/18/redis/redis-zhu-cong-mo-shi-jia-shao-bing-mo-shi/" target="_blank">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="redis-主从模式加哨兵模式">
+                            
+                            <span class="card-title">redis-主从模式加哨兵模式</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                            这章节只介绍redis主从配置跟哨兵配置，不会说明redis的安装 
+redis主从模式概要流程：
+
+slave服务器配置master的连接信息（slaveof属性）；
+slave连接上master，发送psync指令
+master判断是否
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-18
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/redis/" class="post-category" target="_blank">
+                                    redis
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/redis/" target="_blank">
+                            <span class="chip bg-color">redis</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2019/03/11/tcp/time-wait-zhuang-tai-gen-close-wait-zhuang-tai-de-wen-ti/" target="_blank">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="TIME_WAIT状态跟CLOSE_WAIT状态的问题">
+                            
+                            <span class="card-title">TIME_WAIT状态跟CLOSE_WAIT状态的问题</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                            关于TCP协议的连接状态，分为以下几种LISTENING状态
+​    提供某一种服务，用于侦听远方TCP端口，当提供的服务没有被连接时，就会处于LISTENING状态，等待连接
+SYN_SENT状态
+​    SYN_SENT是客户端状态
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-11
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/TCP/" class="post-category" target="_blank">
+                                    TCP
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/TCP/" target="_blank">
+                            <span class="chip bg-color">TCP</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
@@ -850,105 +952,6 @@ erlang和最近比较火的和go语言一样是从代码级别就支持高并发
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/01/09/zookeeper/zookeepre-ji-qun-de-da-jian/" target="_blank">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="zookeepre集群的搭建">
-                            
-                            <span class="card-title">zookeepre集群的搭建</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                            zookeepre的简单原理ZooKeeper是一个开放源码的分布式应用程序协调服务，它包含一个简单的原语集，分布式应用程序可以基于它实现同步服务，配置维护和命名服务等。
-Zookeeper设计目的最终一致性：client不论连接到那个Se
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-09
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/zookeeper/" class="post-category" target="_blank">
-                                    zookeeper
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/zookeeper/" target="_blank">
-                            <span class="chip bg-color">zookeeper</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/01/07/linux-fu-wu/nodejsnpm-an-zhuang/" target="_blank">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="nodejs//npm 安装">
-                            
-                            <span class="card-title">nodejs//npm 安装</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                            第一步下载
-wget https://nodejs.org/dist/v10.15.0/node-v10.15.0-linux-x64.tar.xz
-第二步安装 
-解压：
-xz -d node-v10.15.0-linux-x64.tar.
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-07
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/linux服务/" class="post-category" target="_blank">
-                                    linux服务
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/linux服务/" target="_blank">
-                            <span class="chip bg-color">linux服务</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
         </div>
     </article>
 
@@ -987,7 +990,7 @@ xz -d node-v10.15.0-linux-x64.tar.
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">50.9k</span>
+            <span class="white-color">51.7k</span>
             
 
             <br>

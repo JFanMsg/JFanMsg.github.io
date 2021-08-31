@@ -241,7 +241,7 @@
         
         <li><div class="divider"></div></li>
         <li>
-            <a href="https://www.linux91.cn" class="waves-effect waves-light" target="_blank">
+            <a href="https://92.linux91.cn" class="waves-effect waves-light" target="_blank">
                 <i class="fa fa-github-square fa-fw"></i>文档
             </a>
         </li>
@@ -297,7 +297,7 @@
     }
 </style>
 
-<a href="https://www.linux91.cn" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+<a href="https://92.linux91.cn" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
    data-tooltip="文档" data-position="left" data-delay="50">
     <!-- <svg viewBox="0 0 250 250" aria-hidden="true">
         <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
@@ -354,6 +354,105 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
     <!-- 所有文章卡片 -->
     <article id="articles" class="container articles">
         <div class="row article-row">
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2020/04/02/qian-duan/guan-yu-shi-yong-bootstrap-ye-mian-shang-you-er-ge-mo-tai-kuang-qi-zhong-yi-ge-zhi-chu-xian-bei-jing-bu-xian-shi-kuang-wen-ti/" target="_blank">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="关于使用Bootstrap，页面上有二个模态框，其中一个只出现背景不显示框问题">
+                            
+                            <span class="card-title">关于使用Bootstrap，页面上有二个模态框，其中一个只出现背景不显示框问题</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                            在显示不出框的主体代码中，可以看到有 fade 这个类，这个类有个css样式，用于设置框的透明度， 只要把这个类给删了，或强制写：opacity: 1 !important; ，把透明给重设成默认的，就可以显示出来本人都是直接把 fade 
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-04-02
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/前端/" class="post-category" target="_blank">
+                                    前端
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/前端/" target="_blank">
+                            <span class="chip bg-color">前端</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2020/03/02/mysql/mysql-zhu-cong-jia-gou-huo-zhu-zhu-jia-gou-zhong-de-shu-ju-tong-bu-tao-lun/" target="_blank">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="mysql主从架构或主主架构中的数据同步讨论">
+                            
+                            <span class="card-title">mysql主从架构或主主架构中的数据同步讨论</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                            
+
+异步模式异步模式也是Mysql默认的数据同步机制
+
+优点：数据同步速度快，能及时响应客户端的请求。
+缺点：假如主数据库接收到客户端的写入请求，主数据库就会向从数据库发送请求并把相关的日志数据传输给从数据库时，这时主数据库不会管从数据库是
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-02
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/mysql/" class="post-category" target="_blank">
+                                    mysql
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/mysql/" target="_blank">
+                            <span class="chip bg-color">mysql</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
@@ -857,108 +956,6 @@ RDB持久化采用RDB持久方式，Redis会定期保存数据快照至一个r
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/03/18/redis/redis-zhu-cong-mo-shi-jia-shao-bing-mo-shi/" target="_blank">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="redis-主从模式加哨兵模式">
-                            
-                            <span class="card-title">redis-主从模式加哨兵模式</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                            这章节只介绍redis主从配置跟哨兵配置，不会说明redis的安装 
-redis主从模式概要流程：
-
-slave服务器配置master的连接信息（slaveof属性）；
-slave连接上master，发送psync指令
-master判断是否
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-18
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/redis/" class="post-category" target="_blank">
-                                    redis
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/redis/" target="_blank">
-                            <span class="chip bg-color">redis</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/03/11/tcp/time-wait-zhuang-tai-gen-close-wait-zhuang-tai-de-wen-ti/" target="_blank">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="TIME_WAIT状态跟CLOSE_WAIT状态的问题">
-                            
-                            <span class="card-title">TIME_WAIT状态跟CLOSE_WAIT状态的问题</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                            关于TCP协议的连接状态，分为以下几种LISTENING状态
-​    提供某一种服务，用于侦听远方TCP端口，当提供的服务没有被连接时，就会处于LISTENING状态，等待连接
-SYN_SENT状态
-​    SYN_SENT是客户端状态
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-11
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/TCP/" class="post-category" target="_blank">
-                                    TCP
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/TCP/" target="_blank">
-                            <span class="chip bg-color">TCP</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
         </div>
     </article>
 
@@ -997,7 +994,7 @@ SYN_SENT状态
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">50.9k</span>
+            <span class="white-color">51.7k</span>
             
 
             <br>
