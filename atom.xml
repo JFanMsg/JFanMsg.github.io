@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.linux91.cn/"/>
-  <updated>2021-08-31T09:49:23.181Z</updated>
+  <updated>2021-08-31T10:26:22.961Z</updated>
   <id>https://www.linux91.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>php的composer占用内存不够导致失败</title>
+    <link href="https://www.linux91.cn/2021/08/31/linux-fu-wu/php-de-composer-zhan-yong-nei-cun-bu-gou-dao-zhi-shi-bai/"/>
+    <id>https://www.linux91.cn/2021/08/31/linux-fu-wu/php-de-composer-zhan-yong-nei-cun-bu-gou-dao-zhi-shi-bai/</id>
+    <published>2021-08-31T10:20:32.000Z</published>
+    <updated>2021-08-31T10:26:22.961Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h1&gt;&lt;p&gt;公司的测试环境突然composer失败，还是内存不够占用失败&lt;/p&gt;
+&lt;pre class=&quot;line-numbers
+        
+      
+    
+    </summary>
+    
+      <category term="linux服务" scheme="https://www.linux91.cn/categories/linux%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+      <category term="php" scheme="https://www.linux91.cn/tags/php/"/>
+    
+  </entry>
   
   <entry>
     <title>新建swap缓存内存分区没生效</title>
@@ -67,33 +94,6 @@
     
     
       <category term="随笔" scheme="https://www.linux91.cn/tags/%E9%9A%8F%E7%AC%94/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>php的composer占用内存不够导致失败</title>
-    <link href="https://www.linux91.cn/2021/08/30/linux-fu-wu/php-de-composer-zhan-yong-nei-cun-bu-gou-dao-zhi-shi-bai/"/>
-    <id>https://www.linux91.cn/2021/08/30/linux-fu-wu/php-de-composer-zhan-yong-nei-cun-bu-gou-dao-zhi-shi-bai/</id>
-    <published>2021-08-30T10:37:32.000Z</published>
-    <updated>2021-08-31T10:20:45.493Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h1&gt;&lt;p&gt;公司的测试环境突然composer失败，还是内存不够占用失败&lt;/p&gt;
-&lt;pre class=&quot;line-numbers
-        
-      
-    
-    </summary>
-    
-      <category term="linux服务" scheme="https://www.linux91.cn/categories/linux%E6%9C%8D%E5%8A%A1/"/>
-    
-    
-      <category term="php" scheme="https://www.linux91.cn/tags/php/"/>
     
   </entry>
   

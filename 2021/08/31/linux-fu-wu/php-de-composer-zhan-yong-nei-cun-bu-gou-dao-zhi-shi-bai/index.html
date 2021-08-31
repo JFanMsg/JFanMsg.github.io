@@ -459,7 +459,7 @@ PHP Fatal error: Allowed memory size of 2147483648 bytes exhausted (tried to all
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-08-30
+                    2021-08-31
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -473,7 +473,7 @@ PHP Fatal error: Allowed memory size of 2147483648 bytes exhausted (tried to all
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    261
+                    280
                 </div>
                 
 
@@ -492,20 +492,28 @@ PHP Fatal error: Allowed memory size of 2147483648 bytes exhausted (tried to all
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>公司的测试环境突然composer失败，还是内存不够占用失败</p>
-<pre class="line-numbers language-php"><code class="language-php"><span class="token constant">PHP</span> Fatal error<span class="token punctuation">:</span> Allowed memory size of <span class="token number">2147483648</span> bytes <span class="token function">exhausted</span> <span class="token punctuation">(</span>tried to allocate <span class="token number">4096</span> bytes<span class="token punctuation">)</span> in phar<span class="token punctuation">:</span><span class="token comment" spellcheck="true">///usr/local/composer/composer.phar/src/Composer/DependencyResolver/RuleWatchGraph.php on line 52</span>
-Fatal error<span class="token punctuation">:</span> Allowed memory size of <span class="token number">2147483648</span> bytes <span class="token function">exhausted</span> <span class="token punctuation">(</span>tried to allocate <span class="token number">4096</span> bytes<span class="token punctuation">)</span> in phar<span class="token punctuation">:</span><span class="token comment" spellcheck="true">///usr/local/composer/composer.phar/src/Composer/DependencyResolver/RuleWatchGraph.php on line 52</span>
-Check https<span class="token punctuation">:</span><span class="token comment" spellcheck="true">//getcomposer.org/doc/articles/troubleshooting.md#memory-limit-errors for more info on how to handle out of memory errors.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-shell"><code class="language-shell">PHP Fatal error: Allowed memory size of 2147483648 bytes exhausted (tried to allocate 4096 bytes) in phar:///usr/local/composer/composer.phar/src/Composer/DependencyResolver/RuleWatchGraph.php on line 52
+Fatal error: Allowed memory size of 2147483648 bytes exhausted (tried to allocate 4096 bytes) in phar:///usr/local/composer/composer.phar/src/Composer/DependencyResolver/RuleWatchGraph.php on line 52
+Check https://getcomposer.org/doc/articles/troubleshooting.md#memory-limit-errors for more info on how to handle out of memory errors.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>目前有二种解决思路</p>
-<pre><code>1. 采用Swap虚拟内存来增加内存，使用Swap确实是可以，但是还是时不时失败，那么这个解决思路放弃
- 2. 采用php限制内存
-      1. 竟然系统不满足资源，那么我们就要让它限制到系统能给到的最大资源
-      2. 限制php.ini的内存
-      3. 使用composer加上资源限制</code></pre><h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p><strong>第一步：</strong></p>
+<ol>
+<li><p>采用Swap虚拟内存来增加内存，使用Swap确实是可以，但是还是时不时失败，那么这个解决思路放弃，想要尝试这个方式的小伙伴可以去我博客找Swap相关文章</p>
+<ol start="2">
+<li>采用php限制内存<ol>
+<li>竟然系统不满足资源，那么我们就要让它限制到系统能给到的最大资源</li>
+<li>限制php.ini的内存</li>
+<li>使用composer加上资源限制</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p><strong>第一步：</strong></p>
 <p>打开php.ini配置文件，找到memory_limit选项，按系统资源进行限制</p>
-<pre class="line-numbers language-php"><code class="language-php">memory_limit <span class="token operator">=</span> <span class="token constant">1024M</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell"><code class="language-shell">memory_limit = 1024M<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><strong>第二步</strong></p>
 <p>使用composer命令时，前面加上 COMPOSER_MEMORY_LIMIT=-1</p>
-<pre class="line-numbers language-php"><code class="language-php"><span class="token constant">COMPOSER_MEMORY_LIMIT</span><span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span> composer install<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell"><code class="language-shell">COMPOSER_MEMORY_LIMIT=-1 composer install<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
             </div>
             <hr />
@@ -542,7 +550,7 @@ Check https<span class="token punctuation">:</span><span class="token comment" s
                   property="dct:title" rel="dct:type">
                     《php的composer占用内存不够导致失败》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/08/30/linux-fu-wu/php-de-composer-zhan-yong-nei-cun-bu-gou-dao-zhi-shi-bai/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/08/31/linux-fu-wu/php-de-composer-zhan-yong-nei-cun-bu-gou-dao-zhi-shi-bai/" property="cc:attributionName"
                rel="cc:attributionURL">
                 江松泉
             </a> 采用
@@ -583,7 +591,7 @@ Check https<span class="token punctuation">:</span><span class="token comment" s
         repo: 'JFanMsg.github.io',
         owner: 'JFanMsg',
         admin: "JFanMsg",
-        id: '2021/08/30/linux-fu-wu/php-de-composer-zhan-yong-nei-cun-bu-gou-dao-zhi-shi-bai/',
+        id: '2021/08/31/linux-fu-wu/php-de-composer-zhan-yong-nei-cun-bu-gou-dao-zhi-shi-bai/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -604,51 +612,49 @@ Check https<span class="token punctuation">:</span><span class="token comment" s
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/08/31/sui-bi/wen-dang-zheng-shi-shang-xian/">
+                <a href="/2021/08/31/linux-fu-wu/php-de-composer-zhan-yong-nei-cun-bu-gou-dao-zhi-shi-bai/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="文档正式上线">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="php的composer占用内存不够导致失败">
                         
-                        <span class="card-title">文档正式上线</span>
+                        <span class="card-title">php的composer占用内存不够导致失败</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            直连入口：https://92.linux91.cn/文档正式上线啦，页面有二个入口：
-
-
-文档页面：
-
-
+                            背景公司的测试环境突然composer失败，还是内存不够占用失败
+PHP Fatal error: Allowed memory size of 2147483648 bytes exhausted (tried to allocate 4
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-08-31
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-08-31
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/随笔/" class="post-category" target="_blank">
-                                    随笔
+                            <a href="/categories/linux服务/" class="post-category" target="_blank">
+                                    linux服务
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/随笔/" target="_blank">
-                        <span class="chip bg-color">随笔</span>
+                    <a href="/tags/php/" target="_blank">
+                        <span class="chip bg-color">php</span>
                     </a>
                     
                 </div>
@@ -662,37 +668,33 @@ Check https<span class="token punctuation">:</span><span class="token comment" s
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/08/30/python/yong-yu-vuepress-zi-dong-sheng-cheng-pei-zhi-jiao-ben/">
+                <a href="/2021/08/31/linux/xin-jian-swap-huan-cun-nei-cun-fen-qu-mei-sheng-xiao/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="用于vuepress自动生成配置脚本">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="新建swap缓存内存分区没生效">
                         
-                        <span class="card-title">用于vuepress自动生成配置脚本</span>
+                        <span class="card-title">新建swap缓存内存分区没生效</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            背景最近采用vuepress来存放文档，配置起来太麻烦了，所以写了个脚本，自动生成配置
-脚本import os
-
-conf = {
-    'Python':{ # 多目录结构
-        'nav':{
-            'te
+                            划分了swap分区，但在内存很高时，swap的使用率仍是0
+查看系统内存参数vm.swappiness
+vm.swappiness：控制换出运行时内存的相对权重，参数值大小对如何使用swap分区有很大联系。值越大，表示越积极使用swap分区
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-08-30
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-08-31
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/python/" class="post-category" target="_blank">
-                                    python
+                            <a href="/categories/linux/" class="post-category" target="_blank">
+                                    linux
                                 </a>
                             
                             
@@ -702,8 +704,8 @@ conf = {
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python/" target="_blank">
-                        <span class="chip bg-color">python</span>
+                    <a href="/tags/linux/" target="_blank">
+                        <span class="chip bg-color">linux</span>
                     </a>
                     
                 </div>
@@ -877,7 +879,7 @@ conf = {
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">52k</span>
+            <span class="white-color">52.1k</span>
             
 
             <br>
