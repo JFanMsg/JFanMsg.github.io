@@ -598,53 +598,48 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/08/31/sui-bi/wen-dang-zheng-shi-shang-xian/">
+                <a href="/2021/08/31/linux/xin-jian-swap-huan-cun-nei-cun-fen-qu-mei-sheng-xiao/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="文档正式上线">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="新建swap缓存内存分区没生效">
                         
-                        <span class="card-title">文档正式上线</span>
+                        <span class="card-title">新建swap缓存内存分区没生效</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            直连入口：https://92.linux91.cn/文档正式上线啦，页面有二个入口：
-
-
-文档页面：
-
-
+                            划分了swap分区，但在内存很高时，swap的使用率仍是0
+查看系统内存参数vm.swappiness
+vm.swappiness：控制换出运行时内存的相对权重，参数值大小对如何使用swap分区有很大联系。值越大，表示越积极使用swap分区
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-08-31
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-08-31
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/随笔/" class="post-category" target="_blank">
-                                    随笔
+                            <a href="/categories/linux/" class="post-category" target="_blank">
+                                    linux
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/随笔/" target="_blank">
-                        <span class="chip bg-color">随笔</span>
+                    <a href="/tags/linux/" target="_blank">
+                        <span class="chip bg-color">linux</span>
                     </a>
                     
                 </div>
@@ -658,25 +653,20 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/08/30/python/yong-yu-vuepress-zi-dong-sheng-cheng-pei-zhi-jiao-ben/">
+                <a href="/2021/08/30/linux-fu-wu/php-de-composer-zhan-yong-nei-cun-bu-gou-dao-zhi-shi-bai/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="用于vuepress自动生成配置脚本">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="php的composer占用内存不够导致失败">
                         
-                        <span class="card-title">用于vuepress自动生成配置脚本</span>
+                        <span class="card-title">php的composer占用内存不够导致失败</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            背景最近采用vuepress来存放文档，配置起来太麻烦了，所以写了个脚本，自动生成配置
-脚本import os
-
-conf = {
-    'Python':{ # 多目录结构
-        'nav':{
-            'te
+                            背景公司的测试环境突然composer失败，还是内存不够占用失败
+PHP Fatal error: Allowed memory size of 2147483648 bytes exhausted (tried to allocate 4
                         
                     </div>
                     <div class="publish-info">
@@ -687,8 +677,8 @@ conf = {
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/python/" class="post-category" target="_blank">
-                                    python
+                            <a href="/categories/linux服务/" class="post-category" target="_blank">
+                                    linux服务
                                 </a>
                             
                             
@@ -698,8 +688,8 @@ conf = {
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python/" target="_blank">
-                        <span class="chip bg-color">python</span>
+                    <a href="/tags/php/" target="_blank">
+                        <span class="chip bg-color">php</span>
                     </a>
                     
                 </div>
@@ -873,7 +863,7 @@ conf = {
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">51.7k</span>
+            <span class="white-color">52k</span>
             
 
             <br>

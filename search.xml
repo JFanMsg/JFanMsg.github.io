@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>新建swap缓存内存分区没生效</title>
+      <link href="/2021/08/31/linux/xin-jian-swap-huan-cun-nei-cun-fen-qu-mei-sheng-xiao/"/>
+      <url>/2021/08/31/linux/xin-jian-swap-huan-cun-nei-cun-fen-qu-mei-sheng-xiao/</url>
+      
+        <content type="html"><![CDATA[<p>划分了swap分区，但在内存很高时，swap的使用率仍是0</p><p>查看系统内存参数vm.swappiness</p><p>vm.swappiness：控制换出运行时内存的相对权重，参数值大小对如何使用swap分区有很大联系。值越大，表示越积极使用swap分区，越小表示越积极使用物理内存</p><p>修改vm.swappiness参数为60</p><pre class="line-numbers language-shell"><code class="language-shell">vim /etc/sysctl.confvm.swappiness = 60sysctl -p<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>文档正式上线</title>
       <link href="/2021/08/31/sui-bi/wen-dang-zheng-shi-shang-xian/"/>
       <url>/2021/08/31/sui-bi/wen-dang-zheng-shi-shang-xian/</url>
@@ -21,6 +46,31 @@
         <tags>
             
             <tag> 随笔 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>php的composer占用内存不够导致失败</title>
+      <link href="/2021/08/30/linux-fu-wu/php-de-composer-zhan-yong-nei-cun-bu-gou-dao-zhi-shi-bai/"/>
+      <url>/2021/08/30/linux-fu-wu/php-de-composer-zhan-yong-nei-cun-bu-gou-dao-zhi-shi-bai/</url>
+      
+        <content type="html"><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>公司的测试环境突然composer失败，还是内存不够占用失败</p><pre class="line-numbers language-php"><code class="language-php"><span class="token constant">PHP</span> Fatal error<span class="token punctuation">:</span> Allowed memory size of <span class="token number">2147483648</span> bytes <span class="token function">exhausted</span> <span class="token punctuation">(</span>tried to allocate <span class="token number">4096</span> bytes<span class="token punctuation">)</span> in phar<span class="token punctuation">:</span><span class="token comment" spellcheck="true">///usr/local/composer/composer.phar/src/Composer/DependencyResolver/RuleWatchGraph.php on line 52</span>Fatal error<span class="token punctuation">:</span> Allowed memory size of <span class="token number">2147483648</span> bytes <span class="token function">exhausted</span> <span class="token punctuation">(</span>tried to allocate <span class="token number">4096</span> bytes<span class="token punctuation">)</span> in phar<span class="token punctuation">:</span><span class="token comment" spellcheck="true">///usr/local/composer/composer.phar/src/Composer/DependencyResolver/RuleWatchGraph.php on line 52</span>Check https<span class="token punctuation">:</span><span class="token comment" spellcheck="true">//getcomposer.org/doc/articles/troubleshooting.md#memory-limit-errors for more info on how to handle out of memory errors.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>目前有二种解决思路</p><pre><code>1. 采用Swap虚拟内存来增加内存，使用Swap确实是可以，但是还是时不时失败，那么这个解决思路放弃 2. 采用php限制内存      1. 竟然系统不满足资源，那么我们就要让它限制到系统能给到的最大资源      2. 限制php.ini的内存      3. 使用composer加上资源限制</code></pre><h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p><strong>第一步：</strong></p><p>打开php.ini配置文件，找到memory_limit选项，按系统资源进行限制</p><pre class="line-numbers language-php"><code class="language-php">memory_limit <span class="token operator">=</span> <span class="token constant">1024M</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><strong>第二步</strong></p><p>使用composer命令时，前面加上 COMPOSER_MEMORY_LIMIT=-1</p><pre class="line-numbers language-php"><code class="language-php"><span class="token constant">COMPOSER_MEMORY_LIMIT</span><span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span> composer install<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> linux服务 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> php </tag>
             
         </tags>
       
@@ -1929,11 +1979,11 @@
     
     
     <entry>
-      <title>centos7--mavem3.5安装</title>
-      <link href="/2018/09/20/linux/centos7-mavem3.5-an-zhuang/"/>
-      <url>/2018/09/20/linux/centos7-mavem3.5-an-zhuang/</url>
+      <title>Liunx--centos7--JDK8安装</title>
+      <link href="/2018/09/20/linux/liunx-centos7-jdk8-an-zhuang/"/>
+      <url>/2018/09/20/linux/liunx-centos7-jdk8-an-zhuang/</url>
       
-        <content type="html"><![CDATA[<p>从官方网上下载mavem3.5：<a href="http://maven.apache.org/download.cgi" target="_blank" rel="noopener">http://maven.apache.org/download.cgi</a></p><p>下载之后上传到linux系统上</p><p>也可以在linux系统上直接下载，看系统网速</p><p>wget <a href="http://mirrors.shu.edu.cn/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz" target="_blank" rel="noopener">http://mirrors.shu.edu.cn/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz</a></p><p>解压并存放在指定目录中</p><p>   tar -zxf apache-maven-3.5.3-bin.tar.gz</p><p>   mv apache-maven-3.5.3 /usr/local/maven</p><p>配置mavem的系统环境</p><p>   vim /etc/profile</p><hr><p>   ##MAVEN<br>   export M2_HOME=/usr/local/maven<br>   export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$M2_HOME/bin:$PATH</p><hr><p>   source /etc/profile</p><p>测试mavem是否配置成功</p><p>   mvn -v</p><p>   成功信息如下</p><p>​      Apache Maven 3.5.3 (3383c37e1f9e9b3bc3df5050c29c8aff9f295297; 2018-02-25T03:49:05+08:00)<br>​      Maven home: /usr/local/maven</p><p>如果有安装JDK跟mavem的</p><p>   使用mvn -v 就会跟JDK的系统配置信息一起出现。如下</p><p>​      Apache Maven 3.5.3 (3383c37e1f9e9b3bc3df5050c29c8aff9f295297; 2018-02-25T03:49:05+08:00)<br>​      Maven home: /usr/local/maven<br>​      Java version: 1.8.0_181, vendor: Oracle Corporation<br>​      Java home: /usr/local/jdk/jre<br>​      Default locale: en_US, platform encoding: UTF-8<br>​      OS name: “linux”, version: “3.10.0-693.el7.x86_64”, arch: “amd64”, family: “unix”</p>]]></content>
+        <content type="html"><![CDATA[<p>从官方网上下载JDK8：<a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">https://www.oracle.com/technetwork/java/javase/downloads/index.html</a></p><p>下载之后上传到linux系统上</p><p>也可以在linux系统上直接下载，看系统网速</p><p>wget <a href="http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.tar.gz" target="_blank" rel="noopener">http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.tar.gz</a></p><ul><li>解压并存放到指定目录中</li></ul><p>​     tar -zxf jdk-8u181-linux-x64.tar.gz</p><p>​     mv jdk1.8.0_181/ /usr/local/jdk</p><ul><li>配置JDK的系统环境</li></ul><p>​     vim /etc/profile</p><hr><p>​     #JDK<br>​     JAVA_HOME=/usr/local/jdk<br>​     CLASSPATH=$JAVA_HOME/lib/<br>​     PATH=$PATH:$JAVA_HOME/bin<br>​     export PATH JAVA_HOME CLASSPATH</p><hr><p>​     source /etc/profile</p><ul><li>测试JDK8是否配置成功</li></ul><p>​     java -version</p><p>​     成功信息：</p><p>​      java version “1.8.0_181”<br>​      Java(TM) SE Runtime Environment (build 1.8.0_181-b13)<br>​      Java HotSpot(TM) 64-Bit Server VM (build 25.181-b13, mixed mode)</p><h3 id="修改linux-中的JDK版本"><a href="#修改linux-中的JDK版本" class="headerlink" title="修改linux 中的JDK版本"></a>修改linux 中的JDK版本</h3><p>删除jdk文件</p><p>rm -f /usr/bin/java </p><p>rm -f /usr/bin/javac</p><p>rm -f /etc/alternatives/java</p><p>rm -f /etc/alternatives/javac</p><p>在添加/etc/profile中的JDK信息，就可以更改Linux系统自带的老版本JDK</p>]]></content>
       
       
       <categories>
@@ -1954,11 +2004,11 @@
     
     
     <entry>
-      <title>Liunx--centos7--JDK8安装</title>
-      <link href="/2018/09/20/linux/liunx-centos7-jdk8-an-zhuang/"/>
-      <url>/2018/09/20/linux/liunx-centos7-jdk8-an-zhuang/</url>
+      <title>centos7--mavem3.5安装</title>
+      <link href="/2018/09/20/linux/centos7-mavem3.5-an-zhuang/"/>
+      <url>/2018/09/20/linux/centos7-mavem3.5-an-zhuang/</url>
       
-        <content type="html"><![CDATA[<p>从官方网上下载JDK8：<a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">https://www.oracle.com/technetwork/java/javase/downloads/index.html</a></p><p>下载之后上传到linux系统上</p><p>也可以在linux系统上直接下载，看系统网速</p><p>wget <a href="http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.tar.gz" target="_blank" rel="noopener">http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.tar.gz</a></p><ul><li>解压并存放到指定目录中</li></ul><p>​     tar -zxf jdk-8u181-linux-x64.tar.gz</p><p>​     mv jdk1.8.0_181/ /usr/local/jdk</p><ul><li>配置JDK的系统环境</li></ul><p>​     vim /etc/profile</p><hr><p>​     #JDK<br>​     JAVA_HOME=/usr/local/jdk<br>​     CLASSPATH=$JAVA_HOME/lib/<br>​     PATH=$PATH:$JAVA_HOME/bin<br>​     export PATH JAVA_HOME CLASSPATH</p><hr><p>​     source /etc/profile</p><ul><li>测试JDK8是否配置成功</li></ul><p>​     java -version</p><p>​     成功信息：</p><p>​      java version “1.8.0_181”<br>​      Java(TM) SE Runtime Environment (build 1.8.0_181-b13)<br>​      Java HotSpot(TM) 64-Bit Server VM (build 25.181-b13, mixed mode)</p><h3 id="修改linux-中的JDK版本"><a href="#修改linux-中的JDK版本" class="headerlink" title="修改linux 中的JDK版本"></a>修改linux 中的JDK版本</h3><p>删除jdk文件</p><p>rm -f /usr/bin/java </p><p>rm -f /usr/bin/javac</p><p>rm -f /etc/alternatives/java</p><p>rm -f /etc/alternatives/javac</p><p>在添加/etc/profile中的JDK信息，就可以更改Linux系统自带的老版本JDK</p>]]></content>
+        <content type="html"><![CDATA[<p>从官方网上下载mavem3.5：<a href="http://maven.apache.org/download.cgi" target="_blank" rel="noopener">http://maven.apache.org/download.cgi</a></p><p>下载之后上传到linux系统上</p><p>也可以在linux系统上直接下载，看系统网速</p><p>wget <a href="http://mirrors.shu.edu.cn/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz" target="_blank" rel="noopener">http://mirrors.shu.edu.cn/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz</a></p><p>解压并存放在指定目录中</p><p>   tar -zxf apache-maven-3.5.3-bin.tar.gz</p><p>   mv apache-maven-3.5.3 /usr/local/maven</p><p>配置mavem的系统环境</p><p>   vim /etc/profile</p><hr><p>   ##MAVEN<br>   export M2_HOME=/usr/local/maven<br>   export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$M2_HOME/bin:$PATH</p><hr><p>   source /etc/profile</p><p>测试mavem是否配置成功</p><p>   mvn -v</p><p>   成功信息如下</p><p>​      Apache Maven 3.5.3 (3383c37e1f9e9b3bc3df5050c29c8aff9f295297; 2018-02-25T03:49:05+08:00)<br>​      Maven home: /usr/local/maven</p><p>如果有安装JDK跟mavem的</p><p>   使用mvn -v 就会跟JDK的系统配置信息一起出现。如下</p><p>​      Apache Maven 3.5.3 (3383c37e1f9e9b3bc3df5050c29c8aff9f295297; 2018-02-25T03:49:05+08:00)<br>​      Maven home: /usr/local/maven<br>​      Java version: 1.8.0_181, vendor: Oracle Corporation<br>​      Java home: /usr/local/jdk/jre<br>​      Default locale: en_US, platform encoding: UTF-8<br>​      OS name: “linux”, version: “3.10.0-693.el7.x86_64”, arch: “amd64”, family: “unix”</p>]]></content>
       
       
       <categories>

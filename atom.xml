@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.linux91.cn/"/>
-  <updated>2021-08-31T08:21:44.456Z</updated>
+  <updated>2021-08-31T09:49:23.181Z</updated>
   <id>https://www.linux91.cn/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>新建swap缓存内存分区没生效</title>
+    <link href="https://www.linux91.cn/2021/08/31/linux/xin-jian-swap-huan-cun-nei-cun-fen-qu-mei-sheng-xiao/"/>
+    <id>https://www.linux91.cn/2021/08/31/linux/xin-jian-swap-huan-cun-nei-cun-fen-qu-mei-sheng-xiao/</id>
+    <published>2021-08-31T09:37:32.000Z</published>
+    <updated>2021-08-31T09:49:23.181Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;划分了swap分区，但在内存很高时，swap的使用率仍是0&lt;/p&gt;
+&lt;p&gt;查看系统内存参数vm.swappiness&lt;/p&gt;
+&lt;p&gt;vm.swappiness：控制换出运行时内存的相对权重，参数值大小对如何使用swap分区有很大联系。值越大，表示越积极使用swap分区，越小
+        
+      
+    
+    </summary>
+    
+      <category term="linux" scheme="https://www.linux91.cn/categories/linux/"/>
+    
+    
+      <category term="linux" scheme="https://www.linux91.cn/tags/linux/"/>
+    
+  </entry>
   
   <entry>
     <title>文档正式上线</title>
@@ -39,6 +67,33 @@
     
     
       <category term="随笔" scheme="https://www.linux91.cn/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>php的composer占用内存不够导致失败</title>
+    <link href="https://www.linux91.cn/2021/08/30/linux-fu-wu/php-de-composer-zhan-yong-nei-cun-bu-gou-dao-zhi-shi-bai/"/>
+    <id>https://www.linux91.cn/2021/08/30/linux-fu-wu/php-de-composer-zhan-yong-nei-cun-bu-gou-dao-zhi-shi-bai/</id>
+    <published>2021-08-30T10:37:32.000Z</published>
+    <updated>2021-08-31T10:20:45.493Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h1&gt;&lt;p&gt;公司的测试环境突然composer失败，还是内存不够占用失败&lt;/p&gt;
+&lt;pre class=&quot;line-numbers
+        
+      
+    
+    </summary>
+    
+      <category term="linux服务" scheme="https://www.linux91.cn/categories/linux%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+      <category term="php" scheme="https://www.linux91.cn/tags/php/"/>
     
   </entry>
   
@@ -479,58 +534,6 @@
         
         
           &lt;h2 id=&quot;第一步&quot;&gt;&lt;a href=&quot;#第一步&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="sonarQube" scheme="https://www.linux91.cn/categories/sonarQube/"/>
-    
-    
-      <category term="sonarQube" scheme="https://www.linux91.cn/tags/sonarQube/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>安装sonarqube-scanner</title>
-    <link href="https://www.linux91.cn/2019/04/03/sonarqube/an-zhuang-sonarqube-scanner/"/>
-    <id>https://www.linux91.cn/2019/04/03/sonarqube/an-zhuang-sonarqube-scanner/</id>
-    <published>2019-04-02T18:37:32.000Z</published>
-    <updated>2021-08-26T06:35:11.357Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;第一步&quot;&gt;&lt;a href=&quot;#第一步&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="sonarQube" scheme="https://www.linux91.cn/categories/sonarQube/"/>
-    
-    
-      <category term="sonarQube" scheme="https://www.linux91.cn/tags/sonarQube/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>sonarQube代码质量平台 配置</title>
-    <link href="https://www.linux91.cn/2019/04/02/sonarqube/sonarqube-dai-ma-zhi-liang-ping-tai-pei-zhi/"/>
-    <id>https://www.linux91.cn/2019/04/02/sonarqube/sonarqube-dai-ma-zhi-liang-ping-tai-pei-zhi/</id>
-    <published>2019-04-01T18:37:32.000Z</published>
-    <updated>2021-08-26T06:33:59.036Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;连接配置MySQL&quot;&gt;&lt;a href=&quot;#连接配置MySQL&quot; class=&quot;headerlink&quot;
         
       
     
