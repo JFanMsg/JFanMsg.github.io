@@ -497,14 +497,11 @@ Fatal error: Allowed memory size of 2147483648 bytes exhausted (tried to allocat
 Check https://getcomposer.org/doc/articles/troubleshooting.md#memory-limit-errors for more info on how to handle out of memory errors.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>目前有二种解决思路</p>
 <ol>
-<li><p>采用Swap虚拟内存来增加内存，使用Swap确实是可以，但是还是时不时失败，那么这个解决思路放弃，想要尝试这个方式的小伙伴可以去我博客找Swap相关文章</p>
-<ol start="2">
+<li>采用Swap虚拟内存来增加内存，使用Swap确实是可以，但是还是时不时失败，那么这个解决思路放弃，想要尝试这个方式的小伙伴可以去我博客找Swap相关文章</li>
 <li>采用php限制内存<ol>
 <li>竟然系统不满足资源，那么我们就要让它限制到系统能给到的最大资源</li>
 <li>限制php.ini的内存</li>
 <li>使用composer加上资源限制</li>
-</ol>
-</li>
 </ol>
 </li>
 </ol>
