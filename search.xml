@@ -8,7 +8,7 @@
       <link href="/2021/08/31/linux-fu-wu/php-de-composer-zhan-yong-nei-cun-bu-gou-dao-zhi-shi-bai/"/>
       <url>/2021/08/31/linux-fu-wu/php-de-composer-zhan-yong-nei-cun-bu-gou-dao-zhi-shi-bai/</url>
       
-        <content type="html"><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>公司的测试环境突然composer失败，还是内存不够占用失败</p><pre class="line-numbers language-shell"><code class="language-shell">PHP Fatal error: Allowed memory size of 2147483648 bytes exhausted (tried to allocate 4096 bytes) in phar:///usr/local/composer/composer.phar/src/Composer/DependencyResolver/RuleWatchGraph.php on line 52Fatal error: Allowed memory size of 2147483648 bytes exhausted (tried to allocate 4096 bytes) in phar:///usr/local/composer/composer.phar/src/Composer/DependencyResolver/RuleWatchGraph.php on line 52Check https://getcomposer.org/doc/articles/troubleshooting.md#memory-limit-errors for more info on how to handle out of memory errors.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>目前有二种解决思路</p><ol><li>采用Swap虚拟内存来增加内存，使用Swap确实是可以，但是还是时不时失败，那么这个解决思路放弃，想要尝试这个方式的小伙伴可以去我博客找Swap相关文章</li><li>采用php限制内存<ol><li>竟然系统不满足资源，那么我们就要让它限制到系统能给到的最大资源</li><li>限制php.ini的内存</li><li>使用composer加上资源限制</li></ol></li></ol><h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p><strong>第一步：</strong></p><p>打开php.ini配置文件，找到memory_limit选项，按系统资源进行限制</p><pre class="line-numbers language-shell"><code class="language-shell">memory_limit = 1024M<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><strong>第二步</strong></p><p>使用composer命令时，前面加上 COMPOSER_MEMORY_LIMIT=-1</p><pre class="line-numbers language-shell"><code class="language-shell">COMPOSER_MEMORY_LIMIT=-1 composer install<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>]]></content>
+        <content type="html"><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>公司的测试环境突然composer失败，原因是内存不够编译失败</p><pre class="line-numbers language-shell"><code class="language-shell">PHP Fatal error: Allowed memory size of 2147483648 bytes exhausted (tried to allocate 4096 bytes) in phar:///usr/local/composer/composer.phar/src/Composer/DependencyResolver/RuleWatchGraph.php on line 52Fatal error: Allowed memory size of 2147483648 bytes exhausted (tried to allocate 4096 bytes) in phar:///usr/local/composer/composer.phar/src/Composer/DependencyResolver/RuleWatchGraph.php on line 52Check https://getcomposer.org/doc/articles/troubleshooting.md#memory-limit-errors for more info on how to handle out of memory errors.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>目前有二种解决思路</p><ol><li>采用Swap虚拟内存来增加内存，使用Swap确实是可以，但是还是时不时失败，那么这个解决思路放弃，想要尝试这个方式的小伙伴可以去我博客找Swap相关文章</li><li>采用php限制内存<ol><li>竟然系统不满足资源，那么我们就要让它限制到系统能给到的最大资源</li><li>限制php.ini的内存</li><li>使用composer加上资源限制</li></ol></li></ol><h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p><strong>第一步：</strong></p><p>打开php.ini配置文件，找到memory_limit选项，按系统资源进行限制</p><pre class="line-numbers language-shell"><code class="language-shell">memory_limit = 1024M<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><strong>第二步</strong></p><p>使用composer命令时，前面加上 COMPOSER_MEMORY_LIMIT=-1</p><pre class="line-numbers language-shell"><code class="language-shell">COMPOSER_MEMORY_LIMIT=-1 composer install<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>]]></content>
       
       
       <categories>
@@ -1979,11 +1979,11 @@
     
     
     <entry>
-      <title>Liunx--centos7--JDK8安装</title>
-      <link href="/2018/09/20/linux/liunx-centos7-jdk8-an-zhuang/"/>
-      <url>/2018/09/20/linux/liunx-centos7-jdk8-an-zhuang/</url>
+      <title>centos7--mavem3.5安装</title>
+      <link href="/2018/09/20/linux/centos7-mavem3.5-an-zhuang/"/>
+      <url>/2018/09/20/linux/centos7-mavem3.5-an-zhuang/</url>
       
-        <content type="html"><![CDATA[<p>从官方网上下载JDK8：<a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">https://www.oracle.com/technetwork/java/javase/downloads/index.html</a></p><p>下载之后上传到linux系统上</p><p>也可以在linux系统上直接下载，看系统网速</p><p>wget <a href="http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.tar.gz" target="_blank" rel="noopener">http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.tar.gz</a></p><ul><li>解压并存放到指定目录中</li></ul><p>​     tar -zxf jdk-8u181-linux-x64.tar.gz</p><p>​     mv jdk1.8.0_181/ /usr/local/jdk</p><ul><li>配置JDK的系统环境</li></ul><p>​     vim /etc/profile</p><hr><p>​     #JDK<br>​     JAVA_HOME=/usr/local/jdk<br>​     CLASSPATH=$JAVA_HOME/lib/<br>​     PATH=$PATH:$JAVA_HOME/bin<br>​     export PATH JAVA_HOME CLASSPATH</p><hr><p>​     source /etc/profile</p><ul><li>测试JDK8是否配置成功</li></ul><p>​     java -version</p><p>​     成功信息：</p><p>​      java version “1.8.0_181”<br>​      Java(TM) SE Runtime Environment (build 1.8.0_181-b13)<br>​      Java HotSpot(TM) 64-Bit Server VM (build 25.181-b13, mixed mode)</p><h3 id="修改linux-中的JDK版本"><a href="#修改linux-中的JDK版本" class="headerlink" title="修改linux 中的JDK版本"></a>修改linux 中的JDK版本</h3><p>删除jdk文件</p><p>rm -f /usr/bin/java </p><p>rm -f /usr/bin/javac</p><p>rm -f /etc/alternatives/java</p><p>rm -f /etc/alternatives/javac</p><p>在添加/etc/profile中的JDK信息，就可以更改Linux系统自带的老版本JDK</p>]]></content>
+        <content type="html"><![CDATA[<p>从官方网上下载mavem3.5：<a href="http://maven.apache.org/download.cgi" target="_blank" rel="noopener">http://maven.apache.org/download.cgi</a></p><p>下载之后上传到linux系统上</p><p>也可以在linux系统上直接下载，看系统网速</p><p>wget <a href="http://mirrors.shu.edu.cn/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz" target="_blank" rel="noopener">http://mirrors.shu.edu.cn/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz</a></p><p>解压并存放在指定目录中</p><p>   tar -zxf apache-maven-3.5.3-bin.tar.gz</p><p>   mv apache-maven-3.5.3 /usr/local/maven</p><p>配置mavem的系统环境</p><p>   vim /etc/profile</p><hr><p>   ##MAVEN<br>   export M2_HOME=/usr/local/maven<br>   export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$M2_HOME/bin:$PATH</p><hr><p>   source /etc/profile</p><p>测试mavem是否配置成功</p><p>   mvn -v</p><p>   成功信息如下</p><p>​      Apache Maven 3.5.3 (3383c37e1f9e9b3bc3df5050c29c8aff9f295297; 2018-02-25T03:49:05+08:00)<br>​      Maven home: /usr/local/maven</p><p>如果有安装JDK跟mavem的</p><p>   使用mvn -v 就会跟JDK的系统配置信息一起出现。如下</p><p>​      Apache Maven 3.5.3 (3383c37e1f9e9b3bc3df5050c29c8aff9f295297; 2018-02-25T03:49:05+08:00)<br>​      Maven home: /usr/local/maven<br>​      Java version: 1.8.0_181, vendor: Oracle Corporation<br>​      Java home: /usr/local/jdk/jre<br>​      Default locale: en_US, platform encoding: UTF-8<br>​      OS name: “linux”, version: “3.10.0-693.el7.x86_64”, arch: “amd64”, family: “unix”</p>]]></content>
       
       
       <categories>
@@ -2004,11 +2004,11 @@
     
     
     <entry>
-      <title>centos7--mavem3.5安装</title>
-      <link href="/2018/09/20/linux/centos7-mavem3.5-an-zhuang/"/>
-      <url>/2018/09/20/linux/centos7-mavem3.5-an-zhuang/</url>
+      <title>Liunx--centos7--JDK8安装</title>
+      <link href="/2018/09/20/linux/liunx-centos7-jdk8-an-zhuang/"/>
+      <url>/2018/09/20/linux/liunx-centos7-jdk8-an-zhuang/</url>
       
-        <content type="html"><![CDATA[<p>从官方网上下载mavem3.5：<a href="http://maven.apache.org/download.cgi" target="_blank" rel="noopener">http://maven.apache.org/download.cgi</a></p><p>下载之后上传到linux系统上</p><p>也可以在linux系统上直接下载，看系统网速</p><p>wget <a href="http://mirrors.shu.edu.cn/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz" target="_blank" rel="noopener">http://mirrors.shu.edu.cn/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz</a></p><p>解压并存放在指定目录中</p><p>   tar -zxf apache-maven-3.5.3-bin.tar.gz</p><p>   mv apache-maven-3.5.3 /usr/local/maven</p><p>配置mavem的系统环境</p><p>   vim /etc/profile</p><hr><p>   ##MAVEN<br>   export M2_HOME=/usr/local/maven<br>   export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$M2_HOME/bin:$PATH</p><hr><p>   source /etc/profile</p><p>测试mavem是否配置成功</p><p>   mvn -v</p><p>   成功信息如下</p><p>​      Apache Maven 3.5.3 (3383c37e1f9e9b3bc3df5050c29c8aff9f295297; 2018-02-25T03:49:05+08:00)<br>​      Maven home: /usr/local/maven</p><p>如果有安装JDK跟mavem的</p><p>   使用mvn -v 就会跟JDK的系统配置信息一起出现。如下</p><p>​      Apache Maven 3.5.3 (3383c37e1f9e9b3bc3df5050c29c8aff9f295297; 2018-02-25T03:49:05+08:00)<br>​      Maven home: /usr/local/maven<br>​      Java version: 1.8.0_181, vendor: Oracle Corporation<br>​      Java home: /usr/local/jdk/jre<br>​      Default locale: en_US, platform encoding: UTF-8<br>​      OS name: “linux”, version: “3.10.0-693.el7.x86_64”, arch: “amd64”, family: “unix”</p>]]></content>
+        <content type="html"><![CDATA[<p>从官方网上下载JDK8：<a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">https://www.oracle.com/technetwork/java/javase/downloads/index.html</a></p><p>下载之后上传到linux系统上</p><p>也可以在linux系统上直接下载，看系统网速</p><p>wget <a href="http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.tar.gz" target="_blank" rel="noopener">http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.tar.gz</a></p><ul><li>解压并存放到指定目录中</li></ul><p>​     tar -zxf jdk-8u181-linux-x64.tar.gz</p><p>​     mv jdk1.8.0_181/ /usr/local/jdk</p><ul><li>配置JDK的系统环境</li></ul><p>​     vim /etc/profile</p><hr><p>​     #JDK<br>​     JAVA_HOME=/usr/local/jdk<br>​     CLASSPATH=$JAVA_HOME/lib/<br>​     PATH=$PATH:$JAVA_HOME/bin<br>​     export PATH JAVA_HOME CLASSPATH</p><hr><p>​     source /etc/profile</p><ul><li>测试JDK8是否配置成功</li></ul><p>​     java -version</p><p>​     成功信息：</p><p>​      java version “1.8.0_181”<br>​      Java(TM) SE Runtime Environment (build 1.8.0_181-b13)<br>​      Java HotSpot(TM) 64-Bit Server VM (build 25.181-b13, mixed mode)</p><h3 id="修改linux-中的JDK版本"><a href="#修改linux-中的JDK版本" class="headerlink" title="修改linux 中的JDK版本"></a>修改linux 中的JDK版本</h3><p>删除jdk文件</p><p>rm -f /usr/bin/java </p><p>rm -f /usr/bin/javac</p><p>rm -f /etc/alternatives/java</p><p>rm -f /etc/alternatives/javac</p><p>在添加/etc/profile中的JDK信息，就可以更改Linux系统自带的老版本JDK</p>]]></content>
       
       
       <categories>
@@ -2104,31 +2104,6 @@
     
     
     <entry>
-      <title>Linux--centos7--yum网络源</title>
-      <link href="/2018/09/19/linux/linux-centos7-yum-wang-luo-yuan/"/>
-      <url>/2018/09/19/linux/linux-centos7-yum-wang-luo-yuan/</url>
-      
-        <content type="html"><![CDATA[<p>今天我选择的yum源是网易的</p><p>网易（163）yum源是国内最好的yum源之一 ，无论是速度还是软件版本，都非常的不错，将yum源设置为163yum，可以提升软件包安装和更新的速度，同时避免一些常见软件版本无法找到</p><h4 id="部署方法"><a href="#部署方法" class="headerlink" title="部署方法"></a>部署方法</h4><ul><li>进入系统中存储yum源的目录</li></ul><p>​       cd /etc/yum.repos.d/</p><ul><li>备份系统自带的yum源</li></ul><p>​       mv CentOS-Base.repo CentOS-Base.repo.J</p><ul><li>下载网易yum源</li></ul><p>​       wget <a href="http://mirrors.163.com/.help/CentOS7-Base-163.repo" target="_blank" rel="noopener">http://mirrors.163.com/.help/CentOS7-Base-163.repo</a></p><ul><li>将下载的yum源文件改成系统自带yum源文件的名字</li></ul><p>​        mv CentOS7-Base-163.repo CentOS-Base.repo</p><ul><li>创建元数据缓存</li></ul><p>​        yum makecache</p><ul><li>更新系统yum源  </li></ul><p>​        yum -y update</p><h4 id="温馨提醒："><a href="#温馨提醒：" class="headerlink" title="温馨提醒："></a>温馨提醒：</h4><p>​    除了网易yum源中国国内还有其它很不错的yum源</p><p>​    中科大的yum源：</p><p>​       wget <a href="http://centos.ustc.edu.cn/CentOS-Base.repo" target="_blank" rel="noopener">http://centos.ustc.edu.cn/CentOS-Base.repo</a></p><p>​    sohu的yum源</p><p>​       wget <a href="http://mirrors.sohu.com/help/CentOS-Base-sohu.repo" target="_blank" rel="noopener">http://mirrors.sohu.com/help/CentOS-Base-sohu.repo</a></p><p>​    阿里云的yum源</p><p>​        wget <a href="http://mirrors.aliyun.com/repo/Centos-7.repo" target="_blank" rel="noopener">http://mirrors.aliyun.com/repo/Centos-7.repo</a></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> linux </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> linux </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>linux-centos7-Python3.6源码安装</title>
       <link href="/2018/09/19/python/linux-centos7-python3.6-yuan-ma-an-zhuang/"/>
       <url>/2018/09/19/python/linux-centos7-python3.6-yuan-ma-an-zhuang/</url>
@@ -2146,6 +2121,31 @@
         <tags>
             
             <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Linux--centos7--yum网络源</title>
+      <link href="/2018/09/19/linux/linux-centos7-yum-wang-luo-yuan/"/>
+      <url>/2018/09/19/linux/linux-centos7-yum-wang-luo-yuan/</url>
+      
+        <content type="html"><![CDATA[<p>今天我选择的yum源是网易的</p><p>网易（163）yum源是国内最好的yum源之一 ，无论是速度还是软件版本，都非常的不错，将yum源设置为163yum，可以提升软件包安装和更新的速度，同时避免一些常见软件版本无法找到</p><h4 id="部署方法"><a href="#部署方法" class="headerlink" title="部署方法"></a>部署方法</h4><ul><li>进入系统中存储yum源的目录</li></ul><p>​       cd /etc/yum.repos.d/</p><ul><li>备份系统自带的yum源</li></ul><p>​       mv CentOS-Base.repo CentOS-Base.repo.J</p><ul><li>下载网易yum源</li></ul><p>​       wget <a href="http://mirrors.163.com/.help/CentOS7-Base-163.repo" target="_blank" rel="noopener">http://mirrors.163.com/.help/CentOS7-Base-163.repo</a></p><ul><li>将下载的yum源文件改成系统自带yum源文件的名字</li></ul><p>​        mv CentOS7-Base-163.repo CentOS-Base.repo</p><ul><li>创建元数据缓存</li></ul><p>​        yum makecache</p><ul><li>更新系统yum源  </li></ul><p>​        yum -y update</p><h4 id="温馨提醒："><a href="#温馨提醒：" class="headerlink" title="温馨提醒："></a>温馨提醒：</h4><p>​    除了网易yum源中国国内还有其它很不错的yum源</p><p>​    中科大的yum源：</p><p>​       wget <a href="http://centos.ustc.edu.cn/CentOS-Base.repo" target="_blank" rel="noopener">http://centos.ustc.edu.cn/CentOS-Base.repo</a></p><p>​    sohu的yum源</p><p>​       wget <a href="http://mirrors.sohu.com/help/CentOS-Base-sohu.repo" target="_blank" rel="noopener">http://mirrors.sohu.com/help/CentOS-Base-sohu.repo</a></p><p>​    阿里云的yum源</p><p>​        wget <a href="http://mirrors.aliyun.com/repo/Centos-7.repo" target="_blank" rel="noopener">http://mirrors.aliyun.com/repo/Centos-7.repo</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
             
         </tags>
       
