@@ -1,3 +1,6 @@
+https://www.linux91.cn/2021/09/28/gitlab/
+https://www.linux91.cn/2021/09/15/gitlab/docker-compose-an-zhuang-gitlab/
+https://www.linux91.cn/2021/09/15/gitlab/docker-compose-an-zhuang-de-gitlab-sheng-ji/
 https://www.linux91.cn/2021/08/31/linux-fu-wu/php-de-composer-zhan-yong-nei-cun-bu-gou-dao-zhi-shi-bai/
 https://www.linux91.cn/2021/08/31/linux/xin-jian-swap-huan-cun-nei-cun-fen-qu-mei-sheng-xiao/
 https://www.linux91.cn/2021/08/31/sui-bi/wen-dang-zheng-shi-shang-xian/

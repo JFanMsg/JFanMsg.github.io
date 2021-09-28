@@ -4,6 +4,69 @@
   
     
     <entry>
+      <title></title>
+      <link href="/2021/09/28/gitlab/"/>
+      <url>/2021/09/28/gitlab/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>docker-compose安装gitlab</title>
+      <link href="/2021/09/15/gitlab/docker-compose-an-zhuang-gitlab/"/>
+      <url>/2021/09/15/gitlab/docker-compose-an-zhuang-gitlab/</url>
+      
+        <content type="html"><![CDATA[<h2 id="创建相关目录"><a href="#创建相关目录" class="headerlink" title="创建相关目录"></a>创建相关目录</h2><pre class="line-numbers language-shell"><code class="language-shell">mkdir -p /data/docker-app/gitlab<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h2 id="编写docker-compose-yml"><a href="#编写docker-compose-yml" class="headerlink" title="编写docker-compose.yml"></a>编写docker-compose.yml</h2><pre class="line-numbers language-shell"><code class="language-shell">cd /data/docker-app/gitlabvim docker-compose.yml version: '3'services:    gitlab:      image: 'gitlab/gitlab-ce:12.3.5-ce.0'      restart: unless-stopped      hostname: 'gitlab.linux91.cn' # 主机名      environment:        TZ: 'Asia/Shanghai'        GITLAB_OMNIBUS_CONFIG: |          external_url 'http://gitlab.linux91.cn' # 域名          gitlab_rails['time_zone'] = 'Asia/Shanghai'      deploy:        resources:          limits:            cpus: "1"            memory: 2G          reservations:            cpus: "0.5"            memory: 1G      ports:        - '8000:80'        - '8001:443'        - '8002:22'      volumes:        - /data/etc/gitlab:/etc/gitlab        - /data/data/gitlab:/var/opt/gitlab        - /data/var/log/gitlab:/var/log/gitlab<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="启动docker组"><a href="#启动docker组" class="headerlink" title="启动docker组"></a>启动docker组</h2><pre class="line-numbers language-shell"><code class="language-shell">docker-compose up -d<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h2 id="查看docker组"><a href="#查看docker组" class="headerlink" title="查看docker组"></a>查看docker组</h2><pre class="line-numbers language-shell"><code class="language-shell">docker-compose ps<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h2 id="更改gitlab中文"><a href="#更改gitlab中文" class="headerlink" title="更改gitlab中文"></a>更改<em>gitlab</em>中文</h2><p>下载相应版本的中文包<br><a href="https://gitlab.com/xhang/gitlab" target="_blank" rel="noopener"><em>gitlab</em>中文社区</a></p><p>去掉cp -i alias</p><pre class="line-numbers language-shell"><code class="language-shell">unalias cp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>传输到<em>gitlab</em>容器里的目录</p><pre class="line-numbers language-shell"><code class="language-shell">docker cp zh/gitlab gitlab_gitlab_1:/opt/gitlab/embedded/service/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>进入容器里替换文件，重载和重启<em>gitlab</em></p><pre class="line-numbers language-shell"><code class="language-shell">docker exec -it gitlab_gitlab_1 /bin/bashcd /opt/gitlab/embedded/servicecp -rf gitlab/* gitlab-rails/gitlab-ctl reconfiguregitlab-ctl restart<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> gitlab </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> gitlab </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>docker-compose安装的gitlab升级</title>
+      <link href="/2021/09/15/gitlab/docker-compose-an-zhuang-de-gitlab-sheng-ji/"/>
+      <url>/2021/09/15/gitlab/docker-compose-an-zhuang-de-gitlab-sheng-ji/</url>
+      
+        <content type="html"><![CDATA[<h1 id="升级路线图"><a href="#升级路线图" class="headerlink" title="升级路线图"></a>升级路线图</h1><p>我安装的是12版本，要升级到14版本</p><p>官方路径图：<a href="https://docs.gitlab.com/ee/update/index.html#upgrade-paths" target="_blank" rel="noopener">https://docs.gitlab.com/ee/update/index.html#upgrade-paths</a></p><p><code>8.11.Z</code>-&gt; <code>8.12.0</code>-&gt; <code>8.17.7</code>-&gt; <code>9.5.10</code>-&gt; <code>10.8.7</code>-&gt; <a href="https://docs.gitlab.com/ee/update/index.html#1200" target="_blank" rel="noopener"><code>11.11.8</code></a>-&gt; <code>12.0.12</code>-&gt; <a href="https://docs.gitlab.com/ee/update/index.html#1210" target="_blank" rel="noopener"><code>12.1.17</code></a>-&gt; <code>12.10.14</code>-&gt; <code>13.0.14</code>-&gt; <a href="https://docs.gitlab.com/ee/update/index.html#1310" target="_blank" rel="noopener"><code>13.1.11</code></a>-&gt; <a href="https://docs.gitlab.com/ee/update/index.html#1388" target="_blank" rel="noopener"><code>13.8.8</code></a>-&gt;<a href="https://about.gitlab.com/releases/categories/releases/" target="_blank" rel="noopener">最新<code>13.12.Z</code></a>-&gt;<a href="https://docs.gitlab.com/ee/update/index.html#1400" target="_blank" rel="noopener">最新<code>14.0.Z</code></a>-&gt;<a href="https://about.gitlab.com/releases/categories/releases/" target="_blank" rel="noopener">最新<code>14.Y.Z</code></a></p><table><thead><tr><th align="left">目标版本</th><th align="left">你的版本</th><th align="left">支持的升级路径</th><th align="left">笔记</th></tr></thead><tbody><tr><td align="left"><code>14.1.2</code></td><td align="left"><code>13.9.2</code></td><td align="left"><code>13.9.2</code>-&gt; <code>13.12.9</code>-&gt; <code>14.0.7</code>-&gt;<code>14.1.2</code></td><td align="left">需要两个中间版本：<code>13.12</code>和<code>14.0</code>，然后<code>14.1</code>。</td></tr><tr><td align="left"><code>13.12.10</code></td><td align="left"><code>12.9.2</code></td><td align="left"><code>12.9.2</code>-&gt; <code>12.10.14</code>-&gt; <code>13.0.14</code>-&gt; <code>13.1.11</code>-&gt; <code>13.8.8</code>-&gt;<code>13.12.10</code></td><td align="left">需要四个中间版本：<code>12.10</code>、<code>13.0</code>、<code>13.1</code>和<code>13.8.8</code>，然后<code>13.12.10</code>。</td></tr><tr><td align="left"><code>13.2.10</code></td><td align="left"><code>11.5.0</code></td><td align="left"><code>11.5.0</code>-&gt; <code>11.11.8</code>-&gt; <code>12.0.12</code>-&gt; <code>12.1.17</code>-&gt; <code>12.10.14</code>-&gt; <code>13.0.14</code>-&gt; <code>13.1.11</code>-&gt;<code>13.2.10</code></td><td align="left">需要六个中间版本：<code>11.11</code>、<code>12.0</code>、<code>12.1</code>、<code>12.10</code>、<code>13.0</code>和<code>13.1</code>，然后<code>13.2.10</code>。</td></tr><tr><td align="left"><code>12.10.14</code></td><td align="left"><code>11.3.4</code></td><td align="left"><code>11.3.4</code>-&gt; <code>11.11.8</code>-&gt; <code>12.0.12</code>-&gt; <code>12.1.17</code>-&gt;<code>12.10.14</code></td><td align="left">需要三个中间版本：<code>11.11</code>,<code>12.0</code>和<code>12.1</code>, 然后<code>12.10.14</code>。</td></tr><tr><td align="left"><code>12.9.5</code></td><td align="left"><code>10.4.5</code></td><td align="left"><code>10.4.5</code>-&gt; <code>10.8.7</code>-&gt; <code>11.11.8</code>-&gt; <code>12.0.12</code>-&gt; <code>12.1.17</code>-&gt;<code>12.9.5</code></td><td align="left">需要四个中间版本：<code>10.8</code>、<code>11.11</code>、<code>12.0</code>和<code>12.1</code>，然后<code>12.9.5</code>。</td></tr><tr><td align="left"><code>12.2.5</code></td><td align="left"><code>9.2.6</code></td><td align="left"><code>9.2.6</code>-&gt; <code>9.5.10</code>-&gt; <code>10.8.7</code>-&gt; <code>11.11.8</code>-&gt; <code>12.0.12</code>-&gt; <code>12.1.17</code>-&gt;<code>12.2.5</code></td><td align="left">需要五个中间版本：<code>9.5</code>、<code>10.8</code>、<code>11.11</code>、<code>12.0</code>、<code>12.1</code>、 然后<code>12.2.5</code>。</td></tr><tr><td align="left"><code>11.3.4</code></td><td align="left"><code>8.13.4</code></td><td align="left"><code>8.13.4</code>-&gt; <code>8.17.7</code>-&gt; <code>9.5.10</code>-&gt; <code>10.8.7</code>-&gt;<code>11.3.4</code></td><td align="left"><code>8.17.7</code>是第 8 版的最后一个版本，<code>9.5.10</code>是第 9 版的最后一个版本，<code>10.8.7</code>是第 10 版的最后一个版本。</td></tr></tbody></table><h1 id="升级"><a href="#升级" class="headerlink" title="升级"></a>升级</h1><p>我的版本为12.3.5，安装升级路线来看看，我要先升级到12.10.14</p><p><strong>编辑docker-compose.yml</strong></p><pre class="line-numbers language-shell"><code class="language-shell">services:    gitlab:      image: 'gitlab/gitlab-ce:12.10.14-ce.0'      restart: unless-stopped<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p><strong>升级</strong></p><pre class="line-numbers language-go"><code class="language-go">docker<span class="token operator">-</span>compose pulldocker<span class="token operator">-</span>compose up <span class="token operator">-</span>d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p><strong>同理</strong></p><p>我升级到了12.10.14，接着要升级到13.0.14</p><p><strong>编辑docker-compose.yml</strong></p><pre class="line-numbers language-shell"><code class="language-shell">services:    gitlab:      image: 'gitlab/gitlab-ce:13.0.14-ce.0'      restart: unless-stopped<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p><strong>升级</strong></p><pre class="line-numbers language-go"><code class="language-go">docker<span class="token operator">-</span>compose pulldocker<span class="token operator">-</span>compose up <span class="token operator">-</span>d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p><strong>就是这么升级下去的。。。。。。</strong></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> gitlab </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> gitlab </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>php的composer占用内存不够导致失败</title>
       <link href="/2021/08/31/linux-fu-wu/php-de-composer-zhan-yong-nei-cun-bu-gou-dao-zhi-shi-bai/"/>
       <url>/2021/08/31/linux-fu-wu/php-de-composer-zhan-yong-nei-cun-bu-gou-dao-zhi-shi-bai/</url>

@@ -1,0 +1,50 @@
+<hr>
+<p>title: docker-compose安装gitlab<br>top: false<br>cover: false<br>toc: true<br>mathjax: true<br>date: 2021-09-15 18:20:32<br>password:<br>summary:<br>tags:</p>
+<ul>
+<li>gitlab<br>categories:</li>
+<li>gitlab</li>
+</ul>
+<hr>
+<h2 id="创建相关目录"><a href="#创建相关目录" class="headerlink" title="创建相关目录"></a>创建相关目录</h2><pre><code class="shell">mkdir -p /data/docker-app/gitlab</code></pre>
+<h2 id="编写docker-compose-yml"><a href="#编写docker-compose-yml" class="headerlink" title="编写docker-compose.yml"></a>编写docker-compose.yml</h2><pre><code class="shell">cd /data/docker-app/gitlab
+vim docker-compose.yml 
+version: &#39;3&#39;
+services:
+    gitlab:
+      image: &#39;gitlab/gitlab-ce:12.3.5-ce.0&#39;
+      restart: unless-stopped
+      hostname: &#39;gitlab.linux91.cn&#39; # 主机名
+      environment:
+        TZ: &#39;Asia/Shanghai&#39;
+        GITLAB_OMNIBUS_CONFIG: |
+          external_url &#39;http://gitlab.linux91.cn&#39; # 域名
+          gitlab_rails[&#39;time_zone&#39;] = &#39;Asia/Shanghai&#39;
+      deploy:
+        resources:
+          limits:
+            cpus: &quot;1&quot;
+            memory: 2G
+          reservations:
+            cpus: &quot;0.5&quot;
+            memory: 1G
+      ports:
+        - &#39;8000:80&#39;
+        - &#39;8001:443&#39;
+        - &#39;8002:22&#39;
+      volumes:
+        - /data/etc/gitlab:/etc/gitlab
+        - /data/data/gitlab:/var/opt/gitlab
+        - /data/var/log/gitlab:/var/log/gitlab</code></pre>
+<h2 id="启动docker组"><a href="#启动docker组" class="headerlink" title="启动docker组"></a>启动docker组</h2><pre><code class="shell">docker-compose up -d</code></pre>
+<h2 id="查看docker组"><a href="#查看docker组" class="headerlink" title="查看docker组"></a>查看docker组</h2><pre><code class="shell">docker-compose ps</code></pre>
+<h2 id="更改gitlab中文"><a href="#更改gitlab中文" class="headerlink" title="更改gitlab中文"></a>更改<em>gitlab</em>中文</h2><p>下载相应版本的中文包<br><a href="https://gitlab.com/xhang/gitlab"><em>gitlab</em>中文社区</a></p>
+<p>去掉cp -i alias</p>
+<pre><code class="shell">unalias cp</code></pre>
+<p>传输到<em>gitlab</em>容器里的目录</p>
+<pre><code class="shell">docker cp zh/gitlab gitlab_gitlab_1:/opt/gitlab/embedded/service/</code></pre>
+<p>进入容器里替换文件，重载和重启<em>gitlab</em></p>
+<pre><code class="shell">docker exec -it gitlab_gitlab_1 /bin/bash
+cd /opt/gitlab/embedded/service
+cp -rf gitlab/* gitlab-rails/
+gitlab-ctl reconfigure
+gitlab-ctl restart</code></pre>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.linux91.cn/"/>
-  <updated>2021-08-31T11:10:14.561Z</updated>
+  <updated>2021-09-28T09:47:48.468Z</updated>
   <id>https://www.linux91.cn/</id>
   
   <author>
@@ -15,6 +15,73 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://www.linux91.cn/2021/09/28/gitlab/"/>
+    <id>https://www.linux91.cn/2021/09/28/gitlab/</id>
+    <published>2021-09-28T09:47:48.468Z</published>
+    <updated>2021-09-28T09:47:48.468Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>docker-compose安装gitlab</title>
+    <link href="https://www.linux91.cn/2021/09/15/gitlab/docker-compose-an-zhuang-gitlab/"/>
+    <id>https://www.linux91.cn/2021/09/15/gitlab/docker-compose-an-zhuang-gitlab/</id>
+    <published>2021-09-15T10:20:32.000Z</published>
+    <updated>2021-09-28T09:53:57.449Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;创建相关目录&quot;&gt;&lt;a href=&quot;#创建相关目录&quot; class=&quot;headerlink&quot; title=&quot;创建相关目录&quot;&gt;&lt;/a&gt;创建相关目录&lt;/h2&gt;&lt;pre class=&quot;line-numbers language-shell&quot;&gt;&lt;code
+        
+      
+    
+    </summary>
+    
+      <category term="gitlab" scheme="https://www.linux91.cn/categories/gitlab/"/>
+    
+    
+      <category term="gitlab" scheme="https://www.linux91.cn/tags/gitlab/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>docker-compose安装的gitlab升级</title>
+    <link href="https://www.linux91.cn/2021/09/15/gitlab/docker-compose-an-zhuang-de-gitlab-sheng-ji/"/>
+    <id>https://www.linux91.cn/2021/09/15/gitlab/docker-compose-an-zhuang-de-gitlab-sheng-ji/</id>
+    <published>2021-09-15T10:20:32.000Z</published>
+    <updated>2021-09-28T10:04:27.393Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;升级路线图&quot;&gt;&lt;a href=&quot;#升级路线图&quot; class=&quot;headerlink&quot; title=&quot;升级路线图&quot;&gt;&lt;/a&gt;升级路线图&lt;/h1&gt;&lt;p&gt;我安装的是12版本，要升级到14版本&lt;/p&gt;
+&lt;p&gt;官方路径图：&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="gitlab" scheme="https://www.linux91.cn/categories/gitlab/"/>
+    
+    
+      <category term="gitlab" scheme="https://www.linux91.cn/tags/gitlab/"/>
+    
+  </entry>
   
   <entry>
     <title>php的composer占用内存不够导致失败</title>
@@ -101,8 +168,8 @@
     <title>用于vuepress自动生成配置脚本</title>
     <link href="https://www.linux91.cn/2021/08/30/python/yong-yu-vuepress-zi-dong-sheng-cheng-pei-zhi-jiao-ben/"/>
     <id>https://www.linux91.cn/2021/08/30/python/yong-yu-vuepress-zi-dong-sheng-cheng-pei-zhi-jiao-ben/</id>
-    <published>2021-08-30T07:37:32.000Z</published>
-    <updated>2021-08-31T08:15:35.289Z</updated>
+    <published>2021-08-29T17:37:32.000Z</published>
+    <updated>2021-09-01T03:38:57.470Z</updated>
     
     <summary type="html">
     
@@ -465,84 +532,6 @@
     
     
       <category term="ELK" scheme="https://www.linux91.cn/tags/ELK/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Logstash服务</title>
-    <link href="https://www.linux91.cn/2019/04/12/elk/logstash-fu-wu/"/>
-    <id>https://www.linux91.cn/2019/04/12/elk/logstash-fu-wu/</id>
-    <published>2019-04-11T18:37:32.000Z</published>
-    <updated>2021-08-26T06:41:03.455Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;Logstash的工作&quot;&gt;&lt;a href=&quot;#Logstash的工作&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="ELK" scheme="https://www.linux91.cn/categories/ELK/"/>
-    
-    
-      <category term="ELK" scheme="https://www.linux91.cn/tags/ELK/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Filebeat轻量级收集日志服务</title>
-    <link href="https://www.linux91.cn/2019/04/11/elk/filebeat-qing-liang-ji-shou-ji-ri-zhi-fu-wu/"/>
-    <id>https://www.linux91.cn/2019/04/11/elk/filebeat-qing-liang-ji-shou-ji-ri-zhi-fu-wu/</id>
-    <published>2019-04-10T18:37:32.000Z</published>
-    <updated>2021-08-26T06:39:34.392Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;Filebeat简单原理&quot;&gt;&lt;a href=&quot;#Filebeat简单原理&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="ELK" scheme="https://www.linux91.cn/categories/ELK/"/>
-    
-    
-      <category term="ELK" scheme="https://www.linux91.cn/tags/ELK/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>配置jenkins跟sonarqube实现部署前先分析代码</title>
-    <link href="https://www.linux91.cn/2019/04/04/sonarqube/pei-zhi-jenkins-gen-sonarqube-shi-xian-bu-shu-qian-xian-fen-xi-dai-ma/"/>
-    <id>https://www.linux91.cn/2019/04/04/sonarqube/pei-zhi-jenkins-gen-sonarqube-shi-xian-bu-shu-qian-xian-fen-xi-dai-ma/</id>
-    <published>2019-04-03T18:37:32.000Z</published>
-    <updated>2021-08-26T06:37:19.310Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;第一步&quot;&gt;&lt;a href=&quot;#第一步&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="sonarQube" scheme="https://www.linux91.cn/categories/sonarQube/"/>
-    
-    
-      <category term="sonarQube" scheme="https://www.linux91.cn/tags/sonarQube/"/>
     
   </entry>
   

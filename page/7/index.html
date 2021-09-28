@@ -357,11 +357,166 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/2018/09/26/linux/wei-shou-hu-jin-cheng-jiao-ben-wu-xian-xun-huan-jian-ce-kai-ji-zi-qi/" target="_blank">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="伪守护进程脚本，无限循环检测。开机自启">
+                            
+                            <span class="card-title">伪守护进程脚本，无限循环检测。开机自启</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                            要在项目中加上守护进程，意外崩溃后自动启动项目，机器重启时自动启动项目。
+分为二种脚本
+第一种，无限循环检测项目是否启动。#!/bin/bash/
+
+while true 
+do
+
+PID=$(ps -ef | grep "检测关键字" |
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-26
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/linux/" class="post-category" target="_blank">
+                                    linux
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/linux/" target="_blank">
+                            <span class="chip bg-color">linux</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/09/25/linux/she-zhi-jiao-ben-huo-ming-ling-kai-ji-zi-qi-dong/" target="_blank">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="设置脚本或命令开机自启动">
+                            
+                            <span class="card-title">设置脚本或命令开机自启动</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                            目前有三种文件，如果是说需要脚本自启动，我推荐第三种方法
+第一种编辑文件 /etc/rc.local
+  vim /etc/rc.local
+  在最下面增加你要启动的命令如
+  /etc/init.d/mysqld start   ## 
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-25
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/linux/" class="post-category" target="_blank">
+                                    linux
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/linux/" target="_blank">
+                            <span class="chip bg-color">linux</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/09/25/zabbix/zabbix-agent-an-zhuang-zabbix-ke-hu-duan-yum-an-zhuang/" target="_blank">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/25.jpg" class="responsive-img" alt="zabbix-agent--安装zabbix客户端--yum安装">
+                            
+                            <span class="card-title">zabbix-agent--安装zabbix客户端--yum安装</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                            环境：centos7.4
+软件包：zabbix-agent-3.2.6-1.el6.x86_64.rpm、
+把准备好的安装包放入系统中
+安装zabbix客户端yum -y install zabbix-agent-3.2.6-1.el6.x
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-25
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/zabbix/" class="post-category" target="_blank">
+                                    zabbix
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/zabbix/" target="_blank">
+                            <span class="chip bg-color">zabbix</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
                     <a href="/2018/09/25/linux-fu-wu/java-zhen-duan-gong-ju-zhi-arthas-jian-dan-an-zhuang-a-li-kai-yuan-xiang-mu/" target="_blank">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="java诊断工具之Arthas简单安装--阿里开源项目">
+                            <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="java诊断工具之Arthas简单安装--阿里开源项目">
                             
                             <span class="card-title">java诊断工具之Arthas简单安装--阿里开源项目</span>
                         </div>
@@ -410,7 +565,7 @@ JDK的安装位
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="创建swap分区文件-实现虚拟内存--阿里云">
+                            <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="创建swap分区文件-实现虚拟内存--阿里云">
                             
                             <span class="card-title">创建swap分区文件-实现虚拟内存--阿里云</span>
                         </div>
@@ -459,7 +614,7 @@ JDK的安装位
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="mysql数据库备份机制的描述">
+                            <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="mysql数据库备份机制的描述">
                             
                             <span class="card-title">mysql数据库备份机制的描述</span>
                         </div>
@@ -510,7 +665,7 @@ JDK的安装位
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="SAMBA服务的简单应用，Linux对Linux文件共享">
+                            <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="SAMBA服务的简单应用，Linux对Linux文件共享">
                             
                             <span class="card-title">SAMBA服务的简单应用，Linux对Linux文件共享</span>
                         </div>
@@ -562,7 +717,7 @@ use
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/25.jpg" class="responsive-img" alt="Linux-vim命令">
+                            <img src="/medias/featureimages/26.jpg" class="responsive-img" alt="Linux-vim命令">
                             
                             <span class="card-title">Linux-vim命令</span>
                         </div>
@@ -616,7 +771,7 @@ o （光标向下
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Dubbo-monitor，部署Dubbo监控平台monitor">
+                            <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Dubbo-monitor，部署Dubbo监控平台monitor">
                             
                             <span class="card-title">Dubbo-monitor，部署Dubbo监控平台monitor</span>
                         </div>
@@ -664,7 +819,7 @@ o （光标向下
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Dubbo-admin，部署Dubbo后台管理">
+                            <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Dubbo-admin，部署Dubbo后台管理">
                             
                             <span class="card-title">Dubbo-admin，部署Dubbo后台管理</span>
                         </div>
@@ -712,7 +867,7 @@ o （光标向下
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Liunx--centos7--JDK8安装">
+                            <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Liunx--centos7--JDK8安装">
                             
                             <span class="card-title">Liunx--centos7--JDK8安装</span>
                         </div>
@@ -762,7 +917,7 @@ w
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="centos7--mavem3.5安装">
+                            <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="centos7--mavem3.5安装">
                             
                             <span class="card-title">centos7--mavem3.5安装</span>
                         </div>
@@ -799,156 +954,6 @@ wget http://mirrors.shu.edu.
                         
                         <a href="/tags/linux/" target="_blank">
                             <span class="chip bg-color">linux</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2018/09/20/nginx/nginx-wen-ti-he-ji/" target="_blank">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="nginx问题合集">
-                            
-                            <span class="card-title">nginx问题合集</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                            nginx代理时，出现只有首页文件代理过去，其它文件代理不过去的问题使用nginx代理时，发现代理过去的显示找不到文件
-解决方案：
-    location /monitor {
-       proxy_pass http://192.1
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-20
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/nginx/" class="post-category" target="_blank">
-                                    nginx
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/nginx/" target="_blank">
-                            <span class="chip bg-color">nginx</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2018/09/20/tomcat/linux-xia-de-tomcat8-qi-dong-hen-man-xian-xiang-chu-li/" target="_blank">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/26.jpg" class="responsive-img" alt="linux下的tomcat8启动很慢现象处理">
-                            
-                            <span class="card-title">linux下的tomcat8启动很慢现象处理</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                            关于tomcat容器为什么运行很慢，本人查了下百度，发现百度上的学法很多，本人比较倾向一种学法，由于SHA1PRNG算法造成的，
-SHA1PRNG算法是基于SHA-1算法实现且保密性较强的伪随机数生成器。
-
-如果Java.security.
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-20
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/tomcat/" class="post-category" target="_blank">
-                                    tomcat
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/tomcat/" target="_blank">
-                            <span class="chip bg-color">tomcat</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2018/09/20/tomcat/centos7-tomcat8-jian-dan-an-zhuang/" target="_blank">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="centos7--tomcat8简单安装">
-                            
-                            <span class="card-title">centos7--tomcat8简单安装</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                            tomcat8从官方网上下载tomcat8：http://tomcat.apache.org/download-80.cgi
-下载之后上传到linux系统上
-也可以在linux系统上直接下载，看系统网速
-wget http://mirror
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-20
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/tomcat/" class="post-category" target="_blank">
-                                    tomcat
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/tomcat/" target="_blank">
-                            <span class="chip bg-color">tomcat</span>
                         </a>
                         
                     </div>
@@ -994,7 +999,7 @@ wget http://mirror
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">52.1k</span>
+            <span class="white-color">52.9k</span>
             
 
             <br>
