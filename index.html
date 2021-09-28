@@ -504,60 +504,27 @@ $(function () {
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2021/09/28/gitlab/" target="_blank">
+                    <a href="/2021/09/27/gitlab/docker-compose-an-zhuang-de-gitlab-sheng-ji/" target="_blank">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="">
+                            <img src="/medias/featureimages/26.jpg" class="responsive-img" alt="docker-compose安装的gitlab升级">
                             
-                            <span class="card-title"></span>
+                            <span class="card-title">docker-compose安装的gitlab升级</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                            
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-09-28
-                            </span>
-                            <span class="publish-author">
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/09/15/gitlab/docker-compose-an-zhuang-gitlab/" target="_blank">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="docker-compose安装gitlab">
-                            
-                            <span class="card-title">docker-compose安装gitlab</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                            创建相关目录mkdir -p /data/docker-app/gitlab
-编写docker-compose.ymlcd /data/docker-app/gitlab
-vim docker-compose.yml 
-version: '
+                            升级路线图我安装的是12版本，要升级到14版本
+官方路径图：https://docs.gitlab.com/ee/update/index.html#upgrade-paths
+8.11.Z-&gt; 8.12.0-&gt; 8.17.7-
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-09-15
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-09-27
                             </span>
                             <span class="publish-author">
                                 
@@ -586,22 +553,23 @@ version: '
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2021/09/15/gitlab/docker-compose-an-zhuang-de-gitlab-sheng-ji/" target="_blank">
+                    <a href="/2021/09/15/gitlab/docker-compose-an-zhuang-gitlab/" target="_blank">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/26.jpg" class="responsive-img" alt="docker-compose安装的gitlab升级">
+                            <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="docker-compose安装gitlab">
                             
-                            <span class="card-title">docker-compose安装的gitlab升级</span>
+                            <span class="card-title">docker-compose安装gitlab</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                            升级路线图我安装的是12版本，要升级到14版本
-官方路径图：https://docs.gitlab.com/ee/update/index.html#upgrade-paths
-8.11.Z-&gt; 8.12.0-&gt; 8.17.7-
+                            创建相关目录mkdir -p /data/docker-app/gitlab
+编写docker-compose.ymlcd /data/docker-app/gitlab
+vim docker-compose.yml 
+version: '
                             
                         </div>
                         <div class="publish-info">
@@ -1065,6 +1033,54 @@ conf = {
                         
                         <a href="/tags/mysql/" target="_blank">
                             <span class="chip bg-color">mysql</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2021/02/19/redis/redis-de-used-memory-dataset-perc-guo-gao/" target="_blank">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="redis的used_memory_dataset_perc过高">
+                            
+                            <span class="card-title">redis的used_memory_dataset_perc过高</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                            背景今天突然一堆业务连redis报错打过来，让我心惊胆战，检查服务器后才发现redis的一切很正常，放心中，结果还惊动我们老大，我跟老大说redis没问题，他反手一个used_memory_dataset_perc为啥那么高。。。  
+问题
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-02-19
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/redis/" class="post-category" target="_blank">
+                                    redis
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/redis/" target="_blank">
+                            <span class="chip bg-color">redis</span>
                         </a>
                         
                     </div>
