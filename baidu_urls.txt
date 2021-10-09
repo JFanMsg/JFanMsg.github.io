@@ -1,3 +1,4 @@
+https://www.linux91.cn/2021/10/08/linux-fu-wu/rsyslog-ri-zhi-chuan-shu-bu-wan-zheng/
 https://www.linux91.cn/2021/09/27/gitlab/docker-compose-an-zhuang-de-gitlab-sheng-ji/
 https://www.linux91.cn/2021/09/15/gitlab/docker-compose-an-zhuang-gitlab/
 https://www.linux91.cn/2021/08/31/linux-fu-wu/php-de-composer-zhan-yong-nei-cun-bu-gou-dao-zhi-shi-bai/
@@ -79,8 +80,8 @@ https://www.linux91.cn/2018/09/21/linux-fu-wu/samba-fu-wu-de-jian-dan-ying-yong-
 https://www.linux91.cn/2018/09/20/linux-ming-ling/linux-vim-ming-ling/
 https://www.linux91.cn/2018/09/20/dubbo/dubbo-monitor-bu-shu-dubbo-jian-kong-ping-tai-monitor/
 https://www.linux91.cn/2018/09/20/dubbo/dubbo-admin-bu-shu-dubbo-hou-tai-guan-li/
-https://www.linux91.cn/2018/09/20/linux/liunx-centos7-jdk8-an-zhuang/
 https://www.linux91.cn/2018/09/20/linux/centos7-mavem3.5-an-zhuang/
+https://www.linux91.cn/2018/09/20/linux/liunx-centos7-jdk8-an-zhuang/
 https://www.linux91.cn/2018/09/20/nginx/nginx-wen-ti-he-ji/
 https://www.linux91.cn/2018/09/20/tomcat/linux-xia-de-tomcat8-qi-dong-hen-man-xian-xiang-chu-li/
 https://www.linux91.cn/2018/09/20/tomcat/centos7-tomcat8-jian-dan-an-zhuang/
