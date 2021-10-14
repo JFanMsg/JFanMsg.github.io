@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>gitlab的不中断业务升级</title>
+      <link href="/2021/10/14/gitlab/gitlab-de-bu-zhong-duan-ye-wu-sheng-ji/"/>
+      <url>/2021/10/14/gitlab/gitlab-de-bu-zhong-duan-ye-wu-sheng-ji/</url>
+      
+        <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>今早一个需求就扔到我头上，差点爆炸</p><p>gitlab升级要求不停业务，就代表升级过程中，开发还是可以提交代码，拉取代码。。。。。。</p><p>虽然想吐槽一下，不过吃人家饭，需求要硬也得搞，方法总比问题多嘛</p><h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><p>怎么实现业务不中断，突然想到了gitlab的副本，可以按副本的思想，进行不中断业务升级</p><p>这里，我使用的是docker安装方式，所以方案会偏向docker方向的gitlab升级，不过思想是一样的</p><p>简单说：</p><pre><code>1. 将代码存储目录共享，git-data 2. 注意其他目录不要共享，以免导致资源冲突以及升级后资源不适用 3. 开启备用容器记得将端口进行改动 4. nginx切换就行了，这样业务的操作就会转到备用gitlab中</code></pre><h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>直接修改共享卷路径，不过要先复制原共享卷中的数</p><pre class="line-numbers language-shell"><code class="language-shell">      volumes:        - /sdata/etc/gitlabs:/etc/gitlab # 无需改动        - /sdata/data/gitlabs:/var/opt/gitlab # 需要老/sdata/data/gitlab/git-data，通过软链接的方式，放在新的/sdata/data/gitlabs目录下，代码存储目录共享        - /sdata/var/log/gitlabs:/var/log/gitlab        - /sdata/data/gitlab/git-data:/sdata/data/gitlab/git-data # 因为是通过软链接的方式，开启容器后，也需要/sdata/data/gitlab/git-data目录的存在<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>修改端口</p><p>启动容器</p><p>切换nginx</p><p>对gitlab进行升级</p><p>升级完毕后，nginx切回</p><p>备用gitlab回收</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> gitlab </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> gitlab </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>rsyslog日志传输不完整</title>
       <link href="/2021/10/08/linux-fu-wu/rsyslog-ri-zhi-chuan-shu-bu-wan-zheng/"/>
       <url>/2021/10/08/linux-fu-wu/rsyslog-ri-zhi-chuan-shu-bu-wan-zheng/</url>
@@ -208,7 +233,7 @@
       <link href="/2021/07/02/clickhouse/clickhouse-de-rbac-yong-hu-quan-xian/"/>
       <url>/2021/07/02/clickhouse/clickhouse-de-rbac-yong-hu-quan-xian/</url>
       
-        <content type="html"><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>我公司准备要上线Clickhouse，研发自己的数据平台，现在量不大，所以不考虑集群，只是单机，所以文章中只是在单机Clickhouse实现过，Clickhouse搭建文章我就不写了，网上一大堆，只是Clickhouse的RBAC用户权限国内的资料确实有点少，所以才会想要写出这一张文章</p><p><strong>Clickhouse还支持角色，可能我个人使用mysql多了，我更偏向个人账号个人权限的方式，所以这文章没有跟角色相关的，有兴趣的可以自行查询</strong></p><h2 id="开启Clickhouse的RBAC用户权限模式"><a href="#开启Clickhouse的RBAC用户权限模式" class="headerlink" title="开启Clickhouse的RBAC用户权限模式"></a>开启Clickhouse的RBAC用户权限模式</h2><p>想要开启有二步</p><h3 id="config-xml"><a href="#config-xml" class="headerlink" title="config.xml"></a>config.xml</h3><p>启动RBAC用户权限模式的存储路径</p><pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>access_control_path</span><span class="token punctuation">></span></span>路径<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>access_control_path</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>access_control_path</span><span class="token punctuation">></span></span>/data/clickhouse/access/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>access_control_path</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h3 id="users-xml"><a href="#users-xml" class="headerlink" title="users.xml"></a>users.xml</h3><p>在你的管理员用户配置项中添加对RBAC模式的权限</p><pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>access_management</span><span class="token punctuation">></span></span>1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>access_management</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>重启Clickhouse后，就能使用类似mysql用户的机制</p><h2 id="创建普通用户"><a href="#创建普通用户" class="headerlink" title="创建普通用户"></a>创建普通用户</h2><pre class="line-numbers language-mysql"><code class="language-mysql">CREATE USER 用户名 HOST IP 'IP段' IDENTIFIED WITH PLAINTEXT_PASSWORD BY '密码'CREATE USER u HOST IP '172.28.3.0/24' IDENTIFIED WITH PLAINTEXT_PASSWORD BY '123456'<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><ol><li>用户。。。  这个没啥好说的</li><li>IP段，这个就有意思了，之前查找资料的时候，这里写的是IP，为啥我要写成IP段，因为我要我们生产环境的IP段都能访问到数据库，那么我填了不少坑，才知道这里是用网段掩码来区分IP段，并不是用什么0或%之类的，也可能博主技术一般吧，简单来说，就是想要使用172.28.3.<em>这IP段，那么就要写172.28.3.0/24，才支持172.28.3.\</em>的所有IP访问到</li><li>密码。。。 这个也没啥好说的</li></ol><h2 id="修改用户名"><a href="#修改用户名" class="headerlink" title="修改用户名"></a>修改用户名</h2><pre class="line-numbers language-mysql"><code class="language-mysql">## 将用户名u修改成uuALTER USER u RENAME TO u2u<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h2 id="查看用户"><a href="#查看用户" class="headerlink" title="查看用户"></a>查看用户</h2><pre class="line-numbers language-mysql"><code class="language-mysql">show create user<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h2 id="授权以及取消授权"><a href="#授权以及取消授权" class="headerlink" title="授权以及取消授权"></a>授权以及取消授权</h2><h3 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h3><pre class="line-numbers language-mysql"><code class="language-mysql">GRANT select ON text.* TO u WITH GRANT OPTION; #授权给u用户text数据库查询权限GRANT all ON text.* TO u WITH GRANT OPTION; #授权给u用户text数据库所有权限GRANT all ON *.* TO u WITH GRANT OPTION; #授权给u用户全部权限<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><h3 id="取消授权"><a href="#取消授权" class="headerlink" title="取消授权"></a>取消授权</h3><pre class="line-numbers language-mysql"><code class="language-mysql">REVOKE select ON text.* FROM u; #取消授权给u用户text数据库查询权限REVOKE all ON text.* FROM u; #取消授权给u用户text数据库所有权限REVOKE all ON *.* FROM u; #取消授权给u用户全部权限<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>]]></content>
+        <content type="html"><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>我公司准备要上线Clickhouse，研发自己的数据平台，现在量不大，所以不考虑集群，只是单机，所以文章中只是在单机Clickhouse实现过，Clickhouse搭建文章我就不写了，网上一大堆，只是Clickhouse的RBAC用户权限国内的资料确实有点少，所以才会想要写出这一张文章</p><p><strong>Clickhouse还支持角色，可能我个人使用mysql多了，我更偏向个人账号个人权限的方式，所以这文章没有跟角色相关的，有兴趣的可以自行查询</strong></p><h2 id="开启Clickhouse的RBAC用户权限模式"><a href="#开启Clickhouse的RBAC用户权限模式" class="headerlink" title="开启Clickhouse的RBAC用户权限模式"></a>开启Clickhouse的RBAC用户权限模式</h2><p>想要开启有二步</p><h3 id="config-xml"><a href="#config-xml" class="headerlink" title="config.xml"></a>config.xml</h3><p>启动RBAC用户权限模式的存储路径</p><pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>access_control_path</span><span class="token punctuation">></span></span>路径<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>access_control_path</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>access_control_path</span><span class="token punctuation">></span></span>/data/clickhouse/access/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>access_control_path</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h3 id="users-xml"><a href="#users-xml" class="headerlink" title="users.xml"></a>users.xml</h3><p>在你的管理员用户配置项中添加对RBAC模式的权限</p><pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>access_management</span><span class="token punctuation">></span></span>1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>access_management</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>重启Clickhouse后，就能使用类似mysql用户的机制</p><h2 id="创建普通用户"><a href="#创建普通用户" class="headerlink" title="创建普通用户"></a>创建普通用户</h2><pre class="line-numbers language-mysql"><code class="language-mysql">CREATE USER 用户名 HOST IP 'IP段' IDENTIFIED WITH PLAINTEXT_PASSWORD BY '密码'CREATE USER u HOST IP '172.28.3.0/24' IDENTIFIED WITH PLAINTEXT_PASSWORD BY '123456'<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><ol><li>用户。。。  这个没啥好说的</li><li>IP段，这个就有意思了，之前查找资料的时候，这里写的是IP，为啥我要写成IP段，因为我要我们生产环境的IP段都能访问到数据库，那么我填了不少坑，才知道这里是用网段掩码来区分IP段，并不是用什么0或%之类的，也可能博主技术一般吧，简单来说，就是想要使用172.28.3.<em>这IP段，那么就要写172.28.3.0/24，才支持172.28.3.\</em>的所有IP访问到</li><li>密码。。。 这个也没啥好说的</li></ol><h2 id="修改用户名"><a href="#修改用户名" class="headerlink" title="修改用户名"></a>修改用户名</h2><pre class="line-numbers language-mysql"><code class="language-mysql">## 将用户名u修改成uuALTER USER u RENAME TO u2u<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h2 id="查看用户"><a href="#查看用户" class="headerlink" title="查看用户"></a>查看用户</h2><pre class="line-numbers language-mysql"><code class="language-mysql">show create user # 查看当前用户show create user 用户名 # 查看指定用户show create user u;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><h2 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h2><pre class="line-numbers language-mysql"><code class="language-mysql">DROP USER [IF EXISTS] name [,...] [ON CLUSTER cluster_name]DROP USER 用户名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h2 id="授权以及取消授权"><a href="#授权以及取消授权" class="headerlink" title="授权以及取消授权"></a>授权以及取消授权</h2><h3 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h3><pre class="line-numbers language-mysql"><code class="language-mysql">GRANT select ON text.* TO u WITH GRANT OPTION; #授权给u用户text数据库查询权限GRANT all ON text.* TO u WITH GRANT OPTION; #授权给u用户text数据库所有权限GRANT all ON *.* TO u WITH GRANT OPTION; #授权给u用户全部权限<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><h3 id="查看用户权限"><a href="#查看用户权限" class="headerlink" title="查看用户权限"></a>查看用户权限</h3><pre class="line-numbers language-mysql"><code class="language-mysql">SHOW GRANTS # 查看当前用户权限SHOW GRANTS FOR 用户名; # 查看指定用户权限SHOW GRANTS FOR u;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><h3 id="取消授权"><a href="#取消授权" class="headerlink" title="取消授权"></a>取消授权</h3><pre class="line-numbers language-mysql"><code class="language-mysql">REVOKE select ON text.* FROM u; #取消授权给u用户text数据库查询权限REVOKE all ON text.* FROM u; #取消授权给u用户text数据库所有权限REVOKE all ON *.* FROM u; #取消授权给u用户全部权限<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>]]></content>
       
       
       <categories>
@@ -2004,31 +2029,6 @@
     
     
     <entry>
-      <title>Dubbo-monitor，部署Dubbo监控平台monitor</title>
-      <link href="/2018/09/20/dubbo/dubbo-monitor-bu-shu-dubbo-jian-kong-ping-tai-monitor/"/>
-      <url>/2018/09/20/dubbo/dubbo-monitor-bu-shu-dubbo-jian-kong-ping-tai-monitor/</url>
-      
-        <content type="html"><![CDATA[<p>部署Dubbo后台管理需要三个软件，JDK,mavem,tomcat，安装这三个软件，可以参考我之前写的笔记</p><p>三个软件部署好后，我们就需要下载Dubbo-admin项目：<a href="https://github.com/apache/incubator-dubbo/tree/2.5.x" target="_blank" rel="noopener">https://github.com/apache/incubator-dubbo/tree/2.5.x</a></p><p><a href="http://92.linux91.cn/attachment/20180920/85623ebb2f4449b388aaad2f795649bc.png" target="_blank" rel="noopener"><img src="http://92.linux91.cn/attachment/20180920/85623ebb2f4449b388aaad2f795649bc.png" alt="img"></a></p><p>注意：Dubbo-admin有一个坑，要注意，下载项目的时候要全部下载，不要单独下载一个项目。因为在用mvn编译的时候，不能在单个项目中编译，只能在所有项目中一起编译才会成功</p><p> 为了方便我提供了下载链接，可以直接在linux中下载：wget <a href="https://codeload.github.com/apache/incubator-dubbo/zip/2.5.x" target="_blank" rel="noopener">https://codeload.github.com/apache/incubator-dubbo/zip/2.5.x</a></p><h4 id="解压并编译"><a href="#解压并编译" class="headerlink" title="解压并编译"></a>解压并编译</h4><p>unzip incubator-dubbo-2.5.x.zip</p><p>cd incubator-dubbo-2.5.x</p><p>mvn install -Dmaven.test.skip=true</p><p>请稍等，估计要十多分钟</p><h4 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h4><p>cd dubbo-simple/dubbo-monitor-simple/target/</p><p>tar -zxf dubbo-monitor-simple-2.8.4-assembly.tar.gz</p><p>可以把解压出来的项目目录放在你习惯放的位置上，博主就习惯放在/usr/local/下</p><p>mv dubbo-monitor-simple-2.8.4 /usr/local/monitor</p><h4 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h4><p>cd /usr/local/monitor/conf/</p><p>vim dubbo.properties</p><p><a href="http://92.linux91.cn/attachment/20180920/37d5b7603aee446f8e22921fda6e2795.png" target="_blank" rel="noopener"><img src="https://gitee.com/linux91/document-img/raw/master/img/37d5b7603aee446f8e22921fda6e2795.png" alt="img"></a></p><p>在图中，dubbo.registry.address=的配置中，博主只有zookeeper，所有除了zookeeper，其它的都注释掉</p><p>如果有多少zookeeper，想配置集群，可以用”,”符号要隔开</p><p>在注意端口，不能和系统中其它端口相同发生冲突，配置前最好先查看一下，在修改</p><h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><p>cd /usr/local/monitor/bin/</p><p>restart.sh  #重启</p><p>start.sh    #启动</p><p>stop.sh    #停止</p><p>./start.sh</p><p>这样就启动了</p><p>打开浏览器输入地址: <a href="http://localhost:8080/" target="_blank" rel="noopener">http://IP地址/域名:1288/i</a>ndex.html</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Dubbo </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Dubbo </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Dubbo-admin，部署Dubbo后台管理</title>
       <link href="/2018/09/20/dubbo/dubbo-admin-bu-shu-dubbo-hou-tai-guan-li/"/>
       <url>/2018/09/20/dubbo/dubbo-admin-bu-shu-dubbo-hou-tai-guan-li/</url>
@@ -2096,6 +2096,31 @@
         <tags>
             
             <tag> linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Dubbo-monitor，部署Dubbo监控平台monitor</title>
+      <link href="/2018/09/20/dubbo/dubbo-monitor-bu-shu-dubbo-jian-kong-ping-tai-monitor/"/>
+      <url>/2018/09/20/dubbo/dubbo-monitor-bu-shu-dubbo-jian-kong-ping-tai-monitor/</url>
+      
+        <content type="html"><![CDATA[<p>部署Dubbo后台管理需要三个软件，JDK,mavem,tomcat，安装这三个软件，可以参考我之前写的笔记</p><p>三个软件部署好后，我们就需要下载Dubbo-admin项目：<a href="https://github.com/apache/incubator-dubbo/tree/2.5.x" target="_blank" rel="noopener">https://github.com/apache/incubator-dubbo/tree/2.5.x</a></p><p><a href="http://92.linux91.cn/attachment/20180920/85623ebb2f4449b388aaad2f795649bc.png" target="_blank" rel="noopener"><img src="http://92.linux91.cn/attachment/20180920/85623ebb2f4449b388aaad2f795649bc.png" alt="img"></a></p><p>注意：Dubbo-admin有一个坑，要注意，下载项目的时候要全部下载，不要单独下载一个项目。因为在用mvn编译的时候，不能在单个项目中编译，只能在所有项目中一起编译才会成功</p><p> 为了方便我提供了下载链接，可以直接在linux中下载：wget <a href="https://codeload.github.com/apache/incubator-dubbo/zip/2.5.x" target="_blank" rel="noopener">https://codeload.github.com/apache/incubator-dubbo/zip/2.5.x</a></p><h4 id="解压并编译"><a href="#解压并编译" class="headerlink" title="解压并编译"></a>解压并编译</h4><p>unzip incubator-dubbo-2.5.x.zip</p><p>cd incubator-dubbo-2.5.x</p><p>mvn install -Dmaven.test.skip=true</p><p>请稍等，估计要十多分钟</p><h4 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h4><p>cd dubbo-simple/dubbo-monitor-simple/target/</p><p>tar -zxf dubbo-monitor-simple-2.8.4-assembly.tar.gz</p><p>可以把解压出来的项目目录放在你习惯放的位置上，博主就习惯放在/usr/local/下</p><p>mv dubbo-monitor-simple-2.8.4 /usr/local/monitor</p><h4 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h4><p>cd /usr/local/monitor/conf/</p><p>vim dubbo.properties</p><p><a href="http://92.linux91.cn/attachment/20180920/37d5b7603aee446f8e22921fda6e2795.png" target="_blank" rel="noopener"><img src="https://gitee.com/linux91/document-img/raw/master/img/37d5b7603aee446f8e22921fda6e2795.png" alt="img"></a></p><p>在图中，dubbo.registry.address=的配置中，博主只有zookeeper，所有除了zookeeper，其它的都注释掉</p><p>如果有多少zookeeper，想配置集群，可以用”,”符号要隔开</p><p>在注意端口，不能和系统中其它端口相同发生冲突，配置前最好先查看一下，在修改</p><h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><p>cd /usr/local/monitor/bin/</p><p>restart.sh  #重启</p><p>start.sh    #启动</p><p>stop.sh    #停止</p><p>./start.sh</p><p>这样就启动了</p><p>打开浏览器输入地址: <a href="http://localhost:8080/" target="_blank" rel="noopener">http://IP地址/域名:1288/i</a>ndex.html</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Dubbo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Dubbo </tag>
             
         </tags>
       
@@ -2179,31 +2204,6 @@
     
     
     <entry>
-      <title>Linux--centos7--yum网络源</title>
-      <link href="/2018/09/19/linux/linux-centos7-yum-wang-luo-yuan/"/>
-      <url>/2018/09/19/linux/linux-centos7-yum-wang-luo-yuan/</url>
-      
-        <content type="html"><![CDATA[<p>今天我选择的yum源是网易的</p><p>网易（163）yum源是国内最好的yum源之一 ，无论是速度还是软件版本，都非常的不错，将yum源设置为163yum，可以提升软件包安装和更新的速度，同时避免一些常见软件版本无法找到</p><h4 id="部署方法"><a href="#部署方法" class="headerlink" title="部署方法"></a>部署方法</h4><ul><li>进入系统中存储yum源的目录</li></ul><p>​       cd /etc/yum.repos.d/</p><ul><li>备份系统自带的yum源</li></ul><p>​       mv CentOS-Base.repo CentOS-Base.repo.J</p><ul><li>下载网易yum源</li></ul><p>​       wget <a href="http://mirrors.163.com/.help/CentOS7-Base-163.repo" target="_blank" rel="noopener">http://mirrors.163.com/.help/CentOS7-Base-163.repo</a></p><ul><li>将下载的yum源文件改成系统自带yum源文件的名字</li></ul><p>​        mv CentOS7-Base-163.repo CentOS-Base.repo</p><ul><li>创建元数据缓存</li></ul><p>​        yum makecache</p><ul><li>更新系统yum源  </li></ul><p>​        yum -y update</p><h4 id="温馨提醒："><a href="#温馨提醒：" class="headerlink" title="温馨提醒："></a>温馨提醒：</h4><p>​    除了网易yum源中国国内还有其它很不错的yum源</p><p>​    中科大的yum源：</p><p>​       wget <a href="http://centos.ustc.edu.cn/CentOS-Base.repo" target="_blank" rel="noopener">http://centos.ustc.edu.cn/CentOS-Base.repo</a></p><p>​    sohu的yum源</p><p>​       wget <a href="http://mirrors.sohu.com/help/CentOS-Base-sohu.repo" target="_blank" rel="noopener">http://mirrors.sohu.com/help/CentOS-Base-sohu.repo</a></p><p>​    阿里云的yum源</p><p>​        wget <a href="http://mirrors.aliyun.com/repo/Centos-7.repo" target="_blank" rel="noopener">http://mirrors.aliyun.com/repo/Centos-7.repo</a></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> linux </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> linux </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>linux-centos7-Python3.6源码安装</title>
       <link href="/2018/09/19/python/linux-centos7-python3.6-yuan-ma-an-zhuang/"/>
       <url>/2018/09/19/python/linux-centos7-python3.6-yuan-ma-an-zhuang/</url>
@@ -2221,6 +2221,31 @@
         <tags>
             
             <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Linux--centos7--yum网络源</title>
+      <link href="/2018/09/19/linux/linux-centos7-yum-wang-luo-yuan/"/>
+      <url>/2018/09/19/linux/linux-centos7-yum-wang-luo-yuan/</url>
+      
+        <content type="html"><![CDATA[<p>今天我选择的yum源是网易的</p><p>网易（163）yum源是国内最好的yum源之一 ，无论是速度还是软件版本，都非常的不错，将yum源设置为163yum，可以提升软件包安装和更新的速度，同时避免一些常见软件版本无法找到</p><h4 id="部署方法"><a href="#部署方法" class="headerlink" title="部署方法"></a>部署方法</h4><ul><li>进入系统中存储yum源的目录</li></ul><p>​       cd /etc/yum.repos.d/</p><ul><li>备份系统自带的yum源</li></ul><p>​       mv CentOS-Base.repo CentOS-Base.repo.J</p><ul><li>下载网易yum源</li></ul><p>​       wget <a href="http://mirrors.163.com/.help/CentOS7-Base-163.repo" target="_blank" rel="noopener">http://mirrors.163.com/.help/CentOS7-Base-163.repo</a></p><ul><li>将下载的yum源文件改成系统自带yum源文件的名字</li></ul><p>​        mv CentOS7-Base-163.repo CentOS-Base.repo</p><ul><li>创建元数据缓存</li></ul><p>​        yum makecache</p><ul><li>更新系统yum源  </li></ul><p>​        yum -y update</p><h4 id="温馨提醒："><a href="#温馨提醒：" class="headerlink" title="温馨提醒："></a>温馨提醒：</h4><p>​    除了网易yum源中国国内还有其它很不错的yum源</p><p>​    中科大的yum源：</p><p>​       wget <a href="http://centos.ustc.edu.cn/CentOS-Base.repo" target="_blank" rel="noopener">http://centos.ustc.edu.cn/CentOS-Base.repo</a></p><p>​    sohu的yum源</p><p>​       wget <a href="http://mirrors.sohu.com/help/CentOS-Base-sohu.repo" target="_blank" rel="noopener">http://mirrors.sohu.com/help/CentOS-Base-sohu.repo</a></p><p>​    阿里云的yum源</p><p>​        wget <a href="http://mirrors.aliyun.com/repo/Centos-7.repo" target="_blank" rel="noopener">http://mirrors.aliyun.com/repo/Centos-7.repo</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
             
         </tags>
       

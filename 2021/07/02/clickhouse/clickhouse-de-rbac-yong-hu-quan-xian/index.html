@@ -317,7 +317,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -472,7 +472,7 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    591
+                    664
                 </div>
                 
 
@@ -508,10 +508,17 @@ CREATE USER u HOST IP '172.28.3.0/24' IDENTIFIED WITH PLAINTEXT_PASSWORD BY '123
 </ol>
 <h2 id="修改用户名"><a href="#修改用户名" class="headerlink" title="修改用户名"></a>修改用户名</h2><pre class="line-numbers language-mysql"><code class="language-mysql">## 将用户名u修改成uu
 ALTER USER u RENAME TO u2u<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h2 id="查看用户"><a href="#查看用户" class="headerlink" title="查看用户"></a>查看用户</h2><pre class="line-numbers language-mysql"><code class="language-mysql">show create user<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="查看用户"><a href="#查看用户" class="headerlink" title="查看用户"></a>查看用户</h2><pre class="line-numbers language-mysql"><code class="language-mysql">show create user # 查看当前用户
+show create user 用户名 # 查看指定用户
+show create user u;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h2><pre class="line-numbers language-mysql"><code class="language-mysql">DROP USER [IF EXISTS] name [,...] [ON CLUSTER cluster_name]
+DROP USER 用户名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h2 id="授权以及取消授权"><a href="#授权以及取消授权" class="headerlink" title="授权以及取消授权"></a>授权以及取消授权</h2><h3 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h3><pre class="line-numbers language-mysql"><code class="language-mysql">GRANT select ON text.* TO u WITH GRANT OPTION; #授权给u用户text数据库查询权限
 GRANT all ON text.* TO u WITH GRANT OPTION; #授权给u用户text数据库所有权限
 GRANT all ON *.* TO u WITH GRANT OPTION; #授权给u用户全部权限<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="查看用户权限"><a href="#查看用户权限" class="headerlink" title="查看用户权限"></a>查看用户权限</h3><pre class="line-numbers language-mysql"><code class="language-mysql">SHOW GRANTS # 查看当前用户权限
+SHOW GRANTS FOR 用户名; # 查看指定用户权限
+SHOW GRANTS FOR u;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h3 id="取消授权"><a href="#取消授权" class="headerlink" title="取消授权"></a>取消授权</h3><pre class="line-numbers language-mysql"><code class="language-mysql">REVOKE select ON text.* FROM u; #取消授权给u用户text数据库查询权限
 REVOKE all ON text.* FROM u; #取消授权给u用户text数据库所有权限
 REVOKE all ON *.* FROM u; #取消授权给u用户全部权限<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -621,7 +628,7 @@ REVOKE all ON *.* FROM u; #取消授权给u用户全部权限<span aria-hidden="
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="博客来源">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="博客来源">
                         
                         <span class="card-title">博客来源</span>
                     </div>
@@ -670,7 +677,7 @@ REVOKE all ON *.* FROM u; #取消授权给u用户全部权限<span aria-hidden="
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="恢复之.ibd文件恢复，没有教程步骤，只有心得">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="恢复之.ibd文件恢复，没有教程步骤，只有心得">
                         
                         <span class="card-title">恢复之.ibd文件恢复，没有教程步骤，只有心得</span>
                     </div>
@@ -875,7 +882,7 @@ REVOKE all ON *.* FROM u; #取消授权给u用户全部权限<span aria-hidden="
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">53.2k</span>
+            <span class="white-color">53.6k</span>
             
 
             <br>

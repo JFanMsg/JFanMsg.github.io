@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.linux91.cn/2021/10/14/gitlab/gitlab-de-bu-zhong-duan-ye-wu-sheng-ji/</loc>
+    
+    <lastmod>2021-10-14T07:24:04.877Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.linux91.cn/2021/07/02/clickhouse/clickhouse-de-rbac-yong-hu-quan-xian/</loc>
+    
+    <lastmod>2021-10-14T06:42:17.868Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.linux91.cn/2021/10/08/linux-fu-wu/rsyslog-ri-zhi-chuan-shu-bu-wan-zheng/</loc>
     
     <lastmod>2021-10-09T07:58:28.983Z</lastmod>
@@ -61,13 +75,6 @@
     <loc>https://www.linux91.cn/contact/index.html</loc>
     
     <lastmod>2021-08-26T08:39:51.219Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.linux91.cn/2021/07/02/clickhouse/clickhouse-de-rbac-yong-hu-quan-xian/</loc>
-    
-    <lastmod>2021-08-26T08:08:05.296Z</lastmod>
     
   </url>
   
@@ -660,14 +667,14 @@
   </url>
   
   <url>
-    <loc>https://www.linux91.cn/categories/index.html</loc>
+    <loc>https://www.linux91.cn/tags/index.html</loc>
     
     <lastmod>2021-07-29T12:54:42.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.linux91.cn/tags/index.html</loc>
+    <loc>https://www.linux91.cn/categories/index.html</loc>
     
     <lastmod>2021-07-29T12:54:42.000Z</lastmod>
     
