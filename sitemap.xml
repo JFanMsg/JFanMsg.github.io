@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.linux91.cn/friends/index.html</loc>
+    
+    <lastmod>2021-10-14T07:41:37.196Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.linux91.cn/2021/10/14/gitlab/gitlab-de-bu-zhong-duan-ye-wu-sheng-ji/</loc>
     
     <lastmod>2021-10-14T07:30:00.807Z</lastmod>
@@ -159,13 +166,6 @@
     <loc>https://www.linux91.cn/2018/11/02/mysql/mysql-xiu-gai-lian-jie-shu/</loc>
     
     <lastmod>2021-08-26T07:14:49.388Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.linux91.cn/friends/index.html</loc>
-    
-    <lastmod>2021-08-26T06:54:47.595Z</lastmod>
     
   </url>
   
