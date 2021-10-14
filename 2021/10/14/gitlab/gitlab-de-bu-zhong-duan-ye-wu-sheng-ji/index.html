@@ -475,7 +475,7 @@ gitlab升级要求不停业务，就代表升级过程中，开发还是可以�
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    379
+                    382
                 </div>
                 
 
@@ -506,8 +506,8 @@ gitlab升级要求不停业务，就代表升级过程中，开发还是可以�
 <pre class="line-numbers language-shell"><code class="language-shell">      volumes:
         - /sdata/etc/gitlabs:/etc/gitlab # 无需改动
         - /sdata/data/gitlabs:/var/opt/gitlab # 需要老/sdata/data/gitlab/git-data，通过软链接的方式，放在新的/sdata/data/gitlabs目录下，代码存储目录共享
-        - /sdata/var/log/gitlabs:/var/log/gitlab
-        - /sdata/data/gitlab/git-data:/sdata/data/gitlab/git-data # 因为是通过软链接的方式，开启容器后，也需要/sdata/data/gitlab/git-data目录的存在<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        - /sdata/var/log/gitlabs:/var/log/gitlab # 无需改动
+        - /sdata/data/gitlab/git-data:/sdata/data/gitlab/git-data # 因为是通过软链接的方式，开启容器后，也需要/sdata/data/gitlab/git-data目录存在<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>修改端口</p>
 <p>启动容器</p>
 <p>切换nginx</p>

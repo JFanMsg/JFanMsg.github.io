@@ -8,7 +8,7 @@
       <link href="/2021/10/14/gitlab/gitlab-de-bu-zhong-duan-ye-wu-sheng-ji/"/>
       <url>/2021/10/14/gitlab/gitlab-de-bu-zhong-duan-ye-wu-sheng-ji/</url>
       
-        <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>今早一个需求就扔到我头上，差点爆炸</p><p>gitlab升级要求不停业务，就代表升级过程中，开发还是可以提交代码，拉取代码。。。。。。</p><p>虽然想吐槽一下，不过吃人家饭，需求要硬也得搞，方法总比问题多嘛</p><h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><p>怎么实现业务不中断，突然想到了gitlab的副本，可以按副本的思想，进行不中断业务升级</p><p>这里，我使用的是docker安装方式，所以方案会偏向docker方向的gitlab升级，不过思想是一样的</p><p>简单说：</p><pre><code>1. 将代码存储目录共享，git-data 2. 注意其他目录不要共享，以免导致资源冲突以及升级后资源不适用 3. 开启备用容器记得将端口进行改动 4. nginx切换就行了，这样业务的操作就会转到备用gitlab中</code></pre><h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>直接修改共享卷路径，不过要先复制原共享卷中的数</p><pre class="line-numbers language-shell"><code class="language-shell">      volumes:        - /sdata/etc/gitlabs:/etc/gitlab # 无需改动        - /sdata/data/gitlabs:/var/opt/gitlab # 需要老/sdata/data/gitlab/git-data，通过软链接的方式，放在新的/sdata/data/gitlabs目录下，代码存储目录共享        - /sdata/var/log/gitlabs:/var/log/gitlab        - /sdata/data/gitlab/git-data:/sdata/data/gitlab/git-data # 因为是通过软链接的方式，开启容器后，也需要/sdata/data/gitlab/git-data目录的存在<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>修改端口</p><p>启动容器</p><p>切换nginx</p><p>对gitlab进行升级</p><p>升级完毕后，nginx切回</p><p>备用gitlab回收</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>今早一个需求就扔到我头上，差点爆炸</p><p>gitlab升级要求不停业务，就代表升级过程中，开发还是可以提交代码，拉取代码。。。。。。</p><p>虽然想吐槽一下，不过吃人家饭，需求要硬也得搞，方法总比问题多嘛</p><h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><p>怎么实现业务不中断，突然想到了gitlab的副本，可以按副本的思想，进行不中断业务升级</p><p>这里，我使用的是docker安装方式，所以方案会偏向docker方向的gitlab升级，不过思想是一样的</p><p>简单说：</p><pre><code>1. 将代码存储目录共享，git-data 2. 注意其他目录不要共享，以免导致资源冲突以及升级后资源不适用 3. 开启备用容器记得将端口进行改动 4. nginx切换就行了，这样业务的操作就会转到备用gitlab中</code></pre><h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>直接修改共享卷路径，不过要先复制原共享卷中的数</p><pre class="line-numbers language-shell"><code class="language-shell">      volumes:        - /sdata/etc/gitlabs:/etc/gitlab # 无需改动        - /sdata/data/gitlabs:/var/opt/gitlab # 需要老/sdata/data/gitlab/git-data，通过软链接的方式，放在新的/sdata/data/gitlabs目录下，代码存储目录共享        - /sdata/var/log/gitlabs:/var/log/gitlab # 无需改动        - /sdata/data/gitlab/git-data:/sdata/data/gitlab/git-data # 因为是通过软链接的方式，开启容器后，也需要/sdata/data/gitlab/git-data目录存在<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>修改端口</p><p>启动容器</p><p>切换nginx</p><p>对gitlab进行升级</p><p>升级完毕后，nginx切回</p><p>备用gitlab回收</p>]]></content>
       
       
       <categories>
@@ -2054,23 +2054,23 @@
     
     
     <entry>
-      <title>centos7--mavem3.5安装</title>
-      <link href="/2018/09/20/linux/centos7-mavem3.5-an-zhuang/"/>
-      <url>/2018/09/20/linux/centos7-mavem3.5-an-zhuang/</url>
+      <title>Dubbo-monitor，部署Dubbo监控平台monitor</title>
+      <link href="/2018/09/20/dubbo/dubbo-monitor-bu-shu-dubbo-jian-kong-ping-tai-monitor/"/>
+      <url>/2018/09/20/dubbo/dubbo-monitor-bu-shu-dubbo-jian-kong-ping-tai-monitor/</url>
       
-        <content type="html"><![CDATA[<p>从官方网上下载mavem3.5：<a href="http://maven.apache.org/download.cgi" target="_blank" rel="noopener">http://maven.apache.org/download.cgi</a></p><p>下载之后上传到linux系统上</p><p>也可以在linux系统上直接下载，看系统网速</p><p>wget <a href="http://mirrors.shu.edu.cn/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz" target="_blank" rel="noopener">http://mirrors.shu.edu.cn/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz</a></p><p>解压并存放在指定目录中</p><p>   tar -zxf apache-maven-3.5.3-bin.tar.gz</p><p>   mv apache-maven-3.5.3 /usr/local/maven</p><p>配置mavem的系统环境</p><p>   vim /etc/profile</p><hr><p>   ##MAVEN<br>   export M2_HOME=/usr/local/maven<br>   export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$M2_HOME/bin:$PATH</p><hr><p>   source /etc/profile</p><p>测试mavem是否配置成功</p><p>   mvn -v</p><p>   成功信息如下</p><p>​      Apache Maven 3.5.3 (3383c37e1f9e9b3bc3df5050c29c8aff9f295297; 2018-02-25T03:49:05+08:00)<br>​      Maven home: /usr/local/maven</p><p>如果有安装JDK跟mavem的</p><p>   使用mvn -v 就会跟JDK的系统配置信息一起出现。如下</p><p>​      Apache Maven 3.5.3 (3383c37e1f9e9b3bc3df5050c29c8aff9f295297; 2018-02-25T03:49:05+08:00)<br>​      Maven home: /usr/local/maven<br>​      Java version: 1.8.0_181, vendor: Oracle Corporation<br>​      Java home: /usr/local/jdk/jre<br>​      Default locale: en_US, platform encoding: UTF-8<br>​      OS name: “linux”, version: “3.10.0-693.el7.x86_64”, arch: “amd64”, family: “unix”</p>]]></content>
+        <content type="html"><![CDATA[<p>部署Dubbo后台管理需要三个软件，JDK,mavem,tomcat，安装这三个软件，可以参考我之前写的笔记</p><p>三个软件部署好后，我们就需要下载Dubbo-admin项目：<a href="https://github.com/apache/incubator-dubbo/tree/2.5.x" target="_blank" rel="noopener">https://github.com/apache/incubator-dubbo/tree/2.5.x</a></p><p><a href="http://92.linux91.cn/attachment/20180920/85623ebb2f4449b388aaad2f795649bc.png" target="_blank" rel="noopener"><img src="http://92.linux91.cn/attachment/20180920/85623ebb2f4449b388aaad2f795649bc.png" alt="img"></a></p><p>注意：Dubbo-admin有一个坑，要注意，下载项目的时候要全部下载，不要单独下载一个项目。因为在用mvn编译的时候，不能在单个项目中编译，只能在所有项目中一起编译才会成功</p><p> 为了方便我提供了下载链接，可以直接在linux中下载：wget <a href="https://codeload.github.com/apache/incubator-dubbo/zip/2.5.x" target="_blank" rel="noopener">https://codeload.github.com/apache/incubator-dubbo/zip/2.5.x</a></p><h4 id="解压并编译"><a href="#解压并编译" class="headerlink" title="解压并编译"></a>解压并编译</h4><p>unzip incubator-dubbo-2.5.x.zip</p><p>cd incubator-dubbo-2.5.x</p><p>mvn install -Dmaven.test.skip=true</p><p>请稍等，估计要十多分钟</p><h4 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h4><p>cd dubbo-simple/dubbo-monitor-simple/target/</p><p>tar -zxf dubbo-monitor-simple-2.8.4-assembly.tar.gz</p><p>可以把解压出来的项目目录放在你习惯放的位置上，博主就习惯放在/usr/local/下</p><p>mv dubbo-monitor-simple-2.8.4 /usr/local/monitor</p><h4 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h4><p>cd /usr/local/monitor/conf/</p><p>vim dubbo.properties</p><p><a href="http://92.linux91.cn/attachment/20180920/37d5b7603aee446f8e22921fda6e2795.png" target="_blank" rel="noopener"><img src="https://gitee.com/linux91/document-img/raw/master/img/37d5b7603aee446f8e22921fda6e2795.png" alt="img"></a></p><p>在图中，dubbo.registry.address=的配置中，博主只有zookeeper，所有除了zookeeper，其它的都注释掉</p><p>如果有多少zookeeper，想配置集群，可以用”,”符号要隔开</p><p>在注意端口，不能和系统中其它端口相同发生冲突，配置前最好先查看一下，在修改</p><h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><p>cd /usr/local/monitor/bin/</p><p>restart.sh  #重启</p><p>start.sh    #启动</p><p>stop.sh    #停止</p><p>./start.sh</p><p>这样就启动了</p><p>打开浏览器输入地址: <a href="http://localhost:8080/" target="_blank" rel="noopener">http://IP地址/域名:1288/i</a>ndex.html</p>]]></content>
       
       
       <categories>
           
-          <category> linux </category>
+          <category> Dubbo </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> linux </tag>
+            <tag> Dubbo </tag>
             
         </tags>
       
@@ -2104,23 +2104,23 @@
     
     
     <entry>
-      <title>Dubbo-monitor，部署Dubbo监控平台monitor</title>
-      <link href="/2018/09/20/dubbo/dubbo-monitor-bu-shu-dubbo-jian-kong-ping-tai-monitor/"/>
-      <url>/2018/09/20/dubbo/dubbo-monitor-bu-shu-dubbo-jian-kong-ping-tai-monitor/</url>
+      <title>centos7--mavem3.5安装</title>
+      <link href="/2018/09/20/linux/centos7-mavem3.5-an-zhuang/"/>
+      <url>/2018/09/20/linux/centos7-mavem3.5-an-zhuang/</url>
       
-        <content type="html"><![CDATA[<p>部署Dubbo后台管理需要三个软件，JDK,mavem,tomcat，安装这三个软件，可以参考我之前写的笔记</p><p>三个软件部署好后，我们就需要下载Dubbo-admin项目：<a href="https://github.com/apache/incubator-dubbo/tree/2.5.x" target="_blank" rel="noopener">https://github.com/apache/incubator-dubbo/tree/2.5.x</a></p><p><a href="http://92.linux91.cn/attachment/20180920/85623ebb2f4449b388aaad2f795649bc.png" target="_blank" rel="noopener"><img src="http://92.linux91.cn/attachment/20180920/85623ebb2f4449b388aaad2f795649bc.png" alt="img"></a></p><p>注意：Dubbo-admin有一个坑，要注意，下载项目的时候要全部下载，不要单独下载一个项目。因为在用mvn编译的时候，不能在单个项目中编译，只能在所有项目中一起编译才会成功</p><p> 为了方便我提供了下载链接，可以直接在linux中下载：wget <a href="https://codeload.github.com/apache/incubator-dubbo/zip/2.5.x" target="_blank" rel="noopener">https://codeload.github.com/apache/incubator-dubbo/zip/2.5.x</a></p><h4 id="解压并编译"><a href="#解压并编译" class="headerlink" title="解压并编译"></a>解压并编译</h4><p>unzip incubator-dubbo-2.5.x.zip</p><p>cd incubator-dubbo-2.5.x</p><p>mvn install -Dmaven.test.skip=true</p><p>请稍等，估计要十多分钟</p><h4 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h4><p>cd dubbo-simple/dubbo-monitor-simple/target/</p><p>tar -zxf dubbo-monitor-simple-2.8.4-assembly.tar.gz</p><p>可以把解压出来的项目目录放在你习惯放的位置上，博主就习惯放在/usr/local/下</p><p>mv dubbo-monitor-simple-2.8.4 /usr/local/monitor</p><h4 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h4><p>cd /usr/local/monitor/conf/</p><p>vim dubbo.properties</p><p><a href="http://92.linux91.cn/attachment/20180920/37d5b7603aee446f8e22921fda6e2795.png" target="_blank" rel="noopener"><img src="https://gitee.com/linux91/document-img/raw/master/img/37d5b7603aee446f8e22921fda6e2795.png" alt="img"></a></p><p>在图中，dubbo.registry.address=的配置中，博主只有zookeeper，所有除了zookeeper，其它的都注释掉</p><p>如果有多少zookeeper，想配置集群，可以用”,”符号要隔开</p><p>在注意端口，不能和系统中其它端口相同发生冲突，配置前最好先查看一下，在修改</p><h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><p>cd /usr/local/monitor/bin/</p><p>restart.sh  #重启</p><p>start.sh    #启动</p><p>stop.sh    #停止</p><p>./start.sh</p><p>这样就启动了</p><p>打开浏览器输入地址: <a href="http://localhost:8080/" target="_blank" rel="noopener">http://IP地址/域名:1288/i</a>ndex.html</p>]]></content>
+        <content type="html"><![CDATA[<p>从官方网上下载mavem3.5：<a href="http://maven.apache.org/download.cgi" target="_blank" rel="noopener">http://maven.apache.org/download.cgi</a></p><p>下载之后上传到linux系统上</p><p>也可以在linux系统上直接下载，看系统网速</p><p>wget <a href="http://mirrors.shu.edu.cn/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz" target="_blank" rel="noopener">http://mirrors.shu.edu.cn/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz</a></p><p>解压并存放在指定目录中</p><p>   tar -zxf apache-maven-3.5.3-bin.tar.gz</p><p>   mv apache-maven-3.5.3 /usr/local/maven</p><p>配置mavem的系统环境</p><p>   vim /etc/profile</p><hr><p>   ##MAVEN<br>   export M2_HOME=/usr/local/maven<br>   export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$M2_HOME/bin:$PATH</p><hr><p>   source /etc/profile</p><p>测试mavem是否配置成功</p><p>   mvn -v</p><p>   成功信息如下</p><p>​      Apache Maven 3.5.3 (3383c37e1f9e9b3bc3df5050c29c8aff9f295297; 2018-02-25T03:49:05+08:00)<br>​      Maven home: /usr/local/maven</p><p>如果有安装JDK跟mavem的</p><p>   使用mvn -v 就会跟JDK的系统配置信息一起出现。如下</p><p>​      Apache Maven 3.5.3 (3383c37e1f9e9b3bc3df5050c29c8aff9f295297; 2018-02-25T03:49:05+08:00)<br>​      Maven home: /usr/local/maven<br>​      Java version: 1.8.0_181, vendor: Oracle Corporation<br>​      Java home: /usr/local/jdk/jre<br>​      Default locale: en_US, platform encoding: UTF-8<br>​      OS name: “linux”, version: “3.10.0-693.el7.x86_64”, arch: “amd64”, family: “unix”</p>]]></content>
       
       
       <categories>
           
-          <category> Dubbo </category>
+          <category> linux </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> Dubbo </tag>
+            <tag> linux </tag>
             
         </tags>
       
@@ -2204,31 +2204,6 @@
     
     
     <entry>
-      <title>linux-centos7-Python3.6源码安装</title>
-      <link href="/2018/09/19/python/linux-centos7-python3.6-yuan-ma-an-zhuang/"/>
-      <url>/2018/09/19/python/linux-centos7-python3.6-yuan-ma-an-zhuang/</url>
-      
-        <content type="html"><![CDATA[<p>环境：centos7.4</p><h4 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h4><p>设置网络YUN源</p><p>可以查看之前的笔记，有记录怎么更改网络yum源</p><p><a href="https://www.linux91.cn/2018/09/19/linux/linux-centos7-yum-wang-luo-yuan/">https://www.linux91.cn/2018/09/19/linux/linux-centos7-yum-wang-luo-yuan/</a></p><h4 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h4><p>安装python3.6所需要的依赖包</p><pre class="line-numbers language-shell"><code class="language-shell">yum -y install openssl-devel bzip2-devel expat-devel gdbm-devel readline-devel sqlite-devel<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h4 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h4><p>把准备好的源码包放入系统并解压进入</p><pre class="line-numbers language-shell"><code class="language-shell">tar -zxf Python-3.6.1.tgzcd Python-3.6.1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><h4 id="第四步"><a href="#第四步" class="headerlink" title="第四步"></a>第四步</h4><p>安装python6.3</p><pre class="line-numbers language-shell"><code class="language-shell">./configure --prefix=/usr/local/makemake altinstallcd/usr/binln -s /usr/local/bin/python3.6 /usr/bin/python3.6<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ol><li>python3.6程序的执行文件：/usr/local/bin/python3.6</li><li>python3.6应用程序目录：/usr/local/lib/python3.6</li><li>pip3的执行文件：/usr/local/bin/pip3.6</li><li>pyenv3的执行文件：/usr/local/bin/pyenv-3.6</li></ol><p>到这一步python3.6就大概算是安装完成了，</p><p>在linux 字符界面上输入python3.6，就可以进入python3.6的操作界面</p><p>因centos7.4系统自带的是python2.7，所以要想进入就要输入python3.6，不可以直接输入python就进入，因为直接输入python进入的就是进入python自带的2.7的操作界面</p><h3 id="第五步"><a href="#第五步" class="headerlink" title="第五步"></a>第五步</h3><p>系统中自带的python版本是2.7，将python3.6取代python2.7</p><p>mv /usr/bin/python /usr/bin/python.bak</p><p>ln -s /usr/local/bin/python3 /usr/bin/python</p><p>vim /usr/bin/yum</p><p>将开头的#!/usr/bin/python改成#!/usr/bin/python2.7</p><p>vim /usr/libexec/urlgrabber-ext-down</p><p>将开头的#! /usr/bin/python改成#! /usr/bin/python2.7</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> python </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> python </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Linux--centos7--yum网络源</title>
       <link href="/2018/09/19/linux/linux-centos7-yum-wang-luo-yuan/"/>
       <url>/2018/09/19/linux/linux-centos7-yum-wang-luo-yuan/</url>
@@ -2246,6 +2221,31 @@
         <tags>
             
             <tag> linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>linux-centos7-Python3.6源码安装</title>
+      <link href="/2018/09/19/python/linux-centos7-python3.6-yuan-ma-an-zhuang/"/>
+      <url>/2018/09/19/python/linux-centos7-python3.6-yuan-ma-an-zhuang/</url>
+      
+        <content type="html"><![CDATA[<p>环境：centos7.4</p><h4 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h4><p>设置网络YUN源</p><p>可以查看之前的笔记，有记录怎么更改网络yum源</p><p><a href="https://www.linux91.cn/2018/09/19/linux/linux-centos7-yum-wang-luo-yuan/">https://www.linux91.cn/2018/09/19/linux/linux-centos7-yum-wang-luo-yuan/</a></p><h4 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h4><p>安装python3.6所需要的依赖包</p><pre class="line-numbers language-shell"><code class="language-shell">yum -y install openssl-devel bzip2-devel expat-devel gdbm-devel readline-devel sqlite-devel<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h4 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h4><p>把准备好的源码包放入系统并解压进入</p><pre class="line-numbers language-shell"><code class="language-shell">tar -zxf Python-3.6.1.tgzcd Python-3.6.1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><h4 id="第四步"><a href="#第四步" class="headerlink" title="第四步"></a>第四步</h4><p>安装python6.3</p><pre class="line-numbers language-shell"><code class="language-shell">./configure --prefix=/usr/local/makemake altinstallcd/usr/binln -s /usr/local/bin/python3.6 /usr/bin/python3.6<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ol><li>python3.6程序的执行文件：/usr/local/bin/python3.6</li><li>python3.6应用程序目录：/usr/local/lib/python3.6</li><li>pip3的执行文件：/usr/local/bin/pip3.6</li><li>pyenv3的执行文件：/usr/local/bin/pyenv-3.6</li></ol><p>到这一步python3.6就大概算是安装完成了，</p><p>在linux 字符界面上输入python3.6，就可以进入python3.6的操作界面</p><p>因centos7.4系统自带的是python2.7，所以要想进入就要输入python3.6，不可以直接输入python就进入，因为直接输入python进入的就是进入python自带的2.7的操作界面</p><h3 id="第五步"><a href="#第五步" class="headerlink" title="第五步"></a>第五步</h3><p>系统中自带的python版本是2.7，将python3.6取代python2.7</p><p>mv /usr/bin/python /usr/bin/python.bak</p><p>ln -s /usr/local/bin/python3 /usr/bin/python</p><p>vim /usr/bin/yum</p><p>将开头的#!/usr/bin/python改成#!/usr/bin/python2.7</p><p>vim /usr/libexec/urlgrabber-ext-down</p><p>将开头的#! /usr/bin/python改成#! /usr/bin/python2.7</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
             
         </tags>
       
