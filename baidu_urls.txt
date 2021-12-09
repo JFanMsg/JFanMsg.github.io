@@ -1,3 +1,4 @@
+https://www.linux91.cn/2021/12/09/prometheus/prometheus-ji-yu-http-sd-configs-de-fu-wu-fa-xian/
 https://www.linux91.cn/2021/10/14/gitlab/gitlab-de-bu-zhong-duan-ye-wu-sheng-ji/
 https://www.linux91.cn/2021/10/08/linux-fu-wu/rsyslog-ri-zhi-chuan-shu-bu-wan-zheng/
 https://www.linux91.cn/2021/09/27/gitlab/docker-compose-an-zhuang-de-gitlab-sheng-ji/
