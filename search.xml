@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>计算机组成原理-CPU集合篇(持续更新)</title>
+      <link href="/2021/12/10/di-ceng/ji-suan-ji-zu-cheng-yuan-li/cpu-pian/"/>
+      <url>/2021/12/10/di-ceng/ji-suan-ji-zu-cheng-yuan-li/cpu-pian/</url>
+      
+        <content type="html"><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>||| 代表个人想法</p><p>参考学习：</p><p>​    1. 极客时间专栏-深入浅出计算机组成原理</p><h1 id="性能指标之-计算机的计时单位-CPU时钟"><a href="#性能指标之-计算机的计时单位-CPU时钟" class="headerlink" title="性能指标之 计算机的计时单位 - CPU时钟"></a>性能指标之 计算机的计时单位 - CPU时钟</h1><p>虽然时间是一个很自然的用来衡量性能的指标，但是用时间来衡量时，有两个问题。</p><p><strong>第一个就是时间不“准”</strong>。如果用你自己随便写的一个程序，来统计程序运行的时间，每一次统计结果不会完全一样。有可能这一次花了 45ms，下一次变成了 53ms。</p><p>为什么会不准呢？这里面有好几个原因。首先，我们统计时间是用类似于“掐秒表”一样，记录程序运行结束的时间减去程序开始运行的时间。这个时间也叫 Wall Clock Time 或者 Elapsed Time，就是在运行程序期间，挂在墙上的钟走掉的时间。</p><p>但是，计算机可能同时运行着好多个程序，CPU 实际上不停地在各个程序之间进行切换。在这些走掉的时间里面，很可能 CPU 切换去运行别的程序了。而且，有些程序在运行的时候，可能要从网络、硬盘去读取数据，要等网络和硬盘把数据读出来，给到内存和 CPU。所以说，<strong>要想准确统计某个程序运行时间，进而去比较两个程序的实际性能，我们得把这些时间给刨除掉</strong>。</p><p>Linux 下有一个叫 time 的命令，可以帮我们统计出来，同样的 Wall Clock Time 下，程序实际在 CPU 上到底花了多少时间。</p><p>我们简单运行一下 time 命令。它会返回三个值，第一个是<strong>real time</strong>，也就是我们说的 Wall Clock Time，也就是运行程序整个过程中流逝掉的时间；第二个是<strong>user time</strong>，也就是 CPU 在运行你的程序，在用户态运行指令的时间；第三个是<strong>sys time</strong>，是 CPU 在运行你的程序，在操作系统内核里运行指令的时间。而<strong>程序实际花费的 CPU 执行时间（CPU Time），就是 user time 加上 sys time</strong>。</p><pre class="line-numbers language-shell"><code class="language-shell">$ time seq 1000000 | wc -l1000000real  0m0.101suser  0m0.031ssys   0m0.016s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>||| 如果机器是多核心那么请加大数值，实例在单核心的机器中运行</p><p>我们先来理解一下什么是时钟周期时间。你在买电脑的时候，一定关注过 CPU 的主频。比如我手头的这台电脑就是 Intel Core-i7-7700HQ 2.8GHz，这里的 2.8GHz 就是电脑的主频（Frequency/Clock Rate）。这个 2.8GHz，我们可以先粗浅地认为，CPU 在 1 秒时间内，可以执行的简单指令的数量是 2.8G 条。</p><p>||| 解释下，2.8GHz中实际G是代表10亿，那么2.8GHz就代表28亿次</p><p>||| 如果我们认为2.8GHz一秒，那么也就是28亿次一秒，28亿次那么暂时认为是CPU执行一个指令的次数，那么对于一些组合指令以及精简指令就不能按这个假设去计算</p><p>||| 如果一个指令执行的过程中还会调其他指令呢，就比如我们写的程序，为了更加方便使用跟维护，通常会将一个小功能进入分解跟组装，那么我是不是可以认为有些指定执行中，可能会调用其他指令</p><p>最简单的提升性能方案，自然缩短时钟周期时间，也就是提升主频。换句话说，就是换一块好一点的 CPU。不过，这个是我们这些软件工程师控制不了的事情，所以我们就把目光挪到了乘法的另一个因子——CPU 时钟周期数上。如果能够减少程序需要的 CPU 时钟周期数量，一样能够提升程序性能。</p><p>对于 CPU 时钟周期数，我们可以再做一个分解，把它变成“指令数×<strong>每条指令的平均时钟周期数</strong>（Cycles Per Instruction，简称 CPI）”。不同的指令需要的 Cycles 是不同的，加法和乘法都对应着一条 CPU 指令，但是乘法需要的 Cycles 就比加法要多，自然也就慢。在这样拆分了之后，我们的程序的 CPU 执行时间就可以变成这样三个部分的乘积。</p><p>程序的 CPU 执行时间 = 指令数×CPI×Clock Cycle Time</p><p>因此，如果我们想要解决性能问题，其实就是要优化这三者。</p><ol><li>时钟周期时间，就是计算机主频，这个取决于计算机硬件。我们所熟知的<a href="https://zh.wikipedia.org/wiki/摩尔定律" target="_blank" rel="noopener">摩尔定律</a>就一直在不停地提高我们计算机的主频。比如说，我最早使用的 80386 主频只有 33MHz，现在手头的笔记本电脑就有 2.8GHz，在主频层面，就提升了将近 100 倍。</li><li>每条指令的平均时钟周期数 CPI，就是一条指令到底需要多少 CPU Cycle。在后面讲解 CPU 结构的时候，我们会看到，现代的 CPU 通过流水线技术（Pipeline），让一条指令需要的 CPU Cycle 尽可能地少。因此，对于 CPI 的优化，也是计算机组成和体系结构中的重要一环。</li><li>指令数，代表执行我们的程序到底需要多少条指令、用哪些指令。这个很多时候就把挑战交给了编译器。同样的代码，编译成计算机指令时候，就有各种不同的表示方式。</li></ol><p>我们可以把自己想象成一个 CPU，坐在那里写程序。计算机主频就好像是你的打字速度，打字越快，你自然可以多写一点程序。CPI 相当于你在写程序的时候，熟悉各种快捷键，越是打同样的内容，需要敲击键盘的次数就越少。指令数相当于你的程序设计得够合理，同样的程序要写的代码行数就少。如果三者皆能实现，你自然可以很快地写出一个优秀的程序，你的“性能”从外面来看就是好的。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 计算机组成原理 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CPU集合篇 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>prometheus-基于http_sd_configs的服务发现</title>
       <link href="/2021/12/09/prometheus/prometheus-ji-yu-http-sd-configs-de-fu-wu-fa-xian/"/>
       <url>/2021/12/09/prometheus/prometheus-ji-yu-http-sd-configs-de-fu-wu-fa-xian/</url>
@@ -2054,56 +2079,6 @@
     
     
     <entry>
-      <title>Dubbo-admin，部署Dubbo后台管理</title>
-      <link href="/2018/09/20/dubbo/dubbo-admin-bu-shu-dubbo-hou-tai-guan-li/"/>
-      <url>/2018/09/20/dubbo/dubbo-admin-bu-shu-dubbo-hou-tai-guan-li/</url>
-      
-        <content type="html"><![CDATA[<p>部署Dubbo后台管理需要三个软件，JDK,mavem,tomcat，安装这三个软件，可以参考我之前写的笔记</p><p>三个软件部署好后，我们就需要下载Dubbo-admin项目：<a href="https://github.com/apache/incubator-dubbo/tree/2.5.x" target="_blank" rel="noopener">https://github.com/apache/incubator-dubbo/tree/2.5.x</a></p><p><a href="http://92.linux91.cn/attachment/20180920/85623ebb2f4449b388aaad2f795649bc.png" target="_blank" rel="noopener"><img src="https://gitee.com/linux91/document-img/raw/master/img/85623ebb2f4449b388aaad2f795649bc.png" alt="img"></a></p><p>注意：Dubbo-admin有一个坑，要注意，下载项目的时候要全部下载，不要单独下载一个项目。因为在用mvn编译的时候，不能在单个项目中编译，只能在所有项目中一起编译才会成功</p><p> 为了方便我提供了下载链接，可以直接在linux中下载：wget <a href="https://codeload.github.com/apache/incubator-dubbo/zip/2.5.x" target="_blank" rel="noopener">https://codeload.github.com/apache/incubator-dubbo/zip/2.5.x</a></p><h4 id="解压并编译"><a href="#解压并编译" class="headerlink" title="解压并编译"></a>解压并编译</h4><p>unzip incubator-dubbo-2.5.x.zip</p><p>cd incubator-dubbo-2.5.x</p><p>mvn install -Dmaven.test.skip=true</p><p>请稍等，估计要十多分钟</p><h4 id="找到-war文件并复制到tomcat中的webapps目录中"><a href="#找到-war文件并复制到tomcat中的webapps目录中" class="headerlink" title="找到.war文件并复制到tomcat中的webapps目录中"></a>找到.war文件并复制到tomcat中的webapps目录中</h4><p>.war文件：dubbo-admin-2.8.4.war（有可能不同版本的名称不一样）</p><p>cp -a dubbo-admin/target/dubbo-admin-2.8.4.war /usr/local/tomcat/webapps/</p><p>进入tomcat中重启服务，让我们复制过去的.war文件解压运行</p><h4 id="修改dubbo-properties配置文件"><a href="#修改dubbo-properties配置文件" class="headerlink" title="修改dubbo.properties配置文件"></a>修改dubbo.properties配置文件</h4><p>进入tomcat中的webapps目录中，找到解压好的dubbo-admin目录，进去，找到dubbo.properties文件</p><p>vim dubbo.properties</p><p>修改第一行的IP地址，dubbo.registry.address=127.0.0.1:2181,127.0.0.1:2182,127.0.0.1:2183</p><p>如果有安装过zookeeper，那就在dubbo.registry.address=中填写zookeeper的IP地址以及端口号</p><p>第二行跟第三行是用户配置信息</p><p>打开浏览器输入地址: <a href="http://localhost:8080/" target="_blank" rel="noopener">http://IP地址/域名:8080/dubbo-admin</a></p><p>用户就在dubbo.properties文件中的第二第三行中。</p><h4 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h4><p>这是我在我公司真实环境中遇到的一个坑</p><p>我想修改一下dubbo-admin的root登录密码跟禁用guest用户</p><p>发现，如果没有guest用户，无论你怎么重启tomcat，访问管理后台会发现找不到网页</p><p>还有一个想法，就是把dubbo-admin中的guest用户改一下名字，测试一下可不可以访问，发现还是不可以。</p><p>总结出现，dubbo-admin中的这二个用户可能都是必须存在的，要是不存在，系统就报错</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Dubbo </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Dubbo </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Dubbo-monitor，部署Dubbo监控平台monitor</title>
-      <link href="/2018/09/20/dubbo/dubbo-monitor-bu-shu-dubbo-jian-kong-ping-tai-monitor/"/>
-      <url>/2018/09/20/dubbo/dubbo-monitor-bu-shu-dubbo-jian-kong-ping-tai-monitor/</url>
-      
-        <content type="html"><![CDATA[<p>部署Dubbo后台管理需要三个软件，JDK,mavem,tomcat，安装这三个软件，可以参考我之前写的笔记</p><p>三个软件部署好后，我们就需要下载Dubbo-admin项目：<a href="https://github.com/apache/incubator-dubbo/tree/2.5.x" target="_blank" rel="noopener">https://github.com/apache/incubator-dubbo/tree/2.5.x</a></p><p><a href="http://92.linux91.cn/attachment/20180920/85623ebb2f4449b388aaad2f795649bc.png" target="_blank" rel="noopener"><img src="http://92.linux91.cn/attachment/20180920/85623ebb2f4449b388aaad2f795649bc.png" alt="img"></a></p><p>注意：Dubbo-admin有一个坑，要注意，下载项目的时候要全部下载，不要单独下载一个项目。因为在用mvn编译的时候，不能在单个项目中编译，只能在所有项目中一起编译才会成功</p><p> 为了方便我提供了下载链接，可以直接在linux中下载：wget <a href="https://codeload.github.com/apache/incubator-dubbo/zip/2.5.x" target="_blank" rel="noopener">https://codeload.github.com/apache/incubator-dubbo/zip/2.5.x</a></p><h4 id="解压并编译"><a href="#解压并编译" class="headerlink" title="解压并编译"></a>解压并编译</h4><p>unzip incubator-dubbo-2.5.x.zip</p><p>cd incubator-dubbo-2.5.x</p><p>mvn install -Dmaven.test.skip=true</p><p>请稍等，估计要十多分钟</p><h4 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h4><p>cd dubbo-simple/dubbo-monitor-simple/target/</p><p>tar -zxf dubbo-monitor-simple-2.8.4-assembly.tar.gz</p><p>可以把解压出来的项目目录放在你习惯放的位置上，博主就习惯放在/usr/local/下</p><p>mv dubbo-monitor-simple-2.8.4 /usr/local/monitor</p><h4 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h4><p>cd /usr/local/monitor/conf/</p><p>vim dubbo.properties</p><p><a href="http://92.linux91.cn/attachment/20180920/37d5b7603aee446f8e22921fda6e2795.png" target="_blank" rel="noopener"><img src="https://gitee.com/linux91/document-img/raw/master/img/37d5b7603aee446f8e22921fda6e2795.png" alt="img"></a></p><p>在图中，dubbo.registry.address=的配置中，博主只有zookeeper，所有除了zookeeper，其它的都注释掉</p><p>如果有多少zookeeper，想配置集群，可以用”,”符号要隔开</p><p>在注意端口，不能和系统中其它端口相同发生冲突，配置前最好先查看一下，在修改</p><h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><p>cd /usr/local/monitor/bin/</p><p>restart.sh  #重启</p><p>start.sh    #启动</p><p>stop.sh    #停止</p><p>./start.sh</p><p>这样就启动了</p><p>打开浏览器输入地址: <a href="http://localhost:8080/" target="_blank" rel="noopener">http://IP地址/域名:1288/i</a>ndex.html</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Dubbo </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Dubbo </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Liunx--centos7--JDK8安装</title>
       <link href="/2018/09/20/linux/liunx-centos7-jdk8-an-zhuang/"/>
       <url>/2018/09/20/linux/liunx-centos7-jdk8-an-zhuang/</url>
@@ -2146,6 +2121,56 @@
         <tags>
             
             <tag> linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Dubbo-admin，部署Dubbo后台管理</title>
+      <link href="/2018/09/20/dubbo/dubbo-admin-bu-shu-dubbo-hou-tai-guan-li/"/>
+      <url>/2018/09/20/dubbo/dubbo-admin-bu-shu-dubbo-hou-tai-guan-li/</url>
+      
+        <content type="html"><![CDATA[<p>部署Dubbo后台管理需要三个软件，JDK,mavem,tomcat，安装这三个软件，可以参考我之前写的笔记</p><p>三个软件部署好后，我们就需要下载Dubbo-admin项目：<a href="https://github.com/apache/incubator-dubbo/tree/2.5.x" target="_blank" rel="noopener">https://github.com/apache/incubator-dubbo/tree/2.5.x</a></p><p><a href="http://92.linux91.cn/attachment/20180920/85623ebb2f4449b388aaad2f795649bc.png" target="_blank" rel="noopener"><img src="https://gitee.com/linux91/document-img/raw/master/img/85623ebb2f4449b388aaad2f795649bc.png" alt="img"></a></p><p>注意：Dubbo-admin有一个坑，要注意，下载项目的时候要全部下载，不要单独下载一个项目。因为在用mvn编译的时候，不能在单个项目中编译，只能在所有项目中一起编译才会成功</p><p> 为了方便我提供了下载链接，可以直接在linux中下载：wget <a href="https://codeload.github.com/apache/incubator-dubbo/zip/2.5.x" target="_blank" rel="noopener">https://codeload.github.com/apache/incubator-dubbo/zip/2.5.x</a></p><h4 id="解压并编译"><a href="#解压并编译" class="headerlink" title="解压并编译"></a>解压并编译</h4><p>unzip incubator-dubbo-2.5.x.zip</p><p>cd incubator-dubbo-2.5.x</p><p>mvn install -Dmaven.test.skip=true</p><p>请稍等，估计要十多分钟</p><h4 id="找到-war文件并复制到tomcat中的webapps目录中"><a href="#找到-war文件并复制到tomcat中的webapps目录中" class="headerlink" title="找到.war文件并复制到tomcat中的webapps目录中"></a>找到.war文件并复制到tomcat中的webapps目录中</h4><p>.war文件：dubbo-admin-2.8.4.war（有可能不同版本的名称不一样）</p><p>cp -a dubbo-admin/target/dubbo-admin-2.8.4.war /usr/local/tomcat/webapps/</p><p>进入tomcat中重启服务，让我们复制过去的.war文件解压运行</p><h4 id="修改dubbo-properties配置文件"><a href="#修改dubbo-properties配置文件" class="headerlink" title="修改dubbo.properties配置文件"></a>修改dubbo.properties配置文件</h4><p>进入tomcat中的webapps目录中，找到解压好的dubbo-admin目录，进去，找到dubbo.properties文件</p><p>vim dubbo.properties</p><p>修改第一行的IP地址，dubbo.registry.address=127.0.0.1:2181,127.0.0.1:2182,127.0.0.1:2183</p><p>如果有安装过zookeeper，那就在dubbo.registry.address=中填写zookeeper的IP地址以及端口号</p><p>第二行跟第三行是用户配置信息</p><p>打开浏览器输入地址: <a href="http://localhost:8080/" target="_blank" rel="noopener">http://IP地址/域名:8080/dubbo-admin</a></p><p>用户就在dubbo.properties文件中的第二第三行中。</p><h4 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h4><p>这是我在我公司真实环境中遇到的一个坑</p><p>我想修改一下dubbo-admin的root登录密码跟禁用guest用户</p><p>发现，如果没有guest用户，无论你怎么重启tomcat，访问管理后台会发现找不到网页</p><p>还有一个想法，就是把dubbo-admin中的guest用户改一下名字，测试一下可不可以访问，发现还是不可以。</p><p>总结出现，dubbo-admin中的这二个用户可能都是必须存在的，要是不存在，系统就报错</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Dubbo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Dubbo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Dubbo-monitor，部署Dubbo监控平台monitor</title>
+      <link href="/2018/09/20/dubbo/dubbo-monitor-bu-shu-dubbo-jian-kong-ping-tai-monitor/"/>
+      <url>/2018/09/20/dubbo/dubbo-monitor-bu-shu-dubbo-jian-kong-ping-tai-monitor/</url>
+      
+        <content type="html"><![CDATA[<p>部署Dubbo后台管理需要三个软件，JDK,mavem,tomcat，安装这三个软件，可以参考我之前写的笔记</p><p>三个软件部署好后，我们就需要下载Dubbo-admin项目：<a href="https://github.com/apache/incubator-dubbo/tree/2.5.x" target="_blank" rel="noopener">https://github.com/apache/incubator-dubbo/tree/2.5.x</a></p><p><a href="http://92.linux91.cn/attachment/20180920/85623ebb2f4449b388aaad2f795649bc.png" target="_blank" rel="noopener"><img src="http://92.linux91.cn/attachment/20180920/85623ebb2f4449b388aaad2f795649bc.png" alt="img"></a></p><p>注意：Dubbo-admin有一个坑，要注意，下载项目的时候要全部下载，不要单独下载一个项目。因为在用mvn编译的时候，不能在单个项目中编译，只能在所有项目中一起编译才会成功</p><p> 为了方便我提供了下载链接，可以直接在linux中下载：wget <a href="https://codeload.github.com/apache/incubator-dubbo/zip/2.5.x" target="_blank" rel="noopener">https://codeload.github.com/apache/incubator-dubbo/zip/2.5.x</a></p><h4 id="解压并编译"><a href="#解压并编译" class="headerlink" title="解压并编译"></a>解压并编译</h4><p>unzip incubator-dubbo-2.5.x.zip</p><p>cd incubator-dubbo-2.5.x</p><p>mvn install -Dmaven.test.skip=true</p><p>请稍等，估计要十多分钟</p><h4 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h4><p>cd dubbo-simple/dubbo-monitor-simple/target/</p><p>tar -zxf dubbo-monitor-simple-2.8.4-assembly.tar.gz</p><p>可以把解压出来的项目目录放在你习惯放的位置上，博主就习惯放在/usr/local/下</p><p>mv dubbo-monitor-simple-2.8.4 /usr/local/monitor</p><h4 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h4><p>cd /usr/local/monitor/conf/</p><p>vim dubbo.properties</p><p><a href="http://92.linux91.cn/attachment/20180920/37d5b7603aee446f8e22921fda6e2795.png" target="_blank" rel="noopener"><img src="https://gitee.com/linux91/document-img/raw/master/img/37d5b7603aee446f8e22921fda6e2795.png" alt="img"></a></p><p>在图中，dubbo.registry.address=的配置中，博主只有zookeeper，所有除了zookeeper，其它的都注释掉</p><p>如果有多少zookeeper，想配置集群，可以用”,”符号要隔开</p><p>在注意端口，不能和系统中其它端口相同发生冲突，配置前最好先查看一下，在修改</p><h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><p>cd /usr/local/monitor/bin/</p><p>restart.sh  #重启</p><p>start.sh    #启动</p><p>stop.sh    #停止</p><p>./start.sh</p><p>这样就启动了</p><p>打开浏览器输入地址: <a href="http://localhost:8080/" target="_blank" rel="noopener">http://IP地址/域名:1288/i</a>ndex.html</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Dubbo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Dubbo </tag>
             
         </tags>
       
