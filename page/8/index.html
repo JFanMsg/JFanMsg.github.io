@@ -357,28 +357,126 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2018/09/20/linux/centos7-mavem3.5-an-zhuang/" target="_blank">
+                    <a href="/2018/09/25/zabbix/zabbix-agent-an-zhuang-zabbix-ke-hu-duan-yum-an-zhuang/" target="_blank">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="centos7--mavem3.5安装">
+                            <img src="/medias/featureimages/25.jpg" class="responsive-img" alt="zabbix-agent--安装zabbix客户端--yum安装">
                             
-                            <span class="card-title">centos7--mavem3.5安装</span>
+                            <span class="card-title">zabbix-agent--安装zabbix客户端--yum安装</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                            从官方网上下载mavem3.5：http://maven.apache.org/download.cgi
-下载之后上传到linux系统上
-也可以在linux系统上直接下载，看系统网速
-wget http://mirrors.shu.edu.
+                            环境：centos7.4
+软件包：zabbix-agent-3.2.6-1.el6.x86_64.rpm、
+把准备好的安装包放入系统中
+安装zabbix客户端yum -y install zabbix-agent-3.2.6-1.el6.x
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-20
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-25
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/zabbix/" class="post-category" target="_blank">
+                                    zabbix
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/zabbix/" target="_blank">
+                            <span class="chip bg-color">zabbix</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/09/25/linux-fu-wu/java-zhen-duan-gong-ju-zhi-arthas-jian-dan-an-zhuang-a-li-kai-yuan-xiang-mu/" target="_blank">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="java诊断工具之Arthas简单安装--阿里开源项目">
+                            
+                            <span class="card-title">java诊断工具之Arthas简单安装--阿里开源项目</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                            官方安装文档：https://alibaba.github.io/arthas/install-detail.html#linux-unix-mac
+安装前要先安装依赖包yum -y install unzip telnet
+JDK的安装位
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-25
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/linux服务/" class="post-category" target="_blank">
+                                    linux服务
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/linux服务/" target="_blank">
+                            <span class="chip bg-color">linux服务</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/09/25/linux/chuang-jian-swap-fen-qu-wen-jian-shi-xian-xu-ni-nei-cun-a-li-yun/" target="_blank">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="创建swap分区文件-实现虚拟内存--阿里云">
+                            
+                            <span class="card-title">创建swap分区文件-实现虚拟内存--阿里云</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                            建立虚拟内存文件存储目录mkdir /swap
+创建虚拟内存文件dd if=/dev/zero of=/swap/swapfile bs=1M count=1024
+   其中的count等于想要的块的数量(bs*count=文件大小)，1
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-25
                             </span>
                             <span class="publish-author">
                                 
@@ -407,11 +505,168 @@ wget http://mirrors.shu.edu.
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/2018/09/21/mysql/mysql-shu-ju-ku-bei-fen-ji-zhi-de-miao-shu/" target="_blank">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="mysql数据库备份机制的描述">
+                            
+                            <span class="card-title">mysql数据库备份机制的描述</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                            公司要求，数据库每天备份一次，保存30份或天的数据备份文件，在保存每个月的最后一天的数据备份文件
+根据公司的需求，个人想出了一个方案，可能是因能力不足，无法想出更完善的方案
+方案分为三个步。
+​    \1. 备份方案
+​        制
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-21
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/mysql/" class="post-category" target="_blank">
+                                    mysql
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/mysql/" target="_blank">
+                            <span class="chip bg-color">mysql</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/09/21/linux-fu-wu/samba-fu-wu-de-jian-dan-ying-yong-linux-dui-linux-wen-jian-gong-xiang/" target="_blank">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="SAMBA服务的简单应用，Linux对Linux文件共享">
+                            
+                            <span class="card-title">SAMBA服务的简单应用，Linux对Linux文件共享</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                            本章的samba服务是由yum源安装的
+环境：centos7.4
+安装yum install samba
+创建samba用户samba用户是以系统中的用户的基础在增加，所以想要创建samba用户，就要先有一个系统用户。
+添加系统用户
+use
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-21
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/linux服务/" class="post-category" target="_blank">
+                                    linux服务
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/linux服务/" target="_blank">
+                            <span class="chip bg-color">linux服务</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/09/20/linux-ming-ling/linux-vim-ming-ling/" target="_blank">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/26.jpg" class="responsive-img" alt="Linux-vim命令">
+                            
+                            <span class="card-title">Linux-vim命令</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                            h （左移） j （下移） k （上移） l （右移）
+x （删除光标当前所在的位置的字符）
+y ：复制选中的字条
+yy ：复制整行 （2yy：复制当前行跟下一行）
+p ：粘贴
+i （光标前插入文本）
+a （光标后插入文本）
+o （光标向下
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-20
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/linux命令/" class="post-category" target="_blank">
+                                    linux命令
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/linux命令/" target="_blank">
+                            <span class="chip bg-color">linux命令</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
                     <a href="/2018/09/20/dubbo/dubbo-admin-bu-shu-dubbo-hou-tai-guan-li/" target="_blank">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Dubbo-admin，部署Dubbo后台管理">
+                            <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Dubbo-admin，部署Dubbo后台管理">
                             
                             <span class="card-title">Dubbo-admin，部署Dubbo后台管理</span>
                         </div>
@@ -459,7 +714,7 @@ wget http://mirrors.shu.edu.
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Dubbo-monitor，部署Dubbo监控平台monitor">
+                            <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Dubbo-monitor，部署Dubbo监控平台monitor">
                             
                             <span class="card-title">Dubbo-monitor，部署Dubbo监控平台monitor</span>
                         </div>
@@ -503,11 +758,111 @@ wget http://mirrors.shu.edu.
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/2018/09/20/linux/centos7-mavem3.5-an-zhuang/" target="_blank">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="centos7--mavem3.5安装">
+                            
+                            <span class="card-title">centos7--mavem3.5安装</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                            从官方网上下载mavem3.5：http://maven.apache.org/download.cgi
+下载之后上传到linux系统上
+也可以在linux系统上直接下载，看系统网速
+wget http://mirrors.shu.edu.
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-20
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/linux/" class="post-category" target="_blank">
+                                    linux
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/linux/" target="_blank">
+                            <span class="chip bg-color">linux</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/09/20/linux/liunx-centos7-jdk8-an-zhuang/" target="_blank">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Liunx--centos7--JDK8安装">
+                            
+                            <span class="card-title">Liunx--centos7--JDK8安装</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                            从官方网上下载JDK8：https://www.oracle.com/technetwork/java/javase/downloads/index.html
+下载之后上传到linux系统上
+也可以在linux系统上直接下载，看系统网速
+w
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-20
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/linux/" class="post-category" target="_blank">
+                                    linux
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/linux/" target="_blank">
+                            <span class="chip bg-color">linux</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
                     <a href="/2018/09/20/nginx/nginx-wen-ti-he-ji/" target="_blank">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="nginx问题合集">
+                            <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="nginx问题合集">
                             
                             <span class="card-title">nginx问题合集</span>
                         </div>
@@ -557,7 +912,7 @@ wget http://mirrors.shu.edu.
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/28.jpg" class="responsive-img" alt="linux下的tomcat8启动很慢现象处理">
+                            <img src="/medias/featureimages/25.jpg" class="responsive-img" alt="linux下的tomcat8启动很慢现象处理">
                             
                             <span class="card-title">linux下的tomcat8启动很慢现象处理</span>
                         </div>
@@ -601,156 +956,6 @@ SHA1PRNG算法是基于SHA-1算法实现且保密性较强的伪随机数生成�
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2018/09/20/tomcat/centos7-tomcat8-jian-dan-an-zhuang/" target="_blank">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="centos7--tomcat8简单安装">
-                            
-                            <span class="card-title">centos7--tomcat8简单安装</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                            tomcat8从官方网上下载tomcat8：http://tomcat.apache.org/download-80.cgi
-下载之后上传到linux系统上
-也可以在linux系统上直接下载，看系统网速
-wget http://mirror
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-20
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/tomcat/" class="post-category" target="_blank">
-                                    tomcat
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/tomcat/" target="_blank">
-                            <span class="chip bg-color">tomcat</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2018/09/19/linux/linux-centos7-yum-wang-luo-yuan/" target="_blank">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Linux--centos7--yum网络源">
-                            
-                            <span class="card-title">Linux--centos7--yum网络源</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                            今天我选择的yum源是网易的
-网易（163）yum源是国内最好的yum源之一 ，无论是速度还是软件版本，都非常的不错，将yum源设置为163yum，可以提升软件包安装和更新的速度，同时避免一些常见软件版本无法找到
-部署方法
-进入系统中存储y
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-19
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/linux/" class="post-category" target="_blank">
-                                    linux
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/linux/" target="_blank">
-                            <span class="chip bg-color">linux</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2018/09/19/python/linux-centos7-python3.6-yuan-ma-an-zhuang/" target="_blank">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/27.jpg" class="responsive-img" alt="linux-centos7-Python3.6源码安装">
-                            
-                            <span class="card-title">linux-centos7-Python3.6源码安装</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                            环境：centos7.4
-第一步设置网络YUN源
-可以查看之前的笔记，有记录怎么更改网络yum源
-https://www.linux91.cn/2018/09/19/linux/linux-centos7-yum-wang-luo-yuan
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-19
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/python/" class="post-category" target="_blank">
-                                    python
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/python/" target="_blank">
-                            <span class="chip bg-color">python</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
         </div>
     </article>
 
@@ -768,11 +973,12 @@ https://www.linux91.cn/2018/09/19/linux/linux-centos7-yum-wang-luo-yuan
             
         </div>
         <div class="page-info col m4 l4 hide-on-small-only">
-            <div class="center-align b-text-gray">8 / 8</div>
+            <div class="center-align b-text-gray">8 / 9</div>
         </div>
         <div class="col s6 m4 l4">
             
-            <a class="right btn-floating btn-large disabled">
+            <a href="/page/9/"
+               class="right btn-floating btn-large waves-effect waves-light bg-color">
                 <i class="fa fa-angle-right"></i>
             </a>
             
@@ -788,7 +994,7 @@ https://www.linux91.cn/2018/09/19/linux/linux-centos7-yum-wang-luo-yuan
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">56.1k</span>
+            <span class="white-color">64.3k</span>
             
 
             <br>

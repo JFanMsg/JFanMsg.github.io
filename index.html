@@ -504,11 +504,364 @@ $(function () {
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/2022/06/21/tidb/tidb-ke-shi-hua-ye-mian/" target="_blank">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/28.jpg" class="responsive-img" alt="TIDB可视化页面">
+                            
+                            <span class="card-title">TIDB可视化页面</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                            外题建议看官方文档：https://docs.pingcap.com/zh/tidb/stable/dashboard-intro
+访问地址：pg的IP:2379（pg的端口）/dashboard，http://172.18.3.41:23
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2022-06-21
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/TIDB/" class="post-category" target="_blank">
+                                    TIDB
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/TIDB/" target="_blank">
+                            <span class="chip bg-color">TIDB</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/06/21/tidb/tidb-de-kuo-rong-sheng-ji-suo-rong/" target="_blank">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="TIDB的扩容、升级、缩容">
+                            
+                            <span class="card-title">TIDB的扩容、升级、缩容</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                            扩容扩容一个组件，比如是监控相关的
+.yaml
+grafana_servers:
+  - host: 172.18.3.38
+    deploy_dir: "/usr/local/tidb/grafana_servers"
+
+monito
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2022-06-21
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/TIDB/" class="post-category" target="_blank">
+                                    TIDB
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/TIDB/" target="_blank">
+                            <span class="chip bg-color">TIDB</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/06/21/tidb/tidb-de-md-zhi-zeng-liang-tong-bu/" target="_blank">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="TIDB的md只增量同步">
+                            
+                            <span class="card-title">TIDB的md只增量同步</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                            外题本文只写增量，全量请看历史文章
+为啥用增量呢，因为同步机目前比较乱，近10个任务，只有小部分任务需要保留，所以配置也不用太高，磁盘也不用太高，所以通过重新新一台机搭建md集群，用增量同步来达到迁移的效果
+增量怎么保持数据一致性，这个，因
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2022-06-21
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/TIDB/" class="post-category" target="_blank">
+                                    TIDB
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/TIDB/" target="_blank">
+                            <span class="chip bg-color">TIDB</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/06/21/tidb/tidb-de-md-tong-bu-duo-ren-wu/" target="_blank">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="TIDB的md同步（多任务）">
+                            
+                            <span class="card-title">TIDB的md同步（多任务）</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                            外题本章依赖上一章的：TIDB的md同步（全量+增量）mysql同步
+如果你有多个mysql机器，都想迁移到TIDB集群中（比如我就是）
+那么就可以查看本章，如只想看md迁移单个mysql的话，可以过滤本章
+声明：本文不适合所有人，博主使用
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2022-06-21
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/TIDB/" class="post-category" target="_blank">
+                                    TIDB
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/TIDB/" target="_blank">
+                            <span class="chip bg-color">TIDB</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/06/21/tidb/tidb-de-md-tong-bu-quan-liang-zeng-liang-mysql-tong-bu/" target="_blank">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/27.jpg" class="responsive-img" alt="TIDB的md同步(全量+增量)mysql同步">
+                            
+                            <span class="card-title">TIDB的md同步(全量+增量)mysql同步</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                            外题竟然是mysql转TIDB，那么就需要mysql的数据同步到TIDB
+通过TIUP进行使用，TIUP如何安装，请看本站的TIDB集群搭建或官方文档
+注意：多看官方文档
+安装需要二个组件
+DM安装
+tiup install dm
+dmct
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2022-06-21
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/TIDB/" class="post-category" target="_blank">
+                                    TIDB
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/TIDB/" target="_blank">
+                            <span class="chip bg-color">TIDB</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/06/21/tidb/tidb-ji-qun-da-jian/" target="_blank">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="TIDB集群搭建">
+                            
+                            <span class="card-title">TIDB集群搭建</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                            外题为啥这么久了没怎么更新
+
+开发了几个运维工具，后续会更新相关文章以及上线github
+测试并上线TIDB，主要是将mysql转向TIDB，坑点也是不少啊
+
+会有不少的TIDB相关文章上线
+设计（必看）采用：3台做为主要的TIDB集群（高
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2022-06-21
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/TIDB/" class="post-category" target="_blank">
+                                    TIDB
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/TIDB/" target="_blank">
+                            <span class="chip bg-color">TIDB</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/02/21/mysql/zhu-cong-cong-ku-de-biao-bi-zhu-ku-da/" target="_blank">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="主从-从库的表比主库的大，表空间相差过大">
+                            
+                            <span class="card-title">主从-从库的表比主库的大，表空间相差过大</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                            背景因为这边公司做数据分析的需求，mysql并不满足数据的速度条件，所有需要先mysql同步到clickhouse，因为同步到clickhouse的压力过大，为了不影响主库，所以采用搭建主从的方式，通过从库进行数据同步，为了保证多个从库同步
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2022-02-21
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/mysql/" class="post-category" target="_blank">
+                                    mysql
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/mysql/" target="_blank">
+                            <span class="chip bg-color">mysql</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
                     <a href="/2021/12/10/di-ceng/ji-suan-ji-zu-cheng-yuan-li/cpu-pian/" target="_blank">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="计算机组成原理-CPU集合篇(持续更新)">
+                            <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="计算机组成原理-CPU集合篇(持续更新)">
                             
                             <span class="card-title">计算机组成原理-CPU集合篇(持续更新)</span>
                         </div>
@@ -559,7 +912,7 @@ $(function () {
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="prometheus-基于http_sd_configs的服务发现">
+                            <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="prometheus-基于http_sd_configs的服务发现">
                             
                             <span class="card-title">prometheus-基于http_sd_configs的服务发现</span>
                         </div>
@@ -608,7 +961,7 @@ $(function () {
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="gitlab的不中断业务升级">
+                            <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="gitlab的不中断业务升级">
                             
                             <span class="card-title">gitlab的不中断业务升级</span>
                         </div>
@@ -658,7 +1011,7 @@ gitlab升级要求不停业务，就代表升级过程中，开发还是可以�
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="rsyslog日志传输不完整">
+                            <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="rsyslog日志传输不完整">
                             
                             <span class="card-title">rsyslog日志传输不完整</span>
                         </div>
@@ -706,7 +1059,7 @@ gitlab升级要求不停业务，就代表升级过程中，开发还是可以�
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="docker-compose安装的gitlab升级">
+                            <img src="/medias/featureimages/26.jpg" class="responsive-img" alt="docker-compose安装的gitlab升级">
                             
                             <span class="card-title">docker-compose安装的gitlab升级</span>
                         </div>
@@ -749,352 +1102,6 @@ gitlab升级要求不停业务，就代表升级过程中，开发还是可以�
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/09/15/gitlab/docker-compose-an-zhuang-gitlab/" target="_blank">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="docker-compose安装gitlab">
-                            
-                            <span class="card-title">docker-compose安装gitlab</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                            创建相关目录mkdir -p /data/docker-app/gitlab
-编写docker-compose.ymlcd /data/docker-app/gitlab
-vim docker-compose.yml 
-version: '
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-09-15
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/gitlab/" class="post-category" target="_blank">
-                                    gitlab
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/gitlab/" target="_blank">
-                            <span class="chip bg-color">gitlab</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/08/31/linux-fu-wu/php-de-composer-zhan-yong-nei-cun-bu-gou-dao-zhi-shi-bai/" target="_blank">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="php的composer占用内存不够导致失败">
-                            
-                            <span class="card-title">php的composer占用内存不够导致失败</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                            背景公司的测试环境突然composer失败，原因是内存不够编译失败
-PHP Fatal error: Allowed memory size of 2147483648 bytes exhausted (tried to allocate 
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-08-31
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/linux服务/" class="post-category" target="_blank">
-                                    linux服务
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/php/" target="_blank">
-                            <span class="chip bg-color">php</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/08/31/linux/xin-jian-swap-huan-cun-nei-cun-fen-qu-mei-sheng-xiao/" target="_blank">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="新建swap缓存内存分区没生效">
-                            
-                            <span class="card-title">新建swap缓存内存分区没生效</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                            划分了swap分区，但在内存很高时，swap的使用率仍是0
-查看系统内存参数vm.swappiness
-vm.swappiness：控制换出运行时内存的相对权重，参数值大小对如何使用swap分区有很大联系。值越大，表示越积极使用swap分区
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-08-31
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/linux/" class="post-category" target="_blank">
-                                    linux
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/linux/" target="_blank">
-                            <span class="chip bg-color">linux</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/08/31/sui-bi/wen-dang-zheng-shi-shang-xian/" target="_blank">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="文档正式上线">
-                            
-                            <span class="card-title">文档正式上线</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                            直连入口：https://92.linux91.cn/文档正式上线啦，页面有二个入口：
-
-
-文档页面：
-
-
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-08-31
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/随笔/" class="post-category" target="_blank">
-                                    随笔
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/随笔/" target="_blank">
-                            <span class="chip bg-color">随笔</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/08/30/python/yong-yu-vuepress-zi-dong-sheng-cheng-pei-zhi-jiao-ben/" target="_blank">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="用于vuepress自动生成配置脚本">
-                            
-                            <span class="card-title">用于vuepress自动生成配置脚本</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                            背景最近采用vuepress来存放文档，配置起来太麻烦了，所以写了个脚本，自动生成配置
-脚本import os
-
-conf = {
-    'Python':{ # 多目录结构
-        'nav':{
-            'te
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-08-30
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/python/" class="post-category" target="_blank">
-                                    python
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/python/" target="_blank">
-                            <span class="chip bg-color">python</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/08/25/sui-bi/bo-ke-lai-yuan/" target="_blank">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="博客来源">
-                            
-                            <span class="card-title">博客来源</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                            背景我写博客也有一段时间了，中间经历过博客系统的故障、采用新博客系统、服务器到期迁移等。也因为这些问题的产生，也有可能是我比较懒吧，中间就停更了好长一段时间。现在我使用了GitHub Pages来做博客在这里我要感谢一个人，谢谢他提供的博客
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-08-25
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/随笔/" class="post-category" target="_blank">
-                                    随笔
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/随笔/" target="_blank">
-                            <span class="chip bg-color">随笔</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/07/02/clickhouse/clickhouse-de-rbac-yong-hu-quan-xian/" target="_blank">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Clickhouse的RBAC用户权限">
-                            
-                            <span class="card-title">Clickhouse的RBAC用户权限</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                            背景我公司准备要上线Clickhouse，研发自己的数据平台，现在量不大，所以不考虑集群，只是单机，所以文章中只是在单机Clickhouse实现过，Clickhouse搭建文章我就不写了，网上一大堆，只是Clickhouse的RBAC用户权
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-07-02
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Clickhouse/" class="post-category" target="_blank">
-                                    Clickhouse
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Clickhouse/" target="_blank">
-                            <span class="chip bg-color">Clickhouse</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
         </div>
     </article>
 
@@ -1111,7 +1118,7 @@ conf = {
             
         </div>
         <div class="page-info col m4 l4 hide-on-small-only">
-            <div class="center-align b-text-gray">1 / 8</div>
+            <div class="center-align b-text-gray">1 / 9</div>
         </div>
         <div class="col s6 m4 l4">
             
@@ -1132,7 +1139,7 @@ conf = {
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">56.1k</span>
+            <span class="white-color">64.3k</span>
             
 
             <br>

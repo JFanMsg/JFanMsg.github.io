@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.linux91.cn/"/>
-  <updated>2021-12-10T06:25:43.941Z</updated>
+  <updated>2022-06-21T07:17:25.066Z</updated>
   <id>https://www.linux91.cn/</id>
   
   <author>
@@ -15,6 +15,190 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>TIDB可视化页面</title>
+    <link href="https://www.linux91.cn/2022/06/21/tidb/tidb-ke-shi-hua-ye-mian/"/>
+    <id>https://www.linux91.cn/2022/06/21/tidb/tidb-ke-shi-hua-ye-mian/</id>
+    <published>2022-06-21T06:44:32.000Z</published>
+    <updated>2022-06-21T07:17:25.066Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;外题&quot;&gt;&lt;a href=&quot;#外题&quot; class=&quot;headerlink&quot; title=&quot;外题&quot;&gt;&lt;/a&gt;外题&lt;/h2&gt;&lt;p&gt;建议看官方文档：&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="TIDB" scheme="https://www.linux91.cn/categories/TIDB/"/>
+    
+    
+      <category term="TIDB" scheme="https://www.linux91.cn/tags/TIDB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TIDB的扩容、升级、缩容</title>
+    <link href="https://www.linux91.cn/2022/06/21/tidb/tidb-de-kuo-rong-sheng-ji-suo-rong/"/>
+    <id>https://www.linux91.cn/2022/06/21/tidb/tidb-de-kuo-rong-sheng-ji-suo-rong/</id>
+    <published>2022-06-21T06:44:32.000Z</published>
+    <updated>2022-06-21T06:58:10.171Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;扩容&quot;&gt;&lt;a href=&quot;#扩容&quot; class=&quot;headerlink&quot; title=&quot;扩容&quot;&gt;&lt;/a&gt;扩容&lt;/h2&gt;&lt;p&gt;扩容一个组件，比如是监控相关的&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;.yaml&lt;/strong&gt;&lt;/p&gt;
+&lt;pre
+        
+      
+    
+    </summary>
+    
+      <category term="TIDB" scheme="https://www.linux91.cn/categories/TIDB/"/>
+    
+    
+      <category term="TIDB" scheme="https://www.linux91.cn/tags/TIDB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TIDB的md只增量同步</title>
+    <link href="https://www.linux91.cn/2022/06/21/tidb/tidb-de-md-zhi-zeng-liang-tong-bu/"/>
+    <id>https://www.linux91.cn/2022/06/21/tidb/tidb-de-md-zhi-zeng-liang-tong-bu/</id>
+    <published>2022-06-21T04:54:32.000Z</published>
+    <updated>2022-06-21T07:14:27.012Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;外题&quot;&gt;&lt;a href=&quot;#外题&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="TIDB" scheme="https://www.linux91.cn/categories/TIDB/"/>
+    
+    
+      <category term="TIDB" scheme="https://www.linux91.cn/tags/TIDB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TIDB的md同步（多任务）</title>
+    <link href="https://www.linux91.cn/2022/06/21/tidb/tidb-de-md-tong-bu-duo-ren-wu/"/>
+    <id>https://www.linux91.cn/2022/06/21/tidb/tidb-de-md-tong-bu-duo-ren-wu/</id>
+    <published>2022-06-21T04:44:32.000Z</published>
+    <updated>2022-06-21T07:13:59.895Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;外题&quot;&gt;&lt;a href=&quot;#外题&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="TIDB" scheme="https://www.linux91.cn/categories/TIDB/"/>
+    
+    
+      <category term="TIDB" scheme="https://www.linux91.cn/tags/TIDB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TIDB的md同步(全量+增量)mysql同步</title>
+    <link href="https://www.linux91.cn/2022/06/21/tidb/tidb-de-md-tong-bu-quan-liang-zeng-liang-mysql-tong-bu/"/>
+    <id>https://www.linux91.cn/2022/06/21/tidb/tidb-de-md-tong-bu-quan-liang-zeng-liang-mysql-tong-bu/</id>
+    <published>2022-06-21T03:44:32.000Z</published>
+    <updated>2022-06-21T06:25:13.666Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;外题&quot;&gt;&lt;a href=&quot;#外题&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="TIDB" scheme="https://www.linux91.cn/categories/TIDB/"/>
+    
+    
+      <category term="TIDB" scheme="https://www.linux91.cn/tags/TIDB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TIDB集群搭建</title>
+    <link href="https://www.linux91.cn/2022/06/21/tidb/tidb-ji-qun-da-jian/"/>
+    <id>https://www.linux91.cn/2022/06/21/tidb/tidb-ji-qun-da-jian/</id>
+    <published>2022-06-21T03:37:32.000Z</published>
+    <updated>2022-06-21T07:15:17.230Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;外题&quot;&gt;&lt;a href=&quot;#外题&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="TIDB" scheme="https://www.linux91.cn/categories/TIDB/"/>
+    
+    
+      <category term="TIDB" scheme="https://www.linux91.cn/tags/TIDB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>主从-从库的表比主库的大，表空间相差过大</title>
+    <link href="https://www.linux91.cn/2022/02/21/mysql/zhu-cong-cong-ku-de-biao-bi-zhu-ku-da/"/>
+    <id>https://www.linux91.cn/2022/02/21/mysql/zhu-cong-cong-ku-de-biao-bi-zhu-ku-da/</id>
+    <published>2022-02-21T06:37:32.000Z</published>
+    <updated>2022-06-21T07:10:56.404Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="mysql" scheme="https://www.linux91.cn/categories/mysql/"/>
+    
+    
+      <category term="mysql" scheme="https://www.linux91.cn/tags/mysql/"/>
+    
+  </entry>
   
   <entry>
     <title>计算机组成原理-CPU集合篇(持续更新)</title>
@@ -359,192 +543,6 @@
     
     
       <category term="mysql" scheme="https://www.linux91.cn/tags/mysql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>nginx最大文件打开数</title>
-    <link href="https://www.linux91.cn/2021/04/02/nginx/nginx-zui-da-wen-jian-da-kai-shu/"/>
-    <id>https://www.linux91.cn/2021/04/02/nginx/nginx-zui-da-wen-jian-da-kai-shu/</id>
-    <published>2021-04-01T17:37:32.000Z</published>
-    <updated>2021-08-26T08:07:22.963Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="nginx" scheme="https://www.linux91.cn/categories/nginx/"/>
-    
-    
-      <category term="nginx" scheme="https://www.linux91.cn/tags/nginx/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>mysql主从架构或主主架构中的数据同步讨论</title>
-    <link href="https://www.linux91.cn/2021/03/02/mysql/guan-yu-zi-jian-yong-hu-bu-neng-gei-bie-yong-hu-shou-quan-wen-ti/"/>
-    <id>https://www.linux91.cn/2021/03/02/mysql/guan-yu-zi-jian-yong-hu-bu-neng-gei-bie-yong-hu-shou-quan-wen-ti/</id>
-    <published>2021-03-01T17:37:32.000Z</published>
-    <updated>2021-08-26T08:00:30.004Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;mysql-关于自建用户不能给别用户授权问题&quot;&gt;&lt;a href=&quot;#mysql-关于自建用户不能给别用户授权问题&quot; class=&quot;headerlink&quot; title=&quot;mysql - 关于自建用户不能给别用户授权问题&quot;&gt;&lt;/a&gt;mysql -
-        
-      
-    
-    </summary>
-    
-      <category term="mysql" scheme="https://www.linux91.cn/categories/mysql/"/>
-    
-    
-      <category term="mysql" scheme="https://www.linux91.cn/tags/mysql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>redis的used_memory_dataset_perc过高</title>
-    <link href="https://www.linux91.cn/2021/02/19/redis/redis-de-used-memory-dataset-perc-guo-gao/"/>
-    <id>https://www.linux91.cn/2021/02/19/redis/redis-de-used-memory-dataset-perc-guo-gao/</id>
-    <published>2021-02-19T02:37:32.000Z</published>
-    <updated>2021-08-26T07:58:27.791Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="redis" scheme="https://www.linux91.cn/categories/redis/"/>
-    
-    
-      <category term="redis" scheme="https://www.linux91.cn/tags/redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>磁盘显示过高，实际使用不高</title>
-    <link href="https://www.linux91.cn/2021/01/19/linux/ci-pan-xian-shi-guo-gao-shi-ji-shi-yong-bu-gao/"/>
-    <id>https://www.linux91.cn/2021/01/19/linux/ci-pan-xian-shi-guo-gao-shi-ji-shi-yong-bu-gao/</id>
-    <published>2021-01-19T02:37:32.000Z</published>
-    <updated>2021-08-26T07:57:31.563Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;在我公司的日志服务器，发现了一个问题，某个磁盘使用过高，但是实际使用并不高&lt;/p&gt;
-&lt;p&gt;&lt;img
-        
-      
-    
-    </summary>
-    
-      <category term="linux" scheme="https://www.linux91.cn/categories/linux/"/>
-    
-    
-      <category term="linux" scheme="https://www.linux91.cn/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>django2.0使用问题记录-持续更新</title>
-    <link href="https://www.linux91.cn/2020/09/19/python/django2.0-shi-yong-wen-ti-ji-lu-chi-xu-geng-xin/"/>
-    <id>https://www.linux91.cn/2020/09/19/python/django2.0-shi-yong-wen-ti-ji-lu-chi-xu-geng-xin/</id>
-    <published>2020-09-19T02:37:32.000Z</published>
-    <updated>2021-08-26T07:57:00.186Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;br&gt;
-
-&lt;h2 id=&quot;问题1&quot;&gt;&lt;a href=&quot;#问题1&quot; class=&quot;headerlink&quot; title=&quot;问题1&quot;&gt;&lt;/a&gt;问题1&lt;/h2&gt;&lt;pre class=&quot;line-numbers language-python&quot;&gt;&lt;code
-        
-      
-    
-    </summary>
-    
-      <category term="python" scheme="https://www.linux91.cn/categories/python/"/>
-    
-    
-      <category term="django" scheme="https://www.linux91.cn/tags/django/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>awk的基本用法</title>
-    <link href="https://www.linux91.cn/2020/07/01/linux/guan-yu-a-li-yun-dan-xing-wang-qia-bang-ding-hou-gai-wang-duan-wu-fa-fang-wen-yuan-ip/"/>
-    <id>https://www.linux91.cn/2020/07/01/linux/guan-yu-a-li-yun-dan-xing-wang-qia-bang-ding-hou-gai-wang-duan-wu-fa-fang-wen-yuan-ip/</id>
-    <published>2020-06-30T18:37:32.000Z</published>
-    <updated>2021-08-26T07:22:40.237Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;需要关于系统中的源地址校验&lt;br&gt;vim /etc/sysctl.conf&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-shell&quot;&gt;&lt;code
-        
-      
-    
-    </summary>
-    
-      <category term="linux" scheme="https://www.linux91.cn/categories/linux/"/>
-    
-    
-      <category term="linux" scheme="https://www.linux91.cn/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>awk的基本用法</title>
-    <link href="https://www.linux91.cn/2020/05/01/linux-ming-ling/awk-de-ji-ben-yong-fa/"/>
-    <id>https://www.linux91.cn/2020/05/01/linux-ming-ling/awk-de-ji-ben-yong-fa/</id>
-    <published>2020-04-30T18:37:32.000Z</published>
-    <updated>2021-08-26T07:20:44.026Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;awk是一种可以处理数据，产生格式化报表的语言，功能相当强大。&lt;br&gt;awk的工作方式是读取数据文件，将每一行数据视为一条记录（record），每笔记录以字段分隔符，分成若干字段，然后输出各个字段的值&lt;br&gt;awk擅长文本格式化。并将格式化以后的文本输出，而对于文本的处理&lt;
-        
-      
-    
-    </summary>
-    
-      <category term="linux命令" scheme="https://www.linux91.cn/categories/linux%E5%91%BD%E4%BB%A4/"/>
-    
-    
-      <category term="linux命令" scheme="https://www.linux91.cn/tags/linux%E5%91%BD%E4%BB%A4/"/>
     
   </entry>
   
